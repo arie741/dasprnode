@@ -6,6 +6,10 @@
 }
 /*Utility end*/
 
+ul {
+  list-style-type: none;
+}
+
 #home {
 	height:485px;
 }
@@ -59,6 +63,57 @@ section.footer-paralax .socials {
 	width:234px;
 }
 
+.about-visi * {
+	float:right;
+}
+
+.about-visi li, .about-misi li, #about-fungsitujuan li {
+	text-align:justify;
+	margin-bottom:10px;
+}
+
+.about-visi ul ,.about-misi ul, #about-fungsitujuan ul {
+	padding-left:0;
+}
+
+#about-visimisi {
+	border:1px solid rgba(0,0,0,.125);
+	background-color:rgba(0,0,0,.03);
+	padding:20px 0 40px 0;
+	margin-bottom:30px;
+}
+
+#about-visimisi::after {
+    content: '';
+    position: relative;
+    width: 6px;
+    background-color: white;
+    top: -20px;
+    bottom: 0;
+    left: -41.6%;
+    margin-left: -3px;
+    margin-bottom: -59px;
+}
+
+.about-fungsi *{
+	float:right;
+}
+
+.program-item h3 {
+	text-align: center;
+}
+
+.program-item p {
+	text-align: justify;
+}
+
+.program-item {
+	padding:30px;
+	border:1px solid rgba(0,0,0,.125);
+	background-color:rgba(0,0,0,.03);
+	margin-bottom:30px;
+}
+
 /* library */
 #sejarah {
 	margin-bottom:30px;
@@ -72,7 +127,6 @@ section.footer-paralax .socials {
 #sejarah {
   background-color: #43281C;
   border-radius:2px;
-  font-family: Helvetica, sans-serif;
 }
 
 /* The actual timeline (the vertical ruler) */
