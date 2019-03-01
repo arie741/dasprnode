@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('head'); -%>
+  </head>
+  <body id="page-top">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-3"></div>
+        <div class="col-sm-12 col-lg-6">
+          <div class="card align-middle">
+            <div class="card-body">
+              
+              <form action="/login-request" name="login-request" method="POST">
+                Enter Admin Key:
+                <input type="password" placeholder="Admin Key" name="pwd">
+                <input class="btn btn-prime" type="submit" value="Submit">
+              </form>
+              <% if (errors) {%>
+                <ul>
+                  <% errors.forEach(function(error){%>
+                    <li><%= error.msg %></li>
+                  <%});%>
+                </ul>
+              <%} %>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!--/ Section Contact-Footer Star /-->
+    <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+    <div id="preloader"></div>
+    <!-- JavaScript Libraries -->
+    <script src="lib/jquery/jquery.min.js"></script>
+    <script src="lib/jquery/jquery-migrate.min.js"></script>
+    <script src="lib/popper/popper.min.js"></script>
+    <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/counterup/jquery.waypoints.min.js"></script>
+    <script src="lib/counterup/jquery.counterup.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/lightbox/js/lightbox.min.js"></script>
+    <script src="lib/typed/typed.min.js"></script>
+    
+    <!-- Contact Form JavaScript File -->
+    <script src="contactform/contactform.js"></script>
+    <!-- Template Main Javascript File -->
+    <script src="js/main.js"></script>
+    <!--/ Section Contact-footer End /-->
+  </body>
+</html>
