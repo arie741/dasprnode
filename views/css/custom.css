@@ -78,9 +78,14 @@ section.footer-paralax .socials {
 
 #about-visimisi {
 	border:1px solid rgba(0,0,0,.125);
+	background-image:url(../img/logo/DASPR.png);
 	background-color:rgba(0,0,0,.03);
 	padding:20px 0 40px 0;
 	margin-bottom:30px;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+	background-position: center center;
 }
 
 #about-visimisi::after {
@@ -114,19 +119,48 @@ section.footer-paralax .socials {
 	margin-bottom:30px;
 }
 
+.collab-item p{
+	text-align:justify;
+}
+
+.collab-item a{
+	color:#EDB458;
+}
+
+.collab-item ul {
+	padding-left:0px;
+}
+
+.collab-item {
+	margin-bottom:50px;
+}
+
+#our-partners {
+	margin-bottom:30px;
+}
+
+#our-partners .card {
+	height:367px;
+}
+
+#our-partners .row {
+	margin-bottom:20px;
+}
+
 /* library */
 #sejarah {
 	margin-bottom:30px;
+	background-image:url(../img/overlay-bg.jpg);
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+	background-position: center center;
+	background-color: #43281C;
+  	border-radius:2px;
 }
 
 #sejarah * {
   box-sizing: border-box;
-}
-
-/* Set a background color */
-#sejarah {
-  background-color: #43281C;
-  border-radius:2px;
 }
 
 /* The actual timeline (the vertical ruler) */

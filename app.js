@@ -10,11 +10,15 @@ app.set('view engine', 'ejs');
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
 
 app.get('/', function(req, res){
-	res.render('home');
+	res.render('home', { title: 'Home'});
 })
 
 app.get('/aboutus', function(req, res){
-	res.render('about');
+	res.render('about', { title: 'About Us'});
+})
+
+app.get('/collabp', function(req, res){
+	res.render('collabp', { title: 'Collaboration & Partner'});
 })
 
 app.get('/profile/:profileId', function (req, res) {
