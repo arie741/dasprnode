@@ -68,6 +68,29 @@ app.get('/admin-publication', function(req,res){
 	}
 })
 
+app.get('/pub-add', function(req,res){
+	if(req.session.uniqueId){
+		res.render('pub-add', { title: 'Add Publications'});	
+	} else {
+		res.redirect('/admin');
+	}
+})
+
+app.post('/pub-add-request', function(req,res){
+	if(req.session.uniqueId){
+		db.query(db.addPublication, [req.body.pTitle, req.body.pYear, req.body.pAuthor, req.body.pCategory, req.body.pPublisher, req.body.pLink, req.body.pCountry], (err, resp) => {
+		    if (err) {
+		      return next(err)
+		    }
+		    res.redirect('/admin-publication');	
+  		})
+	} else {
+		res.redirect('/admin');
+	}
+})
+
+
+
 app.get('/logout', function(req, res){
 	req.session.destroy(function(err){
 		res.redirect('/admin');
