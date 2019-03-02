@@ -20,6 +20,8 @@ app.use(ExpressSessions({
 	resave:false
 }));
 
+const db = require('./db');
+
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
 
 //Routes
@@ -37,8 +39,12 @@ app.get('/collabp', function(req, res){
 })
 
 app.get('/admin', function(req, res){
-	res.render('admin', { title: 'Admin',  errors: req.session.errors});
-	req.session.errors=null;
+	if(req.session.uniqueId){
+		res.redirect('/admin-home');
+	} else {
+		res.render('admin', { title: 'Admin',  errors: req.session.errors});
+		req.session.errors=null;
+	}	
 })
 
 app.get('/admin-home', function(req, res){
@@ -56,18 +62,19 @@ app.get('/logout', function(req, res){
 })
 
 app.post('/login-request', function(req, res){
-	req.check('pwd', 'Wrong password!').equals('pwd');
-	var errors = req.validationErrors();
-	if(errors){
-		req.session.errors=errors;
-		res.render('admin', { title: 'Admin', errors: req.session.errors});
-	} else {
-		req.session.uniqueId = 'admindaspr';
-		res.redirect('/admin-home');
-	}
+	db.query(db.getPwd, [], (err, resp) => {
+	    if (err) {
+	      return next(err)
+	    }
+    	req.check('pwd', 'Wrong password!').equals(resp.rows[0].pwd);
+		var errors = req.validationErrors();
+		if(errors){
+			req.session.errors=errors;
+			res.render('admin', { title: 'Admin', errors: req.session.errors});
+		} else {
+			req.session.uniqueId = 'admindaspr';
+			res.redirect('/admin-home');
+		}
+  	})
+	
 })
-
-app.get('/profile/:profileId', function (req, res) {
-  	res.send(req.params.profileId);
-})
-
