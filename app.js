@@ -55,7 +55,7 @@ app.get('/admin-home', function(req, res){
 	}
 })
 
-app.get('/admin-publication', function(req,res){
+app.get('/admin-publication', function(req,res,next){
 	if(req.session.uniqueId){
 		db.query(db.getPublications, [], (err, resp) => {
 		    if (err) {
@@ -76,9 +76,49 @@ app.get('/pub-add', function(req,res){
 	}
 })
 
-app.post('/pub-add-request', function(req,res){
+app.get('/pub-edit/:uuid', function(req,res){
 	if(req.session.uniqueId){
-		db.query(db.addPublication, [req.body.pTitle, req.body.pYear, req.body.pAuthor, req.body.pCategory, req.body.pPublisher, req.body.pLink, req.body.pCountry], (err, resp) => {
+		db.query(db.findPublicationByUuid, [req.params.uuid], (err, resp) => {
+		    if (err) {
+		      return next(err)
+		    }
+	    	res.render('edit-publication', { title: 'Edit Publication', publications: resp.rows});
+  		})	
+	} else {
+		res.redirect('/admin');
+	}
+})
+
+app.post('/pub-add-request', function(req,res,next){
+	if(req.session.uniqueId){
+		var uuid = require('uuid/v1');
+		db.query(db.addPublication, [req.body.pTitle, req.body.pYear, req.body.pAuthor, req.body.pCategory, req.body.pPublisher, req.body.pLink, req.body.pCountry, uuid()], (err, resp) => {
+		    if (err) {
+		      return next(err)
+		    }
+		    res.redirect('/admin-publication');	
+  		})
+	} else {
+		res.redirect('/admin');
+	}
+})
+
+app.post('/pub-edit-request/:uuid', function(req,res,next){
+	if(req.session.uniqueId){
+		db.query(db.editPublication, [req.body.pTitle, req.body.pYear, req.body.pAuthor, req.body.pCategory, req.body.pPublisher, req.body.pLink, req.body.pCountry, req.params.uuid], (err, resp) => {
+		    if (err) {
+		      return next(err)
+		    }
+		    res.redirect('/admin-publication');	
+  		})
+	} else {
+		res.redirect('/admin');
+	}
+})
+
+app.get('/pub-delete-request/:uuid', function(req,res,next){
+	if(req.session.uniqueId){
+		db.query(db.deletePublication, [req.params.uuid], (err, resp) => {
 		    if (err) {
 		      return next(err)
 		    }

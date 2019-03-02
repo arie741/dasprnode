@@ -8,8 +8,11 @@ const pool = new Pool({
 })
 
 var getPwd = 'SELECT * FROM admin';
-var getPublications = 'SELECT * FROM publication';
-var addPublication = "insert into publication (title, year, author, category, publisher, link, country) values ($1, $2, $3, $4, $5, $6, $7)"
+var getPublications = 'SELECT * FROM publication order by year DESC';
+var addPublication = "insert into publication (title, year, author, category, publisher, link, country, uuid) values ($1, $2, $3, $4, $5, $6, $7, $8)"
+var editPublication = "update publication set title = $1, year = $2, author = $3, category = $4, publisher = $5, link = $6, country = $7 where uuid = $8"
+var findPublicationByUuid = "SELECT * FROM publication where uuid=$1"
+var deletePublication = 'delete from publication where uuid = $1'
 
 module.exports = {
 	query: (text, params, callback) => {
@@ -17,5 +20,8 @@ module.exports = {
   },
   getPwd,
   getPublications,
-  addPublication
+  addPublication,
+  findPublicationByUuid,
+  editPublication,
+  deletePublication
 }

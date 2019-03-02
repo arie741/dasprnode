@@ -9,20 +9,19 @@
         <div class="col-12">
           <div class="card align-middle">
             <div class="card-body">
-              <a href="/pub-add">Add</a>
-              <h3>Publication</h3>
+              <a href="/admin-publication">Cancel</a>
+              <h3>Edit Publication</h3>
               <% publications.forEach(function(publication){%>
-                <ul>
-                  <li><%= publication.title %></li>
-                  <li><%= publication.year %></li>
-                  <li><%= publication.author %></li>
-                  <li><%= publication.category %></li>
-                  <li><%= publication.publisher %></li>
-                  <li><%= publication.country %></li>
-                  <li><a href="<%= publication.link %>">Link</a></li>
-                  <li><a href="/pub-edit/<%= publication.uuid %>">Edit</a></li>
-                  <li><a href="/pub-delete-request/<%= publication.uuid %>">Delete</a></li>
-                </ul>
+              <form action="/pub-edit-request/<%= publication.uuid %>" method="post">                
+                <input type="text" placeholder="Title" name="pTitle" value="<%= publication.title %>">
+                <input type="text" placeholder="Year" name="pYear" value="<%= publication.year %>">
+                <input type="text" placeholder="Author" name="pAuthor" value="<%= publication.author %>">
+                <input type="text" placeholder="Category" name="pCategory" value="<%= publication.category %>">
+                <input type="text" placeholder="Publisher" name="pPublisher" value="<%= publication.publisher %>">
+                <input type="text" placeholder="Link" name="pLink" value="<%= publication.link %>">
+                <input type="text" placeholder="Country" name="pCountry" value="<%= publication.country %>">
+                <input class="btn btn-prime" type="submit" value="Submit">                
+              </form>
               <%});%>
               <a class="btn btn-prime" href="/logout">Logout</a>
             </div>
