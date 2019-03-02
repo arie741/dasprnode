@@ -55,6 +55,19 @@ app.get('/admin-home', function(req, res){
 	}
 })
 
+app.get('/admin-publication', function(req,res){
+	if(req.session.uniqueId){
+		db.query(db.getPublications, [], (err, resp) => {
+		    if (err) {
+		      return next(err)
+		    }
+	    	res.render('admin-publication', { title: 'Admin', publications: resp.rows});
+  		})		
+	} else {
+		res.redirect('/admin');
+	}
+})
+
 app.get('/logout', function(req, res){
 	req.session.destroy(function(err){
 		res.redirect('/admin');

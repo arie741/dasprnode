@@ -11,10 +11,18 @@
           <div class="card align-middle">
             <div class="card-body">
               
-              <h3>Welcome Admin!</h3>
-              <ul>
-                <li><a href="/admin-publication">Publication</a></li>
-              </ul>
+              <h3>Publication</h3>
+              <% publications.forEach(function(publication){%>
+                <ul>
+                  <li><%= publication.title %></li>
+                  <li><%= publication.year %></li>
+                  <li><%= publication.author %></li>
+                  <li><%= publication.category %></li>
+                  <li><%= publication.publisher %></li>
+                  <li><a href="<%= publication.link %>">Link</a></li>
+                  <li><%= publication.country %></li>
+                </ul>
+              <%});%>
               <a class="btn btn-prime" href="/logout">Logout</a>
             </div>
           </div>

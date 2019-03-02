@@ -8,10 +8,12 @@ const pool = new Pool({
 })
 
 var getPwd = 'SELECT * FROM admin';
+var getPublications = 'SELECT * FROM publication';
 
 module.exports = {
 	query: (text, params, callback) => {
     return pool.query(text, params, callback)
   },
-  getPwd
+  getPwd,
+  getPublications
 }
