@@ -78,7 +78,6 @@ section.footer-paralax .socials {
 
 #about-visimisi {
 	border:1px solid rgba(0,0,0,.125);
-	background-image:url(../img/logo/DASPR.png);
 	background-color:rgba(0,0,0,.03);
 	padding:20px 0 40px 0;
 	margin-bottom:30px;
@@ -149,6 +148,11 @@ section.footer-paralax .socials {
 
 .btn-prime {
 	background-color:#EDB458;
+}
+
+.publication-item {
+	background-color:rgba(0,0,0,.03);
+	margin-bottom:20px;
 }
 
 /* library */
