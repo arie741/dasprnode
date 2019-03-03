@@ -57,11 +57,29 @@ app.get('/admin-home', function(req, res){
 
 app.get('/admin-publication', function(req,res,next){
 	if(req.session.uniqueId){
-		db.query(db.getPublications, [], (err, resp) => {
+		res.redirect('/admin-publication/1');	
+	} else {
+		res.redirect('/admin');
+	}
+})
+
+app.get('/admin-publication/:page', function(req,res,next){
+	if(req.session.uniqueId){
+		var pagLength = 0;
+		db.query(db.countPublications, [], (err, resp) => {
 		    if (err) {
 		      return next(err)
 		    }
-	    	res.render('admin-publication', { title: 'Admin', publications: resp.rows});
+		    var arr = resp.rows;
+		    pagLength = Math.ceil(arr[0].count / 10);	
+  		})
+
+		db.query(db.getPublications, [(req.params.page * 10), ((req.params.page - 1) * 10)], (err, resp) => {
+		    if (err) {
+		      return next(err)
+		    }
+
+	    	res.render('admin-publication', { title: 'Admin', publications: resp.rows, pages: pagLength, currentpage: req.params.page });
   		})		
 	} else {
 		res.redirect('/admin');

@@ -11,9 +11,18 @@
             <div class="card-body">
               <a href="/pub-add">Add</a>
               <h3>Publication</h3>
+              
+              <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                  <% for (i = 1; i <= pages; i++){%>
+                  <li class="page-item pag-<%= i %>"><a class="page-link" href="/admin-publication/<%= i %>"><%= i %></a></li>
+                  <%};%>
+                </ul>
+              </nav>
+              
               <% publications.forEach(function(publication){%>
                 <ul>
-                  <li><%= publication.title %></li>
+                  <li><a href="<%= publication.link %>"><%= publication.title %></a></li>
                   <li><%= publication.year %></li>
                   <li><%= publication.author %></li>
                   <li><%= publication.category %></li>
@@ -24,6 +33,15 @@
                   <li><a href="/pub-delete-request/<%= publication.uuid %>">Delete</a></li>
                 </ul>
               <%});%>
+
+              <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                  <% for (i = 1; i <= pages; i++){%>
+                  <li class="page-item pag-<%= i %>"><a class="page-link" href="/admin-publication/<%= i %>"><%= i %></a></li>
+                  <%};%>
+                </ul>
+              </nav>
+
               <a class="btn btn-prime" href="/logout">Logout</a>
             </div>
           </div>
@@ -35,21 +53,24 @@
     <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
     <div id="preloader"></div>
     <!-- JavaScript Libraries -->
-    <script src="lib/jquery/jquery.min.js"></script>
-    <script src="lib/jquery/jquery-migrate.min.js"></script>
-    <script src="lib/popper/popper.min.js"></script>
-    <script src="lib/bootstrap/js/bootstrap.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/counterup/jquery.waypoints.min.js"></script>
-    <script src="lib/counterup/jquery.counterup.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-    <script src="lib/lightbox/js/lightbox.min.js"></script>
-    <script src="lib/typed/typed.min.js"></script>
+    <script src="/lib/jquery/jquery.min.js"></script>
+    <script src="/lib/jquery/jquery-migrate.min.js"></script>
+    <script src="/lib/popper/popper.min.js"></script>
+    <script src="/lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/lib/easing/easing.min.js"></script>
+    <script src="/lib/counterup/jquery.waypoints.min.js"></script>
+    <script src="/lib/counterup/jquery.counterup.js"></script>
+    <script src="/lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="/lib/lightbox/js/lightbox.min.js"></script>
+    <script src="/lib/typed/typed.min.js"></script>
+    <script type="text/javascript">
+      $(".pag-" + <%= currentpage %>).addClass( "active" );
+    </script>
     
     <!-- Contact Form JavaScript File -->
-    <script src="contactform/contactform.js"></script>
+    <script src="/contactform/contactform.js"></script>
     <!-- Template Main Javascript File -->
-    <script src="js/main.js"></script>
+    <script src="/js/main.js"></script>
     <!--/ Section Contact-footer End /-->
   </body>
 </html>
