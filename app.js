@@ -86,6 +86,21 @@ app.get('/admin-publication/:page', function(req,res,next){
 	}
 })
 
+app.post('/admin-publication-search-request', function(req, res, next){
+	if(req.session.uniqueId){
+		var pagLength = 0;
+
+		db.query(db.searchPublication, [req.body.pSearch], (err, resp) => {
+		    if (err) {
+		      return next(err)
+		    }
+		    res.render('admin-publication', { title: 'Admin', publications: resp.rows, pages: pagLength, currentpage: 1 });
+  		})
+	} else {
+		res.redirect('/admin');
+	}
+})
+
 app.get('/pub-add', function(req,res){
 	if(req.session.uniqueId){
 		res.render('pub-add', { title: 'Add Publications'});	

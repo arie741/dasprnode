@@ -11,7 +11,13 @@
             <div class="card-body">
               <a href="/pub-add">Add</a>
               <h3>Publication</h3>
-              
+
+              <form action="/admin-publication-search-request" method="post">
+                  <input type="text" placeholder="Search" name="pSearch">
+                  <input class="btn btn-prime" type="submit" value="Submit">
+                  <a class="btn btn-prime"  href="/admin-publication/1">Clear</a>
+              </form>
+
               <nav aria-label="Page navigation example">
                 <ul class="pagination">
                   <% for (i = 1; i <= pages; i++){%>
