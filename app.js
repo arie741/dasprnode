@@ -2,10 +2,23 @@ const express = require('express');
 const ExpressSessions = require('express-session'); 
 const bodyParser = require('body-parser');
 const expressValidator = require('express-validator');
+const db = require('./db');
+
+var pg = require('pg')
+  , session = require('express-session')
+  , pgSession = require('connect-pg-simple')(session);
+
+var pgPool = new pg.Pool({
+  user: 'webbetac_daspr',
+  host: 'localhost',
+  database: 'webbetac_dasprdb',
+  password: 'daspr2000',
+  port: 5432
+});  
 
 var session;
 const app = express();
-const port = 3000;
+const port = 62542;
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
@@ -15,12 +28,15 @@ app.engine('html', require('ejs').renderFile);
 app.set('views', './views');
 app.set('view engine', 'ejs');
 app.use(ExpressSessions({
-	secret: 'dasprsecretkey',
-	saveUninitialized:false,
-	resave:false
+	store: new pgSession({
+	    pool : pgPool,                // Connection pool
+	    tableName : 'session'   // Use another table-name than the default "session" one
+  	}),
+  	secret: 'dasprsecretkey31155%as22354',
+  	resave: false,
+  	cookie: { maxAge: 30 * 24 * 60 * 60 * 1000 }, // 30 days
+	saveUninitialized:false
 }));
-
-const db = require('./db');
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
 
@@ -109,7 +125,7 @@ app.get('/pub-add', function(req,res){
 	}
 })
 
-app.get('/pub-edit/:uuid', function(req,res){
+app.get('/pub-edit/:uuid', function(req,res,next){
 	if(req.session.uniqueId){
 		db.query(db.findPublicationByUuid, [req.params.uuid], (err, resp) => {
 		    if (err) {
@@ -170,7 +186,7 @@ app.get('/logout', function(req, res){
 	})
 })
 
-app.post('/login-request', function(req, res){
+app.post('/login-request', function(req, res, next){
 	db.query(db.getPwd, [], (err, resp) => {
 	    if (err) {
 	      return next(err)
