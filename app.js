@@ -16,6 +16,39 @@ var pgPool = new pg.Pool({
   port: 5432
 });  
 
+const multer  = require('multer')
+const path = require('path')
+const storage = multer.diskStorage({
+	destination: 'views/public/uploads/',
+	filename: function(req, file, cb){
+		cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
+	}
+});
+
+//check file type
+	
+function checkFileType(file, cb){
+	const fileTypes = /jpeg|jpg|png|gif/;
+	const extname = fileTypes.test(path.extname(file.originalname).toLowerCase());
+	const mimetype = fileTypes.test(file.mimetype);
+	if(mimetype && extname){
+		return cb(null, true);
+	} else {
+		cb('Error: You can only upload images.');
+	}
+}
+
+//
+
+//uploads function
+
+const uploadImage = multer({
+	storage: storage,
+	fileFilter: function(req, file, cb){
+		checkFileType(file, cb);
+	}
+}).single('sImage');
+
 var session;
 const app = express();
 const port = 62542;
@@ -178,7 +211,46 @@ app.get('/pub-delete-request/:uuid', function(req,res,next){
 	}
 })
 
+app.get('/add-slider', function(req, res, next){
+	if(req.session.uniqueId){
+		db.query(db.findSliderImages, [], (err, resp) => {
+			if (err) {
+				return next(err)
+			}
+			res.render('add-slider', { title: "Manage Slider", sliderimages: resp.rows});
+		})			
+	} else {
+		res.redirect('/admin');
+	}
+})
 
+app.post('/add-slider-request', function (req, res, next) {
+  	if(req.session.uniqueId){
+		uploadImage(req, res, (err) => {
+			if(err){
+				res.render('/add-slider', { ermes: err})
+			} else {
+				if(req.file == undefined){
+					res.render('add-slider', {  title: 'Manage Slider', ermes: 'No file Selected'})
+				} else {
+					db.query(db.addImage, [`public/uploads/${req.file.filename}`, req.body.pOrder], (err, resp) => {
+				    if (err) {
+				      	return next(err)
+				    }
+				    	db.query(db.findSliderImages, [], (err, resp) => {
+							if (err) {
+								return next(err)
+							}
+							res.render('add-slider', { title: "Manage Slider", sliderimages: resp.rows});
+						})	
+		  			})					
+				}
+			}
+		});
+	} else {
+		res.redirect('/admin');
+	}
+})
 
 app.get('/logout', function(req, res){
 	req.session.destroy(function(err){

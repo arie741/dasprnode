@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('head'); -%>
+  </head>
+  <body id="page-top">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="card align-middle">
+            <div class="card-body">
+              <h3><a href="/admin-home">Home</a> / Manage Home Slider</h3>
+              <br>
+              <h3>Current Slider</h3>              
+              <% sliderimages.forEach(function(sliderimage){%>
+
+                <div class="row">
+                  <div class="col-12"><img height="300px" src="/<%= sliderimage.filename %>" alt="">Order: <%= sliderimage.forder %></div>
+                </div>
+                
+              <%});%>
+              <h3>Add a Slider</h3>
+              <form action="/add-slider-request" method="post" enctype="multipart/form-data">
+              <div class="inputs-group">
+                <div class="row">
+                  <div class="col-lg-2 col-sm-12">
+                    Image
+                  </div>
+                  <div class="col-lg-10 col-sm-12">
+                    : <input type="file" placeholder="Image" name="sImage" accept="image/png, image/jpeg" required>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-2 col-sm-12">
+                    Order
+                  </div>
+                  <div class="col-lg-10 col-sm-12">
+                    : <input type="number" placeholder="Order" name="pOrder" required>
+                  </div>
+                </div>                
+              </div>
+                <input class="btn btn-prime" type="submit" value="Submit">                
+              </form>
+              <%= typeof ermes != 'undefined' ? ermes : '' %>
+              <br>
+              <a class="btn btn-prime" href="/logout">Logout</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!--/ Section Contact-Footer Star /-->
+    <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+    <div id="preloader"></div>
+    <!-- JavaScript Libraries -->
+    <script src="/lib/jquery/jquery.min.js"></script>
+    <script src="/lib/jquery/jquery-migrate.min.js"></script>
+    <script src="/lib/popper/popper.min.js"></script>
+    <script src="/lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/lib/easing/easing.min.js"></script>
+    <script src="/lib/counterup/jquery.waypoints.min.js"></script>
+    <script src="/lib/counterup/jquery.counterup.js"></script>
+    <script src="/lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="/lib/lightbox/js/lightbox.min.js"></script>
+    <script src="/lib/typed/typed.min.js"></script>
+    
+    <!-- Contact Form JavaScript File -->
+    <script src="/contactform/contactform.js"></script>
+    <!-- Template Main Javascript File -->
+    <script src="/js/main.js"></script>
+    <!--/ Section Contact-footer End /-->
+  </body>
+</html>

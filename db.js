@@ -8,14 +8,16 @@ const pool = new Pool({
   port: 5432
 });
 
-var getPwd = 'SELECT * FROM admin';
-var countPublications = 'select count(*) from publication'
-var getPublications = 'SELECT * FROM publication order by year DESC limit $1 offset $2';
-var addPublication = "insert into publication (title, year, author, category, publisher, link, country, uuid) values ($1, $2, $3, $4, $5, $6, $7, $8)"
-var editPublication = "update publication set title = $1, year = $2, author = $3, category = $4, publisher = $5, link = $6, country = $7 where uuid = $8"
-var searchPublication = "SELECT * FROM publication WHERE title LIKE '%' || $1 || '%'"
-var findPublicationByUuid = "SELECT * FROM publication where uuid=$1"
-var deletePublication = 'delete from publication where uuid = $1'
+const getPwd = 'SELECT * FROM admin';
+const countPublications = 'select count(*) from publication'
+const getPublications = 'SELECT * FROM publication order by year DESC limit $1 offset $2';
+const addPublication = "insert into publication (title, year, author, category, publisher, link, country, uuid) values ($1, $2, $3, $4, $5, $6, $7, $8)"
+const editPublication = "update publication set title = $1, year = $2, author = $3, category = $4, publisher = $5, link = $6, country = $7 where uuid = $8"
+const searchPublication = "SELECT * FROM publication WHERE title LIKE '%' || $1 || '%'"
+const findPublicationByUuid = "SELECT * FROM publication where uuid=$1"
+const deletePublication = 'delete from publication where uuid = $1'
+const addImage = 'insert into sliderimages (filename, forder) values ($1, $2)'
+const findSliderImages = 'select * from sliderimages order by forder ASC'
 
 module.exports = {
 	query: (text, params, callback) => {
@@ -28,5 +30,7 @@ module.exports = {
   editPublication,
   deletePublication,
   countPublications,
-  searchPublication
+  searchPublication,
+  addImage,
+  findSliderImages
 }
