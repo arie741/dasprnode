@@ -12,15 +12,67 @@
               <a href="/admin-publication">Cancel</a>
               <h3>Add Publication</h3>
               <form action="/pub-add-request" method="post">
-                <input type="text" placeholder="Title" name="pTitle">
-                <input type="text" placeholder="Year" name="pYear">
-                <input type="text" placeholder="Author" name="pAuthor">
-                <input type="text" placeholder="Category" name="pCategory">
-                <input type="text" placeholder="Publisher" name="pPublisher">
-                <input type="text" placeholder="Link" name="pLink">
-                <input type="text" placeholder="Country" name="pCountry">
-                <input class="btn btn-prime" type="submit" value="Submit">
+              <div class="inputs-group">
+                <div class="row">
+                  <div class="col-lg-2 col-sm-12">
+                    Title
+                  </div>
+                  <div class="col-lg-10 col-sm-12">
+                    : <input type="text" placeholder="Title" name="pTitle">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-2 col-sm-12">
+                    Year
+                  </div>
+                  <div class="col-lg-10 col-sm-12">
+                    : <input type="text" placeholder="Year" name="pYear">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-2 col-sm-12">
+                    Author
+                  </div>
+                  <div class="col-lg-10 col-sm-12">
+                    : <input type="text" placeholder="Author" name="pAuthor">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-2 col-sm-12">
+                    Category
+                  </div>
+                  <div class="col-lg-10 col-sm-12">
+                    : <input type="text" placeholder="Category" name="pCategory">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-2 col-sm-12">
+                    Publisher
+                  </div>
+                  <div class="col-lg-10 col-sm-12">
+                    : <input type="text" placeholder="Publisher" name="pPublisher">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-2 col-sm-12">
+                    Link
+                  </div>
+                  <div class="col-lg-10 col-sm-12">
+                    : <input type="text" placeholder="Link" name="pLink">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-2 col-sm-12">
+                    Country
+                  </div>
+                  <div class="col-lg-10 col-sm-12">
+                    : <input type="text" placeholder="Country" name="pCountry">
+                  </div>
+                </div>
+              </div>
+                <input class="btn btn-prime" type="submit" value="Submit">                
               </form>
+              <br>
               <a class="btn btn-prime" href="/logout">Logout</a>
             </div>
           </div>

@@ -10,8 +10,8 @@ ul {
   list-style-type: none;
 }
 
-#home {
-	height:485px;
+.carousel-item > img {
+	height:100vh;
 }
 
 .navbar-brand img {
@@ -153,6 +153,14 @@ section.footer-paralax .socials {
 .publication-item {
 	background-color:rgba(0,0,0,.03);
 	margin-bottom:20px;
+}
+
+.inputs-group input{
+	width:95%;
+}
+
+.inputs-group > .row{
+	margin-bottom:10px;
 }
 
 /* library */
