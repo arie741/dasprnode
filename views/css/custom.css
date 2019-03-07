@@ -10,7 +10,7 @@ ul {
   list-style-type: none;
 }
 
-.carousel-item > img {
+.carousel-item > div {
 	height:100vh;
 }
 

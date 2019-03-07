@@ -2,6 +2,7 @@ const express = require('express');
 const ExpressSessions = require('express-session'); 
 const bodyParser = require('body-parser');
 const expressValidator = require('express-validator');
+const fs= require('fs');
 const db = require('./db');
 
 var pg = require('pg')
@@ -18,10 +19,11 @@ var pgPool = new pg.Pool({
 
 const multer  = require('multer')
 const path = require('path')
+var guuid = require('uuid/v1');
 const storage = multer.diskStorage({
 	destination: 'views/public/uploads/',
 	filename: function(req, file, cb){
-		cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
+		cb(null, file.fieldname + '-' + guuid() + path.extname(file.originalname));
 	}
 });
 
@@ -73,10 +75,28 @@ app.use(ExpressSessions({
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
 
+//Helper functions
+function deleteFile (fname){
+	fs.unlink(fname, (err) => {
+	  if (err){
+	  	console.log(err);
+	  }
+	});
+}
+//
+
 //Routes
 
 app.get('/', function(req, res){
-	res.render('home', { title: 'Home'});
+	db.query(db.findSliderImages, [], (err, resp) => {
+		if (err) {
+		    return next(err)
+		}
+		var arr = resp.rows;
+		var firstel = arr[0];
+		arr.shift();
+		res.render('home', { title: 'Home', sliderimages: arr, firstslider: firstel});
+  	})	
 })
 
 app.get('/aboutus', function(req, res){
@@ -224,7 +244,7 @@ app.get('/add-slider', function(req, res, next){
 	}
 })
 
-app.post('/add-slider-request', function (req, res, next) {
+app.post('/add-slider', function (req, res, next) {
   	if(req.session.uniqueId){
 		uploadImage(req, res, (err) => {
 			if(err){
@@ -233,7 +253,8 @@ app.post('/add-slider-request', function (req, res, next) {
 				if(req.file == undefined){
 					res.render('add-slider', {  title: 'Manage Slider', ermes: 'No file Selected'})
 				} else {
-					db.query(db.addImage, [`public/uploads/${req.file.filename}`, req.body.pOrder], (err, resp) => {
+					var uuid = require('uuid/v1');
+					db.query(db.addImage, [`${req.file.filename}`, req.body.pOrder, uuid()], (err, resp) => {
 				    if (err) {
 				      	return next(err)
 				    }
@@ -247,6 +268,20 @@ app.post('/add-slider-request', function (req, res, next) {
 				}
 			}
 		});
+	} else {
+		res.redirect('/admin');
+	}
+})
+
+app.get('/delete-slider/:fname', function(req, res, next){
+	if(req.session.uniqueId){
+		deleteFile('views/public/uploads/' + req.params.fname);
+		db.query(db.deleteSliderImage, [req.params.fname], (err, resp) => {
+			if (err) {
+				return next(err);
+			}
+			res.redirect('/add-slider');
+		})	
 	} else {
 		res.redirect('/admin');
 	}

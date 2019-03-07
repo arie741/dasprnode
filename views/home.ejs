@@ -12,7 +12,7 @@
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <div id="home" class="intro route bg-image" style="background-image: url(img/slide/adults-analysis-brainstorming-1661004.jpg)">
+          <div id="home" class="intro route bg-image" style="background-image: url(public/uploads/<%= firstslider.filename %>)">
             <div class="overlay-itro"></div>
             <div class="intro-content display-table">
               <div class="table-cell">
@@ -26,12 +26,11 @@
             </div>
           </div>
         </div>
-        <div class="carousel-item">
-          <img src="img/slide/slide1.jpg" class="d-block w-100" alt="...">
-        </div>
-        <div class="carousel-item">
-          <img src="img/slide/FOTO TIM LN untuk di home.png" class="d-block w-100" alt="...">
-        </div>
+        <% sliderimages.forEach(function(sliderimage){%>  
+          <div class="carousel-item">
+            <div class="intro route bg-image" style="background-image: url(public/uploads/<%= sliderimage.filename %>)"></div>
+          </div>
+        <%});%>
       </div>
       <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>

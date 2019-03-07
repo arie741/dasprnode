@@ -15,12 +15,16 @@
               <% sliderimages.forEach(function(sliderimage){%>
 
                 <div class="row">
-                  <div class="col-12"><img height="300px" src="/<%= sliderimage.filename %>" alt="">Order: <%= sliderimage.forder %></div>
+                  <div class="col-12">
+                    <div>Order: <%= sliderimage.forder %></div>
+                    <img height="300px" width="600px" src="public/uploads/<%= sliderimage.filename %>" alt="">
+                    <div><a class="btn btn-warning" href="/delete-slider/<%= sliderimage.filename %>">Delete</a></div>
+                  </div>
                 </div>
-                
+                <br>
               <%});%>
               <h3>Add a Slider</h3>
-              <form action="/add-slider-request" method="post" enctype="multipart/form-data">
+              <form action="/add-slider" method="post" enctype="multipart/form-data">
               <div class="inputs-group">
                 <div class="row">
                   <div class="col-lg-2 col-sm-12">

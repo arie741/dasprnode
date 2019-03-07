@@ -16,8 +16,9 @@ const editPublication = "update publication set title = $1, year = $2, author = 
 const searchPublication = "SELECT * FROM publication WHERE title LIKE '%' || $1 || '%'"
 const findPublicationByUuid = "SELECT * FROM publication where uuid=$1"
 const deletePublication = 'delete from publication where uuid = $1'
-const addImage = 'insert into sliderimages (filename, forder) values ($1, $2)'
+const addImage = 'insert into sliderimages (filename, forder, uuid) values ($1, $2, $3)'
 const findSliderImages = 'select * from sliderimages order by forder ASC'
+const deleteSliderImage = "delete from sliderimages where filename=$1"
 
 module.exports = {
 	query: (text, params, callback) => {
@@ -32,5 +33,6 @@ module.exports = {
   countPublications,
   searchPublication,
   addImage,
-  findSliderImages
+  findSliderImages,
+  deleteSliderImage
 }
