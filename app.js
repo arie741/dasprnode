@@ -170,6 +170,27 @@ app.post('/admin-publication-search-request', function(req, res, next){
 	}
 })
 
+app.get('/publications', function(req, res){
+	res.redirect('/publications/1');
+})
+
+app.get('/publications/:page', function(req,res){
+	var pagLength = 0;
+	db.query(db.countPublications, [], (err, resp) => {
+	    if (err) {
+	      return next(err)
+	    }
+	    var arr = resp.rows;
+	    pagLength = Math.ceil(arr[0].count / 10);	
+  	})
+	db.query(db.getPublications, [(req.params.page * 10), ((req.params.page - 1) * 10)], (err, resp) => {
+    if (err) {
+      	return next(err)
+    }
+    	res.render('publications', { title: 'Publications', publications: resp.rows, pages: pagLength, currentpage: req.params.page });
+	})	
+})
+
 app.get('/pub-add', function(req,res){
 	if(req.session.uniqueId){
 		res.render('pub-add', { title: 'Add Publications'});	

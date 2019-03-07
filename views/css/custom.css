@@ -153,6 +153,7 @@ section.footer-paralax .socials {
 .publication-item {
 	background-color:rgba(0,0,0,.03);
 	margin-bottom:20px;
+	box-shadow: 1px 1px 1px #333;
 }
 
 .inputs-group input{

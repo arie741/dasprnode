@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('head'); -%>
+  </head>
+  <body id="page-top">
+    <!--/ Nav Star /-->
+    <%- include('header'); -%>
+    <!--/ Nav End /-->
+    <!--/ Intro Skew Star /-->
+    <div class="intro intro-single route bg-image" style="background-image: url(img/slide/adults-analysis-brainstorming-1661004.jpg)">
+      <div class="overlay-mf"></div>
+      <div class="intro-content display-table">
+        <div class="table-cell">
+          <div class="container">
+            <h2 class="intro-title mb-4">Publikasi</h2>
+            <ol class="breadcrumb d-flex justify-content-center">
+              <li class="breadcrumb-item">
+                <a href="/">Home</a>
+              </li>
+              <li class="breadcrumb-item active">Publikasi</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--/ Intro Skew End /-->
+    <div class="container">
+      <nav aria-label="Page navigation example">
+        <ul class="pagination">
+          <% for (i = 1; i <= pages; i++){%>
+          <li class="page-item pag-<%= i %>"><a class="page-link" href="/publications/<%= i %>"><%= i %></a></li>
+          <%};%>
+        </ul>
+      </nav>
+      <% publications.forEach(function(publication){%>
+      <div class="row publication-item">
+        <div class="col-12"><h3><a href="<%= publication.link %>"><%= publication.title %></a></h3></div>
+        <div class="col-lg-1 col-sm-12">
+          <ul>
+            <li>Year     </li>
+            <li>Author   </li>
+            <li>Category </li>
+            <li>Publisher</li>
+            <li>Country  </li>
+            <li>Source   </li>
+          </ul>
+        </div>
+        <div class="col-lg-11 col-sm-12">
+          <ul>
+            <li>: <%= publication.year %></li>
+            <li>: <%= publication.author %></li>
+            <li>: <%= publication.category %></li>
+            <li>: <%= publication.publisher %></li>
+            <li>: <%= publication.country %></li>
+            <li>: <a href="<%= publication.link %>">Link</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <%});%>
+      <nav aria-label="Page navigation example">
+        <ul class="pagination">
+          <% for (i = 1; i <= pages; i++){%>
+          <li class="page-item pag-<%= i %>"><a class="page-link" href="/publications/<%= i %>"><%= i %></a></li>
+          <%};%>
+        </ul>
+      </nav>
+    </div>
+    <!--/ Section Contact-Footer Star /-->
+    <%- include('footer'); -%>
+    <!--/ Section Contact-footer End /-->
+    <script type="text/javascript">
+      $(".pag-" + <%= currentpage %>).addClass( "active" );
+    </script>
+  </body>
+</html>
