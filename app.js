@@ -87,6 +87,7 @@ function deleteFile (fname){
 
 //Routes
 
+//Clients Routes
 app.get('/', function(req, res){
 	db.query(db.findSliderImages, [], (err, resp) => {
 		if (err) {
@@ -106,6 +107,34 @@ app.get('/aboutus', function(req, res){
 app.get('/collabp', function(req, res){
 	res.render('collabp', { title: 'Collaboration & Partner'});
 })
+
+app.get('/publications', function(req, res){
+	res.redirect('/publications/1');
+})
+
+app.get('/publications/:page', function(req,res){
+	var pagLength = 0;
+	db.query(db.countPublications, [], (err, resp) => {
+	    if (err) {
+	      return next(err)
+	    }
+	    var arr = resp.rows;
+	    pagLength = Math.ceil(arr[0].count / 10);	
+  	})
+	db.query(db.getPublications, [(req.params.page * 10), ((req.params.page - 1) * 10)], (err, resp) => {
+    if (err) {
+      	return next(err)
+    }
+    	res.render('publications', { title: 'Publications', publications: resp.rows, pages: pagLength, currentpage: req.params.page });
+	})	
+})
+
+app.get('/news-and-events', function(req, res, next){
+
+})
+
+//Clients ends
+//Admin Routes
 
 app.get('/admin', function(req, res){
 	if(req.session.uniqueId){
@@ -168,27 +197,6 @@ app.post('/admin-publication-search-request', function(req, res, next){
 	} else {
 		res.redirect('/admin');
 	}
-})
-
-app.get('/publications', function(req, res){
-	res.redirect('/publications/1');
-})
-
-app.get('/publications/:page', function(req,res){
-	var pagLength = 0;
-	db.query(db.countPublications, [], (err, resp) => {
-	    if (err) {
-	      return next(err)
-	    }
-	    var arr = resp.rows;
-	    pagLength = Math.ceil(arr[0].count / 10);	
-  	})
-	db.query(db.getPublications, [(req.params.page * 10), ((req.params.page - 1) * 10)], (err, resp) => {
-    if (err) {
-      	return next(err)
-    }
-    	res.render('publications', { title: 'Publications', publications: resp.rows, pages: pagLength, currentpage: req.params.page });
-	})	
 })
 
 app.get('/pub-add', function(req,res){
@@ -308,6 +316,22 @@ app.get('/delete-slider/:fname', function(req, res, next){
 	}
 })
 
+app.get('/add-events', function(req, res){
+	if(req.session.uniqueId){
+		res.render('add-events', {title: "Manage News and Events"});
+	} else {
+		res.redirect('/admin');
+	}
+})
+
+app.post('/add-events-request', function(req, res){
+	if(req.session.uniqueId){
+		res.render('news-and-events', {title: 'News and Events', contents: req.body.editorContent});
+	} else {
+		res.redirect('/admin');
+	}
+})
+
 app.get('/logout', function(req, res){
 	req.session.destroy(function(err){
 		res.redirect('/admin');
@@ -331,3 +355,5 @@ app.post('/login-request', function(req, res, next){
   	})
 	
 })
+
+//Admin Routes Ends

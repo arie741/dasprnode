@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('head'); -%>
+    <!-- Include Quill stylesheet -->
+    <link href="/css/quill.snow.css" rel="stylesheet">
+    <link href="//cdn.quilljs.com/1.3.6/quill.core.css" rel="stylesheet">
+  </head>
+  <body id="page-top">
+    <!--/ Nav Star /-->
+    <%- include('header'); -%>
+    <!--/ Nav End /-->
+    <!--/ Intro Skew Star /-->
+    <div class="intro intro-single route bg-image" style="background-image: url(/img/slide/adults-analysis-brainstorming-1661004.jpg)">
+      <div class="overlay-mf"></div>
+      <div class="intro-content display-table">
+        <div class="table-cell">
+          <div class="container">
+            <h2 class="intro-title mb-4">News And Events</h2>
+            <ol class="breadcrumb d-flex justify-content-center">
+              <li class="breadcrumb-item">
+                <a href="/">Home</a>
+              </li>
+              <li class="breadcrumb-item active">News And Events</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--/ Intro Skew End /-->
+    <div id="add-events" class="container">
+      <!-- Create the toolbar container -->
+      <div id="toolbar">
+      </div>
+      <!-- Create the editor container -->
+      <div id="editor">
+        <p>Hello World!</p>
+      </div>
+      <form action="/add-events-request" method="post">
+        <input type="hidden" id="input-editor" value="" name="editorContent">
+        <input onclick="contentChange()" type="submit" class="btn btn-prime" value="Submit">
+      </form>
+    </div>
+    
+    <!--/ Section Contact-Footer Star /-->
+    <%- include('footer'); -%>
+    <!-- Initialize Quill editor -->
+    <!-- Include the Quill library -->
+    <script src="https://cdn.quilljs.com/1.0.0/quill.js"></script>
+    <script>
+    var toolbarOptions = [
+    ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+    ['blockquote', 'code-block'],
+    [{ 'header': 1 }, { 'header': 2 }],               // custom button values
+    [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+    [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
+    [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
+    [{ 'direction': 'rtl' }],                         // text direction
+    [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
+    [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+    [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
+    [{ 'font': ['sans serif','monospace'] }],
+    [{ 'align': [] }],
+    ['clean']                                         // remove formatting button
+    ];
+    var editor = new Quill('#editor', {
+    modules: { toolbar: toolbarOptions },
+    theme: 'snow'
+    });
+    function contentChange(){
+    var eContent = $('#editor').html();
+    $('#input-editor').val(eContent);
+    };
+    </script>
+    <!--/ Section Contact-footer End /-->
+  </body>
+</html>
