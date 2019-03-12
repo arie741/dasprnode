@@ -472,6 +472,19 @@ app.get('/delete-event/:uuid', function(req, res, next){
 	}
 })
 
+app.post('/admin-ne-search-request', function(req, res, next){
+	if(req.session.uniqueId){
+		db.query(db.searchEvent, [req.body.pSearch], (err, resp) => {
+		    if (err) {
+		      return next(err)
+		    }
+		    res.render('admin-news-and-events', { title: 'News and Events', newscontents: resp.rows});
+  		})
+	} else {
+		res.redirect('/admin');
+	}
+})
+
 app.get('/logout', function(req, res){
 	req.session.destroy(function(err){
 		res.redirect('/admin');
