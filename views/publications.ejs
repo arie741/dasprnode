@@ -26,6 +26,11 @@
     </div>
     <!--/ Intro Skew End /-->
     <div class="container">
+      <form action="/publication-search-request" method="post">
+        <input type="text" placeholder="Search" name="pSearch">
+        <input class="btn btn-prime" type="submit" value="Search">
+        <a class="btn btn-prime"  href="/publications/1">Clear</a>
+      </form>
       <nav aria-label="Page navigation example">
         <ul class="pagination">
           <% for (i = 1; i <= pages; i++){%>
@@ -71,7 +76,7 @@
     <%- include('footer'); -%>
     <!--/ Section Contact-footer End /-->
     <script type="text/javascript">
-      $(".pag-" + <%= currentpage %>).addClass( "active" );
+    $(".pag-" + <%= currentpage %>).addClass( "active" );
     </script>
   </body>
 </html>

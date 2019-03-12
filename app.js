@@ -143,6 +143,17 @@ app.get('/publications/:page', function(req,res){
 	})	
 })
 
+app.post('/publication-search-request', function(req, res, next){
+	var pagLength = 0;
+
+	db.query(db.searchPublication, [req.body.pSearch], (err, resp) => {
+	    if (err) {
+	      return next(err)
+	    }
+	    res.render('publications', { title: 'Publications', publications: resp.rows, pages: pagLength, currentpage: 1 });
+  	})
+})
+
 app.get('/news-and-events/:uuid', function(req, res, next){
 	db.query(db.findEvent, [req.params.uuid], (err, resp) => {
 		if (err) {
