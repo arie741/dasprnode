@@ -7,36 +7,20 @@
     <link href="//cdn.quilljs.com/1.3.6/quill.core.css" rel="stylesheet">
   </head>
   <body id="page-top">
-    <!--/ Intro Skew Star /-->
-    <div class="intro intro-single route bg-image" style="background-image: url(/img/slide/adults-analysis-brainstorming-1661004.jpg)">
-      <div class="overlay-mf"></div>
-      <div class="intro-content display-table">
-        <div class="table-cell">
-          <div class="container">
-            <h2 class="intro-title mb-4">News And Events</h2>
-            <ol class="breadcrumb d-flex justify-content-center">
-              <li class="breadcrumb-item">
-                <a href="/">Home</a>
-              </li>
-              <li class="breadcrumb-item active">News And Events</li>
-            </ol>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!--/ Intro Skew End /-->
-    <div id="add-events" class="container">
-      <form action="/add-events-request" method="post" enctype="multipart/form-data">
+    <div id="edit-events" class="container">
+      <h3><a href="/admin-home">Home</a> / <a href="/admin-news-and-events">Manage News and Events</a> / Edit News and Events</h3>
+      <form action="/edit-events-request/<%= econtent.uuid %>" method="post" enctype="multipart/form-data">
         <div class="inputs-group">
           <div class="row">
             <div class="col-lg-2 col-sm-12">
               Type
             </div>
             <div class="col-lg-10 col-sm-12">
-              : <select name="eType">
-                <option value="news">News</option>
-                <option value="events">Events</option>
-                <option value="questionaire">Questionaire</option>
+              :
+              <select id="eType" name="eType">
+                <option id="opNews" value="news">News</option>
+                <option id="opEvents" value="events">Events</option>
+                <option id="opQuestionaire" value="questionaire">Questionaire</option>
               </select>
             </div>
           </div>
@@ -45,7 +29,8 @@
               Image
             </div>
             <div class="col-lg-10 col-sm-12">
-              : <input type="file" placeholder="Image" name="eImage" accept="image/png, image/jpeg">
+              : <img src="/public/uploads/<%= econtent.img %>" alt="" width="700px">
+              <input type="file" placeholder="Image" name="eImage" accept="image/png, image/jpeg">
             </div>
           </div>
           <div class="row">
@@ -53,7 +38,7 @@
               Title
             </div>
             <div class="col-lg-10 col-sm-12">
-              : <input type="text" placeholder="Title" name="eTitle" required>
+              : <input type="text" placeholder="Title" name="eTitle" value="<%= econtent.title %>" required>
             </div>
           </div>
           <div class="row">
@@ -61,7 +46,7 @@
               Author
             </div>
             <div class="col-lg-10 col-sm-12">
-              : <input type="text" placeholder="Author" name="eAuthor" required>
+              : <input type="text" placeholder="Author" name="eAuthor" value="<%= econtent.author %>" required>
             </div>
           </div>
         </div>
@@ -70,16 +55,38 @@
         </div>
         <!-- Create the editor container -->
         <div id="editor">
-          <p>Hello World!</p>
+          <%- econtent.contents -%>
         </div>
         <%= typeof ermes != 'undefined' ? ermes : '' %>
+        <br>
         <input onclick="contentChange()" type="submit" class="btn btn-prime" value="Submit">
         <input type="hidden" id="input-editor" value="" name="eContent">
+        <input type="hidden" id="input-editor" value="<%= econtent.img %>" name="eOldImg">
       </form>
+      <br>
+      <br>
+      <a class="btn btn-prime" href="/logout">Logout</a>
+      <br>
+      <br>
     </div>
     
     <!--/ Section Contact-Footer Star /-->
-    <%- include('footer'); -%>
+    <!-- JavaScript Libraries -->
+    <script src="/lib/jquery/jquery.min.js"></script>
+    <script src="/lib/jquery/jquery-migrate.min.js"></script>
+    <script src="/lib/popper/popper.min.js"></script>
+    <script src="/lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/lib/easing/easing.min.js"></script>
+    <script src="/lib/counterup/jquery.waypoints.min.js"></script>
+    <script src="/lib/counterup/jquery.counterup.js"></script>
+    <script src="/lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="/lib/lightbox/js/lightbox.min.js"></script>
+    <script src="/lib/typed/typed.min.js"></script>
+    
+    <!-- Contact Form JavaScript File -->
+    <script src="/contactform/contactform.js"></script>
+    <!-- Template Main Javascript File -->
+    <script src="/js/main.js"></script>
     <!-- Initialize Quill editor -->
     <!-- Include the Quill library -->
     <script src="https://cdn.quilljs.com/1.0.0/quill.js"></script>
@@ -107,6 +114,19 @@
     var eContent = $('#editor').html();
     $('#input-editor').val(eContent);
     };
+    //Type Select initial value
+    var eTypeVal = "<%= econtent.etype %>";
+    switch (eTypeVal) {
+      case "events":
+      $("#eType #opEvents").attr("selected", "selected");
+      break;
+      case "news":
+      $("#eType #opNews").attr("selected", "selected");
+      break;
+      case "questionaire":
+      $("#eType #opQuestionaire").attr("selected", "selected");
+    }
+    //
     </script>
     <!--/ Section Contact-footer End /-->
   </body>

@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <%- include('head'); -%>
+    <link href="/css/quill.snow.css" rel="stylesheet">
   </head>
   <body id="page-top">
     <!--/ Nav Star /-->
@@ -26,10 +27,10 @@
             </div>
           </div>
         </div>
-        <% sliderimages.forEach(function(sliderimage){%>  
-          <div class="carousel-item">
-            <div class="intro route bg-image" style="background-image: url(public/uploads/<%= sliderimage.filename %>)"></div>
-          </div>
+        <% sliderimages.forEach(function(sliderimage){%>
+        <div class="carousel-item">
+          <div class="intro route bg-image" style="background-image: url(public/uploads/<%= sliderimage.filename %>)"></div>
+        </div>
         <%});%>
       </div>
       <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -152,99 +153,34 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-md-4">
+          <% newscontents.forEach(function(newscontent){%>
+          <div class="col-md-4 news-items">
             <div class="card card-blog">
               <div class="card-img">
-                <a href="blog-single.html"><img src="img/post-1.jpg" alt="" class="img-fluid"></a>
+                <a href="/news-and-events/<%= newscontent.uuid %>"><img src="public/uploads/<%= newscontent.img %>" alt="" class="img-fluid"></a>
               </div>
               <div class="card-body">
                 <div class="card-category-box">
                   <div class="card-category">
-                    <h6 class="category">Travel</h6>
+                    <h6 class="category"><%= newscontent.etype %></h6>
                   </div>
                 </div>
-                <h3 class="card-title"><a href="blog-single.html">See more ideas about Travel</a></h3>
-                <p class="card-description">
-                  Proin eget tortor risus. Pellentesque in ipsum id orci porta dapibus. Praesent sapien massa, convallis
-                  a pellentesque nec,
-                  egestas non nisi.
-                </p>
+                <h3 class="card-title"><a href="/news-and-events/<%= newscontent.uuid %>"><%= newscontent.title %></a></h3>
+                <div class="ql-snow"><p class="card-description"><%- newscontent.contents -%></p></div>
               </div>
               <div class="card-footer">
                 <div class="post-author">
-                  <a href="#">
-                    <img src="img/testimonial-2.jpg" alt="" class="avatar rounded-circle">
-                    <span class="author">Morgan Freeman</span>
+                  <a href="/news-and-events/<%= newscontent.uuid %>">
+                    <span class="author"><%= newscontent.author %></span>
                   </a>
                 </div>
                 <div class="post-date">
-                  <span class="ion-ios-clock-outline"></span> 10 min
+                  <span class="ion-ios-clock-outline"></span> <%= newscontent.edate %>
                 </div>
               </div>
             </div>
           </div>
-          <div class="col-md-4">
-            <div class="card card-blog">
-              <div class="card-img">
-                <a href="blog-single.html"><img src="img/post-2.jpg" alt="" class="img-fluid"></a>
-              </div>
-              <div class="card-body">
-                <div class="card-category-box">
-                  <div class="card-category">
-                    <h6 class="category">Web Design</h6>
-                  </div>
-                </div>
-                <h3 class="card-title"><a href="blog-single.html">See more ideas about Travel</a></h3>
-                <p class="card-description">
-                  Proin eget tortor risus. Pellentesque in ipsum id orci porta dapibus. Praesent sapien massa, convallis
-                  a pellentesque nec,
-                  egestas non nisi.
-                </p>
-              </div>
-              <div class="card-footer">
-                <div class="post-author">
-                  <a href="#">
-                    <img src="img/testimonial-2.jpg" alt="" class="avatar rounded-circle">
-                    <span class="author">Morgan Freeman</span>
-                  </a>
-                </div>
-                <div class="post-date">
-                  <span class="ion-ios-clock-outline"></span> 10 min
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="card card-blog">
-              <div class="card-img">
-                <a href="blog-single.html"><img src="img/post-3.jpg" alt="" class="img-fluid"></a>
-              </div>
-              <div class="card-body">
-                <div class="card-category-box">
-                  <div class="card-category">
-                    <h6 class="category">Web Design</h6>
-                  </div>
-                </div>
-                <h3 class="card-title"><a href="blog-single.html">See more ideas about Travel</a></h3>
-                <p class="card-description">
-                  Proin eget tortor risus. Pellentesque in ipsum id orci porta dapibus. Praesent sapien massa, convallis
-                  a pellentesque nec,
-                  egestas non nisi.
-                </p>
-              </div>
-              <div class="card-footer">
-                <div class="post-author">
-                  <a href="#">
-                    <img src="img/testimonial-2.jpg" alt="" class="avatar rounded-circle">
-                    <span class="author">Morgan Freeman</span>
-                  </a>
-                </div>
-                <div class="post-date">
-                  <span class="ion-ios-clock-outline"></span> 10 min
-                </div>
-              </div>
-            </div>
-          </div>
+          <%});%>
         </div>
       </div>
     </section>
@@ -630,6 +566,9 @@
     </div>
     <!--/ Section Contact-Footer Star /-->
     <%- include('footer'); -%>
+    <script>
+      $('.news-items *').removeAttr('contenteditable');
+    </script>
     <!--/ Section Contact-footer End /-->
   </body>
 </html>

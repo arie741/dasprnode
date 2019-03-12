@@ -19,6 +19,11 @@ const deletePublication = 'delete from publication where uuid = $1'
 const addImage = 'insert into sliderimages (filename, forder, uuid) values ($1, $2, $3)'
 const findSliderImages = 'select * from sliderimages order by forder ASC'
 const deleteSliderImage = "delete from sliderimages where filename=$1"
+const addEvent = 'insert into newscontents (img, title, author, edate, contents, etype, uuid) values ($1, $2, $3, $4, $5, $6, $7)'
+const findEvents = 'select * from newscontents order by edate ASC'
+const findEvent = 'select * from newscontents where uuid=$1'
+const editEvent = "update newscontents set img = $1, title = $2, author = $3, edate = $4, contents = $5, etype = $6 where uuid = $7"
+const deleteEvent = 'delete from newscontents where uuid = $1'
 
 module.exports = {
 	query: (text, params, callback) => {
@@ -34,5 +39,10 @@ module.exports = {
   searchPublication,
   addImage,
   findSliderImages,
-  deleteSliderImage
+  deleteSliderImage,
+  addEvent,
+  findEvents,
+  findEvent,
+  editEvent,
+  deleteEvent
 }

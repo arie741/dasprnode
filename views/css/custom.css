@@ -176,6 +176,19 @@ section.footer-paralax .socials {
 	margin-bottom:65px;
 }
 
+.news-items .ql-editor {
+	max-height:165px;
+	overflow:hidden !important;
+	text-align:justify;
+}
+
+.news-items .card-img img {
+	max-height: 170px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
 /* library */
 #sejarah {
 	margin-bottom:30px;

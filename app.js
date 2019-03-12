@@ -51,6 +51,13 @@ const uploadImage = multer({
 	}
 }).single('sImage');
 
+const uploadEventImage = multer({
+	storage: storage,
+	fileFilter: function(req, file, cb){
+		checkFileType(file, cb);
+	}
+}).single('eImage');
+
 var session;
 const app = express();
 const port = 62542;
@@ -89,6 +96,13 @@ function deleteFile (fname){
 
 //Clients Routes
 app.get('/', function(req, res){
+	var eventcontents = []; 
+	db.query(db.findEvents, [], (err, resp) => {
+	if (err) {
+		return next(err)
+	}
+		eventcontents = resp.rows;
+	})
 	db.query(db.findSliderImages, [], (err, resp) => {
 		if (err) {
 		    return next(err)
@@ -96,7 +110,7 @@ app.get('/', function(req, res){
 		var arr = resp.rows;
 		var firstel = arr[0];
 		arr.shift();
-		res.render('home', { title: 'Home', sliderimages: arr, firstslider: firstel});
+		res.render('home', { title: 'Home', sliderimages: arr, firstslider: firstel, newscontents: eventcontents});
   	})	
 })
 
@@ -129,8 +143,20 @@ app.get('/publications/:page', function(req,res){
 	})	
 })
 
-app.get('/news-and-events', function(req, res, next){
-
+app.get('/news-and-events/:uuid', function(req, res, next){
+	db.query(db.findEvent, [req.params.uuid], (err, resp) => {
+		if (err) {
+			return next(err)
+		}
+		var arr = resp.rows[0];
+		db.query(db.findEvents, [], (err, eresp) => {
+			if (err) {
+				return next(err)
+			}
+			res.render('news-and-events', { img:arr.img, title : arr.title, contents: arr.contents, etitle: arr.title, author:arr.author, edate:arr.edate, recents: eresp.rows});			
+		})				
+	})	
+	
 })
 
 //Clients ends
@@ -274,10 +300,10 @@ app.get('/add-slider', function(req, res, next){
 })
 
 app.post('/add-slider', function (req, res, next) {
-  	if(req.session.uniqueId){
+  	if(req.session.uniqueId){  		
 		uploadImage(req, res, (err) => {
 			if(err){
-				res.render('/add-slider', { ermes: err})
+				res.render('add-slider', { ermes: err})
 			} else {
 				if(req.file == undefined){
 					res.render('add-slider', {  title: 'Manage Slider', ermes: 'No file Selected'})
@@ -316,17 +342,131 @@ app.get('/delete-slider/:fname', function(req, res, next){
 	}
 })
 
-app.get('/add-events', function(req, res){
+app.get('/admin-news-and-events', function(req, res){
 	if(req.session.uniqueId){
-		res.render('add-events', {title: "Manage News and Events"});
+		db.query(db.findEvents, [], (err, resp) => {
+		if (err) {
+			return next(err)
+		}
+			res.render('admin-news-and-events', { title: "Manage Events", newscontents: resp.rows});
+		})
 	} else {
 		res.redirect('/admin');
 	}
 })
 
-app.post('/add-events-request', function(req, res){
+app.get('/add-events', function(req, res){
 	if(req.session.uniqueId){
-		res.render('news-and-events', {title: 'News and Events', contents: req.body.editorContent});
+		res.render('add-events', {title: "Add News and Events"});
+	} else {
+		res.redirect('/admin');
+	}
+})
+
+app.post('/add-events-request', function(req, res, next){
+	if(req.session.uniqueId){
+		uploadEventImage(req, res, (err) => {
+			if(err){
+				res.render('add-events', { ermes: err})
+			} else {
+				var now = new Date();	
+				if(req.file == undefined){
+					var uuid = require('uuid/v1');									
+					db.query(db.addEvent, ["", req.body.eTitle, req.body.eAuthor,  now.toLocaleDateString(), req.body.eContent, req.body.eType, uuid()], (err, resp) => {
+					    if (err) {
+					      	return next(err)
+					    }
+					    res.redirect('admin-news-and-events');
+		  			})				
+				} else {
+					var uuid = require('uuid/v1');
+					db.query(db.addEvent, [`${req.file.filename}`, req.body.eTitle, req.body.eAuthor, now.toLocaleDateString(), req.body.eContent, req.body.eType, uuid()], (err, resp) => {
+				    	if (err) {
+				    	  	return next(err)
+				    	}				    
+				    	res.redirect('admin-news-and-events');
+		  			})					
+				}
+			}
+		});
+	} else {
+		res.redirect('/admin');
+	}
+})
+
+app.get('/edit-events/:uuid', function(req, res, next){
+	if(req.session.uniqueId){
+		db.query(db.findEvent, [req.params.uuid], (err, resp) => {
+		if (err) {
+			return next(err)
+		}
+		var arr = resp.rows[0];
+		res.render('edit-events.ejs', {title: 'Edit ', econtent: arr})	
+		})
+	} else {
+		res.redirect('/admin');
+	}
+})
+
+app.post('/edit-events-request/:uuid', function(req, res, next){
+	if(req.session.uniqueId){
+		const EditEventImage = multer({
+			storage: multer.diskStorage({
+				destination: 'views/public/uploads/',
+				filename: function(req, file, cb){
+					cb(null, file.fieldname + '-' + req.params.uuid + path.extname(file.originalname));
+				}
+			}),
+			fileFilter: function(req, file, cb){
+				checkFileType(file, cb);
+			}
+		}).single('eImage');
+
+		EditEventImage(req, res, (err) => {
+			if(err){
+				res.render('add-events', { ermes: err})
+			} else {
+				var now = new Date();	
+				if(req.file == undefined){
+					var uuid = require('uuid/v1');									
+					db.query(db.editEvent, [req.body.eOldImg, req.body.eTitle, req.body.eAuthor,  now.toLocaleDateString(), req.body.eContent, req.body.eType, req.params.uuid], (err, resp) => {
+					    if (err) {
+					      	return next(err)
+					    }
+					    res.redirect('/admin-news-and-events');
+		  			})
+				} else {
+					var uuid = require('uuid/v1');
+					deleteFile("views/public/uploads/" + req.body.eOldImg);
+					db.query(db.editEvent, [`${req.file.filename}`, req.body.eTitle, req.body.eAuthor, now.toLocaleDateString(), req.body.eContent, req.body.eType, req.params.uuid], (err, resp) => {
+				    	if (err) {
+				    	  	return next(err)
+				    	}				    
+				    	res.redirect('/admin-news-and-events');
+		  			})					
+				}
+			}
+		});
+	} else {
+		res.redirect('/admin');
+	}
+})
+
+app.get('/delete-event/:uuid', function(req, res, next){
+	if(req.session.uniqueId){
+		db.query(db.findEvent, [req.params.uuid], (err, resp) => {
+		    if (err) {
+		      return next(err)
+		    }
+		    var arr = resp.rows;	
+			deleteFile('views/public/uploads/' + arr[0].img);
+  		})
+		db.query(db.deleteEvent, [req.params.uuid], (err, resp) => {
+		    if (err) {
+		      return next(err)
+		    }
+		    res.redirect('/admin-news-and-events');	
+  		})
 	} else {
 		res.redirect('/admin');
 	}

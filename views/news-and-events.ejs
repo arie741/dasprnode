@@ -34,22 +34,18 @@
           <div class="col-md-8">
             <div class="post-box">
               <div class="post-thumb">
-                <img src="img/post-1.jpg" class="img-fluid" alt="">
+                <img src="/public/uploads/<%= img %>" class="img-fluid" alt="">
               </div>
               <div class="post-meta">
-                <h1 class="article-title">Lorem ipsum dolor sit amet consec tetur adipisicing</h1>
+                <h1 class="article-title"><%= etitle %></h1>
                 <ul>
                   <li>
                     <span class="ion-ios-person"></span>
-                    <a href="#">Jason London</a>
+                    <a href="#"><%= author %></a>
                   </li>
                   <li>
-                    <span class="ion-pricetag"></span>
-                    <a href="#">Web Design</a>
-                  </li>
-                  <li>
-                    <span class="ion-chatbox"></span>
-                    <a href="#">14</a>
+                    <span class="ion-ios-clock-outline"></span>
+                    <a href="#"><%= edate %></a>
                   </li>
                 </ul>
               </div>
@@ -80,49 +76,14 @@
               <h5 class="sidebar-title">Recent Post</h5>
               <div class="sidebar-content">
                 <ul class="list-sidebar">
+                  <% recents.forEach(function(recent){%>
                   <li>
-                    <a href="#">Atque placeat maiores.</a>
+                    <a href="/public/uploads/<%= recent.uuid %>"><%= recent.title %></a>
                   </li>
-                  <li>
-                    <a href="#">Lorem ipsum dolor sit amet consectetur</a>
-                  </li>
-                  <li>
-                    <a href="#">Nam quo autem exercitationem.</a>
-                  </li>
-                  <li>
-                    <a href="#">Atque placeat maiores nam quo autem</a>
-                  </li>
-                  <li>
-                    <a href="#">Nam quo autem exercitationem.</a>
-                  </li>
+                  <%});%>
                 </ul>
               </div>
-            </div>            
-            <div class="widget-sidebar widget-tags">
-              <h5 class="sidebar-title">Tags</h5>
-              <div class="sidebar-content">
-                <ul>
-                  <li>
-                    <a href="#">Web.</a>
-                  </li>
-                  <li>
-                    <a href="#">Design.</a>
-                  </li>
-                  <li>
-                    <a href="#">Travel.</a>
-                  </li>
-                  <li>
-                    <a href="#">Photoshop</a>
-                  </li>
-                  <li>
-                    <a href="#">Corel Draw</a>
-                  </li>
-                  <li>
-                    <a href="#">JavaScript</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
+            </div> 
           </div>
         </div>
       </div>
