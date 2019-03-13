@@ -164,7 +164,9 @@ app.get('/news-and-events/:uuid', function(req, res, next){
 			if (err) {
 				return next(err)
 			}
-			res.render('news-and-events', { img:arr.img, title : arr.title, contents: arr.contents, etitle: arr.title, author:arr.author, edate:arr.edate, recents: eresp.rows});			
+			var lcontent = arr.contents;
+			var links = lcontent.split(",");
+			res.render('news-and-events', { img:arr.img, etype: arr.etype ,title : arr.title, contents: arr.contents, etitle: arr.title, author:arr.author, edate:arr.edate, elinks: links[Math.floor(Math.random() * 3)] ,recents: eresp.rows});			
 		})				
 	})	
 	
@@ -382,16 +384,16 @@ app.post('/add-events-request', function(req, res, next){
 			} else {
 				var now = new Date();	
 				if(req.file == undefined){
-					var uuid = require('uuid/v1');									
-					db.query(db.addEvent, ["", req.body.eTitle, req.body.eAuthor,  now.toLocaleDateString(), req.body.eContent, req.body.eType, uuid()], (err, resp) => {
-					    if (err) {
-					      	return next(err)
-					    }
-					    res.redirect('admin-news-and-events');
-		  			})				
+					res.render('add-events', { ermes: "Must add an image!"})
 				} else {
 					var uuid = require('uuid/v1');
-					db.query(db.addEvent, [`${req.file.filename}`, req.body.eTitle, req.body.eAuthor, now.toLocaleDateString(), req.body.eContent, req.body.eType, uuid()], (err, resp) => {
+					var bodyContent = req.body.eContent;
+
+					if(req.body.eType == "questionaire"){
+						bodyContent = req.body.eQues1 + "," + req.body.eQues2 + "," + req.body.eQues3;
+					} 
+
+					db.query(db.addEvent, [`${req.file.filename}`, req.body.eTitle, req.body.eAuthor, now.toLocaleDateString(), bodyContent, req.body.eType, uuid()], (err, resp) => {
 				    	if (err) {
 				    	  	return next(err)
 				    	}				    
@@ -412,7 +414,9 @@ app.get('/edit-events/:uuid', function(req, res, next){
 			return next(err)
 		}
 		var arr = resp.rows[0];
-		res.render('edit-events.ejs', {title: 'Edit ', econtent: arr})	
+		var larr = arr.contents;
+		var links = larr.split(",");
+		res.render('edit-events.ejs', {title: 'Edit ', econtent: arr, elinks: links})	
 		})
 	} else {
 		res.redirect('/admin');

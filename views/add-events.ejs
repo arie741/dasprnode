@@ -26,14 +26,14 @@
     </div>
     <!--/ Intro Skew End /-->
     <div id="add-events" class="container">
-      <form action="/add-events-request" method="post" enctype="multipart/form-data">
+      <form id="news-events-form" action="/add-events-request" method="post" enctype="multipart/form-data">
         <div class="inputs-group">
           <div class="row">
             <div class="col-lg-2 col-sm-12">
               Type
             </div>
             <div class="col-lg-10 col-sm-12">
-              : <select name="eType">
+              : <select onchange="changeType(this.value)" name="eType">
                 <option value="news">News</option>
                 <option value="events">Events</option>
                 <option value="questionaire">Questionaire</option>
@@ -45,7 +45,7 @@
               Image
             </div>
             <div class="col-lg-10 col-sm-12">
-              : <input type="file" placeholder="Image" name="eImage" accept="image/png, image/jpeg">
+              : <input type="file" placeholder="Image" name="eImage" accept="image/png, image/jpeg" required>
             </div>
           </div>
           <div class="row">
@@ -64,16 +64,32 @@
               : <input type="text" placeholder="Author" name="eAuthor" required>
             </div>
           </div>
-        </div>
-        <!-- Create the toolbar container -->
-        <div id="toolbar">
-        </div>
-        <!-- Create the editor container -->
-        <div id="editor">
-          <p>Hello World!</p>
-        </div>
+          <div class="row">
+            <div class="col-12" id="ne-textarea">
+              <!-- Create the toolbar container -->
+              <div id="toolbar">
+              </div>
+              <!-- Create the editor container -->
+              <div id="editor">
+                <p>Hello World!</p>
+              </div>
+            </div>            
+          </div>
+          <div class="row"  id="ne-questionaire">
+            <div class="col-lg-2 col-sm-12">
+              Questionaire Links
+            </div>
+            <div class="col-lg-10 col-sm-12" id="ne-questionaire-inputs">
+              : <input type="text" placeholder="Link 1" name="eQues1">
+              <br>  
+              : <input type="text" placeholder="Link 2" name="eQues2">    
+              <br>  
+              : <input type="text" placeholder="Link 3" name="eQues3">         
+            </div>    
+          </div>
+        </div>        
         <%= typeof ermes != 'undefined' ? ermes : '' %>
-        <input onclick="contentChange()" type="submit" class="btn btn-prime" value="Submit">
+        <input type="submit" class="btn btn-prime" value="Submit" id="ne-input-submit">
         <input type="hidden" id="input-editor" value="" name="eContent">
       </form>
     </div>
@@ -83,31 +99,7 @@
     <!-- Initialize Quill editor -->
     <!-- Include the Quill library -->
     <script src="https://cdn.quilljs.com/1.0.0/quill.js"></script>
-    <script>
-    var toolbarOptions = [
-    ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
-    ['blockquote', 'code-block'],
-    [{ 'header': 1 }, { 'header': 2 }],               // custom button values
-    [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-    [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
-    [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
-    [{ 'direction': 'rtl' }],                         // text direction
-    [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
-    [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
-    [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
-    [{ 'font': ['sans serif','monospace'] }],
-    [{ 'align': [] }],
-    ['clean']                                         // remove formatting button
-    ];
-    var editor = new Quill('#editor', {
-    modules: { toolbar: toolbarOptions },
-    theme: 'snow'
-    });
-    function contentChange(){
-    var eContent = $('#editor').html();
-    $('#input-editor').val(eContent);
-    };
-    </script>
+    <script src="/js/add-event.js"></script>
     <!--/ Section Contact-footer End /-->
   </body>
 </html>

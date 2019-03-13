@@ -48,11 +48,15 @@
                     <a href="#"><%= edate %></a>
                   </li>
                 </ul>
-              </div>
+              </div>              
               <div class="article-content">
+                <% if (etype == "questionaire") { %>
+                <a class="btn btn-info" href="<%= elinks %>">Klik ini untuk mengisi questionaire</a>
+                <% } else { %>
                 <div class="ql-snow">
                   <%- contents -%>
                 </div>
+                <% } %>                
               </div>
             </div>                        
           </div>

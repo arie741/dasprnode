@@ -17,7 +17,7 @@
             </div>
             <div class="col-lg-10 col-sm-12">
               :
-              <select id="eType" name="eType">
+              <select onchange="changeType(this.value)" id="eType" name="eType">
                 <option id="opNews" value="news">News</option>
                 <option id="opEvents" value="events">Events</option>
                 <option id="opQuestionaire" value="questionaire">Questionaire</option>
@@ -49,14 +49,47 @@
               : <input type="text" placeholder="Author" name="eAuthor" value="<%= econtent.author %>" required>
             </div>
           </div>
+          <div class="row">
+            <div class="col-12" id="ne-textarea">
+              <!-- Create the toolbar container -->
+              <div id="toolbar">
+              </div>
+              <!-- Create the editor container -->
+              <div id="editor">
+                <%- econtent.contents -%>
+              </div>
+            </div>
+          </div>
+          <% if (econtent.etype == "questionaire") { %>
+            <div class="row"  id="ne-questionaire">
+            <div class="col-lg-2 col-sm-12">
+              Questionaire Links
+            </div>
+            <div class="col-lg-10 col-sm-12" id="ne-questionaire-inputs">
+              : <input type="text" placeholder="Link 1" name="eQues1" value="<%= elinks[0] %>">
+              <br>  
+              : <input type="text" placeholder="Link 2" name="eQues2" value="<%= elinks[1] %>">    
+              <br>  
+              : <input type="text" placeholder="Link 3" name="eQues3" value="<%= elinks[2] %>">         
+            </div>    
+          </div>
+            <% } else { %>
+            <div class="row"  id="ne-questionaire">
+            <div class="col-lg-2 col-sm-12">
+              Questionaire Links
+            </div>
+            <div class="col-lg-10 col-sm-12" id="ne-questionaire-inputs">
+              : <input type="text" placeholder="Link 1" name="eQues1">
+              <br>  
+              : <input type="text" placeholder="Link 2" name="eQues2">    
+              <br>  
+              : <input type="text" placeholder="Link 3" name="eQues3">         
+            </div>    
+          </div>
+          <% } %>
+          
         </div>
-        <!-- Create the toolbar container -->
-        <div id="toolbar">
-        </div>
-        <!-- Create the editor container -->
-        <div id="editor">
-          <%- econtent.contents -%>
-        </div>
+        
         <%= typeof ermes != 'undefined' ? ermes : '' %>
         <br>
         <input onclick="contentChange()" type="submit" class="btn btn-prime" value="Submit">
@@ -91,43 +124,9 @@
     <!-- Include the Quill library -->
     <script src="https://cdn.quilljs.com/1.0.0/quill.js"></script>
     <script>
-    var toolbarOptions = [
-    ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
-    ['blockquote', 'code-block'],
-    [{ 'header': 1 }, { 'header': 2 }],               // custom button values
-    [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-    [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
-    [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
-    [{ 'direction': 'rtl' }],                         // text direction
-    [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
-    [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
-    [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
-    [{ 'font': ['sans serif','monospace'] }],
-    [{ 'align': [] }],
-    ['clean']                                         // remove formatting button
-    ];
-    var editor = new Quill('#editor', {
-    modules: { toolbar: toolbarOptions },
-    theme: 'snow'
-    });
-    function contentChange(){
-    var eContent = $('#editor').html();
-    $('#input-editor').val(eContent);
-    };
-    //Type Select initial value
-    var eTypeVal = "<%= econtent.etype %>";
-    switch (eTypeVal) {
-      case "events":
-      $("#eType #opEvents").attr("selected", "selected");
-      break;
-      case "news":
-      $("#eType #opNews").attr("selected", "selected");
-      break;
-      case "questionaire":
-      $("#eType #opQuestionaire").attr("selected", "selected");
-    }
-    //
+      var eTypeVal = "<%= econtent.etype %>"
     </script>
+    <script src="/js/edit-event.js"></script>
     <!--/ Section Contact-footer End /-->
   </body>
 </html>
