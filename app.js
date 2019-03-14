@@ -10,9 +10,9 @@ var pg = require('pg')
   , pgSession = require('connect-pg-simple')(session);
 
 var pgPool = new pg.Pool({
-  user: 'daspr',
+  user: 'webbetac_daspr',
   host: 'localhost',
-  database: 'daspr',
+  database: 'webbetac_dasprdb',
   password: 'daspr2000',
   port: 5432
 });  
@@ -95,7 +95,7 @@ function deleteFile (fname){
 //Routes
 
 //Clients Routes
-app.get('/', function(req, res){
+app.get('/', function(req, res, next){
 	var eventcontents = []; 
 	db.query(db.findEvents, [], (err, resp) => {
 	if (err) {
@@ -126,7 +126,7 @@ app.get('/publications', function(req, res){
 	res.redirect('/publications/1');
 })
 
-app.get('/publications/:page', function(req,res){
+app.get('/publications/:page', function(req,res,next){
 	var pagLength = 0;
 	db.query(db.countPublications, [], (err, resp) => {
 	    if (err) {
@@ -355,7 +355,7 @@ app.get('/delete-slider/:fname', function(req, res, next){
 	}
 })
 
-app.get('/admin-news-and-events', function(req, res){
+app.get('/admin-news-and-events', function(req, res, next){
 	if(req.session.uniqueId){
 		db.query(db.findEvents, [], (err, resp) => {
 		if (err) {
