@@ -10,9 +10,9 @@ var pg = require('pg')
   , pgSession = require('connect-pg-simple')(session);
 
 var pgPool = new pg.Pool({
-  user: 'webbetac_daspr',
+  user: 'daspr',
   host: 'localhost',
-  database: 'webbetac_dasprdb',
+  database: 'daspr',
   password: 'daspr2000',
   port: 5432
 });  
@@ -170,6 +170,10 @@ app.get('/news-and-events/:uuid', function(req, res, next){
 		})				
 	})	
 	
+})
+
+app.get('/tim-kami', function(req,res,next){
+	res.render('tim-kami', {title:"Tim Kami"});
 })
 
 //Clients ends

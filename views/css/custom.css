@@ -1,8 +1,8 @@
 /*Utility*/
 .center {
 	display:block;
-	margin-left:auto;
-	margin-right:auto;
+	margin-left:auto !important;
+	margin-right:auto !important;
 }
 /*Utility end*/
 
@@ -187,6 +187,15 @@ section.footer-paralax .socials {
     margin-left: auto;
     margin-right: auto;
     display: block;
+}
+
+section#timkami .socials ul > li {
+	margin:0 5px 0px 5px; 
+
+}
+
+section#timkami .socials ul {
+	padding-left:18px;
 }
 
 /* library */
