@@ -25,6 +25,7 @@ const findEvent = 'select * from newscontents where uuid=$1'
 const editEvent = "update newscontents set img = $1, title = $2, author = $3, edate = $4, contents = $5, etype = $6 where uuid = $7"
 const deleteEvent = 'delete from newscontents where uuid = $1'
 const searchEvent = "SELECT * FROM newscontents WHERE lower(title) LIKE lower('%' || $1 || '%')"
+const addTim = 'insert into timkami (foto, nama, jabatan, keterangan, overview, riset, publikasi, supervisi, uuid) values ($1, $2, $3, $4, $5, $6, $7, $8, $9)'
 
 module.exports = {
 	query: (text, params, callback) => {
@@ -46,5 +47,6 @@ module.exports = {
   findEvent,
   editEvent,
   deleteEvent,
-  searchEvent
+  searchEvent,
+  addTim
 }

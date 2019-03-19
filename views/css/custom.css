@@ -198,6 +198,14 @@ section#timkami .socials ul {
 	padding-left:18px;
 }
 
+.tk-textarea {
+	margin-bottom:30px !important;
+}
+
+#keterangan-editor, #overview-editor, #riset-editor, #publikasi-editor, #supervisi-editor {
+	height:150px !important;
+}
+
 /* library */
 #sejarah {
 	margin-bottom:30px;

@@ -1,0 +1,161 @@
+<html lang="en">
+  <head>
+    <%- include('head'); -%>
+    <!-- Include Quill stylesheet -->
+    <link href="/css/quill.snow.css" rel="stylesheet">
+    <link href="//cdn.quilljs.com/1.3.6/quill.core.css" rel="stylesheet">
+  </head>
+  <body id="page-top">
+    <!--/ Intro Skew Star /-->
+    <div class="intro intro-single route bg-image" style="background-image: url(/img/slide/adults-analysis-brainstorming-1661004.jpg)">
+      <div class="overlay-mf"></div>
+      <div class="intro-content display-table">
+        <div class="table-cell">
+          <div class="container">
+            <h2 class="intro-title mb-4">News And Events</h2>
+            <ol class="breadcrumb d-flex justify-content-center">
+              <li class="breadcrumb-item">
+                <a href="/">Home</a>
+              </li>
+              <li class="breadcrumb-item active">News And Events</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--/ Intro Skew End /-->
+    <div id="add-tim-kami" class="container">
+      <form id="tim-kami-form" action="/add-tim-request" method="post" enctype="multipart/form-data">
+        <div class="inputs-group">          
+          <div class="row">
+            <div class="col-lg-2 col-sm-12">
+              Foto
+            </div>
+            <div class="col-lg-10 col-sm-12">
+              : <input type="file" placeholder="Image" name="tImage" accept="image/png, image/jpeg" required>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-2 col-sm-12">
+              Nama
+            </div>
+            <div class="col-lg-10 col-sm-12">
+              : <input type="text" placeholder="Nama" name="tNama" required>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-2 col-sm-12">
+              Jabatan
+            </div>
+            <div class="col-lg-10 col-sm-12">
+              : <input type="text" placeholder="Jabatan" name="tJabatan" required>
+            </div>
+          </div>
+          <div class="row tk-textarea">
+            <div class="col-lg-2 col-sm-12">
+              Keterangan
+            </div>
+            <div class="col-lg-10 col-sm-12" id="tk-keterangan">
+              <!-- Create the toolbar container -->
+              <div id="toolbar">
+              </div>
+              <!-- Create the editor container -->
+              <div id="keterangan-editor">
+                <p></p>
+              </div>
+            </div>
+          </div>
+          <div class="row tk-textarea">
+            <div class="col-lg-2 col-sm-12">
+              Overview
+            </div>
+            <div class="col-lg-10 col-sm-12" id="tk-overview">
+              <!-- Create the toolbar container -->
+              <div id="toolbar">
+              </div>
+              <!-- Create the editor container -->
+              <div id="overview-editor">
+                <p></p>
+              </div>
+            </div>
+          </div>
+          <div class="row tk-textarea">
+            <div class="col-lg-2 col-sm-12">
+              Riset
+            </div>
+            <div class="col-lg-10 col-sm-12" id="tk-riset">
+              <!-- Create the toolbar container -->
+              <div id="toolbar">
+              </div>
+              <!-- Create the editor container -->
+              <div id="riset-editor">
+                <p></p>
+              </div>
+            </div>
+          </div>
+          <div class="row tk-textarea">
+            <div class="col-lg-2 col-sm-12">
+              Publikasi
+            </div>
+            <div class="col-lg-10 col-sm-12" id="tk-publikasi">
+              <!-- Create the toolbar container -->
+              <div id="toolbar">
+              </div>
+              <!-- Create the editor container -->
+              <div id="publikasi-editor">
+                <p></p>
+              </div>
+            </div>
+          </div>
+          <div class="row tk-textarea">
+            <div class="col-lg-2 col-sm-12">
+              Supervisi
+            </div>
+            <div class="col-lg-10 col-sm-12" id="tk-supervisi">
+              <!-- Create the toolbar container -->
+              <div id="toolbar">
+              </div>
+              <!-- Create the editor container -->
+              <div id="supervisi-editor">
+                <p></p>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+        <%= typeof ermes != 'undefined' ? ermes : '' %>
+        <input type="submit" class="btn btn-prime" value="Submit" id="tk-input-submit">
+        <input type="hidden" id="input-keterangan" value="" name="tKeterangan">
+        <input type="hidden" id="input-overview" value="" name="tOverview">
+        <input type="hidden" id="input-riset" value="" name="tRiset">
+        <input type="hidden" id="input-publikasi" value="" name="tPublikasi">
+        <input type="hidden" id="input-supervisi" value="" name="tSupervisi">
+      </form>
+    </div>
+    
+    <!--/ Section Contact-Footer Star /-->
+    <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+    <div id="preloader"></div>
+    <!-- JavaScript Libraries -->
+    <script src="/lib/jquery/jquery.min.js"></script>
+    <script src="/lib/jquery/jquery-migrate.min.js"></script>
+    <script src="/lib/popper/popper.min.js"></script>
+    <script src="/lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/lib/easing/easing.min.js"></script>
+    <script src="/lib/counterup/jquery.waypoints.min.js"></script>
+    <script src="/lib/counterup/jquery.counterup.js"></script>
+    <script src="/lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="/lib/lightbox/js/lightbox.min.js"></script>
+    <script src="/lib/typed/typed.min.js"></script>
+    
+    <!-- Contact Form JavaScript File -->
+    <script src="/contactform/contactform.js"></script>
+    <!-- Template Main Javascript File -->
+    <script src="/js/main.js"></script>
+    <!-- Initialize Quill editor -->
+    <!-- Include the Quill library -->
+    <script src="https://cdn.quilljs.com/1.0.0/quill.js"></script>
+    <script src="/js/add-tim.js"></script>
+    <!--/ Section Contact-footer End /-->
+  </body>
+</html>

@@ -58,6 +58,13 @@ const uploadEventImage = multer({
 	}
 }).single('eImage');
 
+const uploadTimImage = multer({
+	storage: storage,
+	fileFilter: function(req, file, cb){
+		checkFileType(file, cb);
+	}
+}).single('tImage');
+
 var session;
 const app = express();
 const port = 62542;
@@ -508,6 +515,46 @@ app.get('/logout', function(req, res){
 	req.session.destroy(function(err){
 		res.redirect('/admin');
 	})
+})
+
+app.get('/admin-tim-kami', function(req, res, next){
+	if(req.session.uniqueId){
+		res.render('admin-tim-kami', { title: 'Tim Kami'});
+	} else {
+		res.redirect('/admin');
+	}
+})
+
+app.get('/admin-add-tim', function(req, res, next){
+	if(req.session.uniqueId){
+		res.render('add-tim-kami', { title: 'Tambahkan Tim Kami'});
+	} else {
+		res.redirect('/admin');
+	}
+})
+
+app.post('/add-tim-request', function(req, res, next){
+	if(req.session.uniqueId){
+		uploadTimImage(req, res, (err) => {
+			if(err){
+				res.render('add-tim-kami', { ermes: err})
+			} else {	
+				if(req.file == undefined){
+					res.render('add-tim-kami', { ermes: 'Must include an image!'})
+				} else {
+					var uuid = require('uuid/v1');
+					db.query(db.addTim, [`${req.file.filename}`, req.body.tNama, req.body.tJabatan, req.body.tKeterangan, req.body.tOverview, req.body.tRiset, req.body.tPublikasi, req.body.tSupervisi, uuid()], (err, resp) => {
+					    if (err) {
+					      return next(err)
+					    }
+					    res.render('admin-tim-kami', { title: 'Tim Kami'});
+			  		})					
+				}
+			}
+		});
+	} else {
+		res.redirect('/admin');
+	}
 })
 
 app.post('/login-request', function(req, res, next){
