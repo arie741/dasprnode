@@ -10,7 +10,7 @@
       
       <h3><a href="/admin-home">Home</a> / <a href="/admin-tim-kami">Admin Tim Kami</a> / Edit Tim Kami</h3>
       <div id="edit-tim-kami" class="container">
-        <form id="edit-kami-form" action="/edit-tim-request" method="post" enctype="multipart/form-data">
+        <form id="edit-kami-form" action="/edit-tim-request/<%- tim.uuid -%>" method="post" enctype="multipart/form-data">
           <div class="inputs-group">
             <div class="row">
               <div class="col-lg-2 col-sm-12">
@@ -156,6 +156,7 @@
           <input type="hidden" id="input-riset" value="" name="tRiset">
           <input type="hidden" id="input-publikasi" value="" name="tPublikasi">
           <input type="hidden" id="input-supervisi" value="" name="tSupervisi">
+          <input type="hidden" id="oldImg" value="<%= tim.foto %>" name="tOldImg">
         </form>
       </div>
       

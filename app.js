@@ -575,6 +575,67 @@ app.get('/edit-tim/:uuid', function(req,res,next){
 	}
 })
 
+app.post('/edit-tim-request/:uuid', function(req,res,next){
+	if(req.session.uniqueId){
+		const EditTimImage = multer({
+			storage: multer.diskStorage({
+				destination: 'views/public/uploads/',
+				filename: function(req, file, cb){
+					cb(null, file.fieldname + '-' + req.params.uuid + path.extname(file.originalname));
+				}
+			}),
+			fileFilter: function(req, file, cb){
+				checkFileType(file, cb);
+			}
+		}).single('tImage');
+
+		EditTimImage(req, res, (err) => {
+			if(err){
+				res.render('edit-tim-kami', { ermes: err})
+			} else {
+				if(req.file == undefined){								
+					db.query(db.editTimKami, [req.body.tOldImg, req.body.tNama, req.body.tJabatan, req.body.tKeterangan, req.body.tOverview, req.body.tRiset, req.body.tPublikasi, req.body.tSupervisi, req.body.tFacebook, req.body.tInstagram, req.body.tTwitter, req.body.tYoutube, req.body.tUrutan, req.params.uuid], (err, resp) => {
+					    if (err) {
+					      	return next(err)
+					    }
+					    res.redirect('/admin-tim-kami');
+		  			})
+				} else {
+					//deleteFile("views/public/uploads/" + req.body.tOldImg);
+					db.query(db.editTimKami, [`${req.file.filename}`, req.body.tNama, req.body.tJabatan, req.body.tKeterangan, req.body.tOverview, req.body.tRiset, req.body.tPublikasi, req.body.tSupervisi, req.body.tFacebook, req.body.tInstagram, req.body.tTwitter, req.body.tYoutube, req.body.tUrutan, req.params.uuid], (err, resp) => {
+				    	if (err) {
+				    	  	return next(err)
+				    	}				    
+				    	res.redirect('/admin-tim-kami');
+		  			})
+				}
+			}
+		});
+	} else {
+		res.redirect('/admin');
+	}
+})
+
+app.get('/delete-tim/:uuid',function(req,res,next){
+	if(req.session.uniqueId){
+		db.query(db.findTim, [req.params.uuid], (err, resp) => {
+		    if (err) {
+		      return next(err)
+		    }
+		    var arr = resp.rows;	
+			deleteFile('views/public/uploads/' + arr[0].foto);
+  		})
+		db.query(db.deleteTim, [req.params.uuid], (err, resp) => {
+		    if (err) {
+		      return next(err)
+		    }
+		    res.redirect('/admin-tim-kami');	
+  		})
+	} else {
+		res.redirect('/admin');
+	}
+})
+
 app.get('/logout', function(req, res){
 	req.session.destroy(function(err){
 		res.redirect('/admin');
