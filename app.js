@@ -180,7 +180,12 @@ app.get('/news-and-events/:uuid', function(req, res, next){
 })
 
 app.get('/tim-kami', function(req,res,next){
-	res.render('tim-kami', {title:"Tim Kami"});
+	db.query(db.findTimKami, [], (err, resp) => {
+	    if (err) {
+	      return next(err)
+	    }
+	   	res.render('tim-kami', {title:"Tim Kami", timkami: resp.rows});
+  	})		
 })
 
 //Clients ends
@@ -511,15 +516,14 @@ app.post('/admin-ne-search-request', function(req, res, next){
 	}
 })
 
-app.get('/logout', function(req, res){
-	req.session.destroy(function(err){
-		res.redirect('/admin');
-	})
-})
-
 app.get('/admin-tim-kami', function(req, res, next){
 	if(req.session.uniqueId){
-		res.render('admin-tim-kami', { title: 'Tim Kami'});
+		db.query(db.findTimKami, [], (err, resp) => {
+		    if (err) {
+		      return next(err)
+		    }
+		   	res.render('admin-tim-kami', {title:"Admin Tim Kami", timkami: resp.rows});
+  		})	
 	} else {
 		res.redirect('/admin');
 	}
@@ -543,11 +547,11 @@ app.post('/add-tim-request', function(req, res, next){
 					res.render('add-tim-kami', { ermes: 'Must include an image!'})
 				} else {
 					var uuid = require('uuid/v1');
-					db.query(db.addTim, [`${req.file.filename}`, req.body.tNama, req.body.tJabatan, req.body.tKeterangan, req.body.tOverview, req.body.tRiset, req.body.tPublikasi, req.body.tSupervisi, uuid()], (err, resp) => {
+					db.query(db.addTim, [`${req.file.filename}`, req.body.tNama, req.body.tJabatan, req.body.tKeterangan, req.body.tOverview, req.body.tRiset, req.body.tPublikasi, req.body.tSupervisi, req.body.tFacebook, req.body.tInstagram, req.body.tTwitter, req.body.tYoutube, req.body.tUrutan, uuid()], (err, resp) => {
 					    if (err) {
 					      return next(err)
 					    }
-					    res.render('admin-tim-kami', { title: 'Tim Kami'});
+					    res.redirect('/admin-tim-kami');
 			  		})					
 				}
 			}
@@ -555,6 +559,26 @@ app.post('/add-tim-request', function(req, res, next){
 	} else {
 		res.redirect('/admin');
 	}
+})
+
+app.get('/edit-tim/:uuid', function(req,res,next){
+	if(req.session.uniqueId){
+		db.query(db.findTim, [req.params.uuid], (err, resp) => {
+		    if (err) {
+		      return next(err)
+		    }
+		    var arr = resp.rows;
+		    res.render('edit-tim-kami', { title: 'Tim Kami', tim: arr[0]});
+		})		
+	} else {
+		res.redirect('/admin');
+	}
+})
+
+app.get('/logout', function(req, res){
+	req.session.destroy(function(err){
+		res.redirect('/admin');
+	})
 })
 
 app.post('/login-request', function(req, res, next){

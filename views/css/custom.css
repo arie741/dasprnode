@@ -206,6 +206,23 @@ section#timkami .socials ul {
 	height:150px !important;
 }
 
+.admin-timkami .socials .ico-circle {
+	padding:7px;
+}
+
+.tim-item .ql-snow .ql-editor {
+	padding:0;
+	white-space: normal;
+}
+
+.tim-item .ql-snow {
+	height:fit-content;
+}
+
+.bd-example-modal-lg .tab-content .title-box-2 {
+	margin-top:38px;
+}
+
 /* library */
 #sejarah {
 	margin-bottom:30px;

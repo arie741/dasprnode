@@ -1,6 +1,7 @@
 var toolbarOptions = [
 ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
 ['blockquote', 'code-block'],
+['link'],
 [{ 'header': 1 }, { 'header': 2 }],               // custom button values
 [{ 'list': 'ordered'}, { 'list': 'bullet' }],
 [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
@@ -40,11 +41,11 @@ theme: 'snow'
 });
 
 function contentChange(){
-    $('#input-keterangan').val($("#keterangan-editor").html());
-    $('#input-overview').val($("#overview-editor").html());
-    $('#input-riset').val($("#riset-editor").html());
-    $('#input-publikasi').val($("#publikasi-editor").html());
-    $('#input-supervisi').val($("#supervisi-editor").html());
+    $('#input-keterangan').val($("#keterangan-editor .ql-editor").html());
+    $('#input-overview').val($("#overview-editor .ql-editor").html());
+    $('#input-riset').val($("#riset-editor .ql-editor").html());
+    $('#input-publikasi').val($("#publikasi-editor .ql-editor").html());
+    $('#input-supervisi').val($("#supervisi-editor .ql-editor").html());
 };
 
 $('#tk-input-submit').attr('onclick', 'contentChange()');
