@@ -184,8 +184,21 @@ app.get('/tim-kami', function(req,res,next){
 	    if (err) {
 	      return next(err)
 	    }
-	   	res.render('tim-kami', {title:"Tim Kami", timkami: resp.rows});
+	   	res.render('tim-kami', {title: 'Tim Kami', timkami: resp.rows});
   	})		
+})
+
+app.post('/tk-search-request', function(req,res,next){
+	if(req.session.uniqueId){
+		db.query(db.searchTimKami, [req.body.pSearch], (err, resp) => {
+		    if (err) {
+		      return next(err)
+		    }
+		    res.render('tim-kami', { title: 'Tim Kami', timkami: resp.rows});
+  		})
+	} else {
+		res.redirect('/admin');
+	}
 })
 
 //Clients ends
@@ -630,6 +643,19 @@ app.get('/delete-tim/:uuid',function(req,res,next){
 		      return next(err)
 		    }
 		    res.redirect('/admin-tim-kami');	
+  		})
+	} else {
+		res.redirect('/admin');
+	}
+})
+
+app.post('/admin-tk-search-request', function(req, res, next){
+	if(req.session.uniqueId){
+		db.query(db.searchTimKami, [req.body.pSearch], (err, resp) => {
+		    if (err) {
+		      return next(err)
+		    }
+		    res.render('admin-tim-kami', { title: 'Admin Tim Kami', timkami: resp.rows});
   		})
 	} else {
 		res.redirect('/admin');
