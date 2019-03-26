@@ -38,14 +38,26 @@
       <br>
       <div class="row">
         <div class="col-lg-2">
-          
+          <ul class="list-group">
+            <% uniq = [...new Set(timjabatan)];
+               uniq.forEach(function(tj){
+               var tjid = tj.replace(/\s/g, '');%>
+              <a class="js-scroll" href="#<%= tjid %>">
+                <li class="list-group-item">
+                  <%= tj %>            
+                </li>
+              </a>              
+            <%});%>            
+          </ul>          
         </div>
         <div class="col-lg-10">
           <section id="timkami">
             <div class="row">
-              <% timkami.forEach(function(tim){%>
+              <% timkami.forEach(function(tim){
+                var tj = tim.jabatan;
+                var tjid = tj.replace(/\s/g, '');%>%>
               <div class="col-lg-4">
-                <div class="card" style="width: 18rem;">
+                <div id="<%= tjid %>" class="card" style="width: 18rem;">
                   <a href="#" data-toggle="modal" data-target="#timModal<%= tim.urutan %>">
                     <img src="/public/uploads/<%= tim.foto %>" class="card-img-top" alt="">
                   </a>

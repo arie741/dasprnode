@@ -184,7 +184,12 @@ app.get('/tim-kami', function(req,res,next){
 	    if (err) {
 	      return next(err)
 	    }
-	   	res.render('tim-kami', {title: 'Tim Kami', timkami: resp.rows});
+	    var arr = resp.rows;
+	    arrjab= [];
+	    arr.forEach(function(aj){
+	    	arrjab.push(aj.jabatan);
+	    });
+	   	res.render('tim-kami', {title: 'Tim Kami', timkami: arr, timjabatan: arrjab});
   	})		
 })
 
