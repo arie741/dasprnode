@@ -217,16 +217,16 @@ app.get('/tim-kami', function(req,res,next){
 })
 
 app.post('/tk-search-request', function(req,res,next){
-	if(req.session.uniqueId){
-		db.query(db.searchTimKami, [req.body.pSearch], (err, resp) => {
-		    if (err) {
-		      return next(err)
-		    }
-		    res.render('tim-kami', { title: 'Tim Kami', timkami: resp.rows});
-  		})
-	} else {
-		res.redirect('/admin');
-	}
+	db.query(db.searchTimKami, [req.body.pSearch], (err, resp) => {
+		if (err) {
+		  return next(err)
+		}
+		res.render('tim-kami', { title: 'Tim Kami', timkami: resp.rows});
+  	})
+})
+
+app.get('/career', function(req,res,next){
+	res.render('career', {title: 'Career'})
 })
 
 //Clients ends
