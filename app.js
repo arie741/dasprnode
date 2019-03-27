@@ -87,7 +87,9 @@ app.use(ExpressSessions({
 	saveUninitialized:false
 }));
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+app.listen(port, function(){
+	console.log(`DASPR app listening on port ${port}!`);	
+});
 
 //Helper functions
 function deleteFile (fname){
@@ -110,6 +112,14 @@ app.get('/', function(req, res, next){
 	}
 		eventcontents = resp.rows;
 	})
+	var journalcount = 0;
+	db.query(db.countPublications, [], (err, respo) => {
+	    if (err) {
+	      return next(err)
+	    }
+	    var jarr = respo.rows;
+	    journalcount = jarr[0].count;
+  	})
 	db.query(db.findSliderImages, [], (err, resp) => {
 		if (err) {
 		    return next(err)
@@ -117,7 +127,7 @@ app.get('/', function(req, res, next){
 		var arr = resp.rows;
 		var firstel = arr[0];
 		arr.shift();
-		res.render('home', { title: 'Home', sliderimages: arr, firstslider: firstel, newscontents: eventcontents});
+		res.render('home', { title: 'Home', sliderimages: arr, firstslider: firstel, newscontents: eventcontents, jc: journalcount});
   	})	
 })
 
