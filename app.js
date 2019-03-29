@@ -113,26 +113,7 @@ app.get('/', function(req, res, next){
 			return next(err)
 		}
 		eventcontents = resp.rows;
-	})	
-	db.query(db.countPublications, [], (err, respo) => {
-	    if (err) {
-	      return next(err)
-	    }
-	    var jarr = respo.rows;
-	    journalcount = jarr[0].count;
-  	})
-  	db.query(db.addViewsCount, [], (err, resp) => {
-		if (err) {
-			return next(err)
-		}
-		db.query(db.getViewsCount, [], (err, respon) => {
-		    if (err) {
-		      return next(err)
-		    }
-		    var vcarr = respon.rows;
-		    viewscount = vcarr[0].count;
-	  	})
-	})	  	
+	})		
 	db.query(db.findSliderImages, [], (err, resp) => {
 		if (err) {
 		    return next(err)
@@ -140,7 +121,26 @@ app.get('/', function(req, res, next){
 		var arr = resp.rows;
 		var firstel = arr[0];
 		arr.shift();
-		res.render('home', { title: 'Home', sliderimages: arr, firstslider: firstel, newscontents: eventcontents, jc: journalcount, vc: viewscount});
+		db.query(db.addViewsCount, [], (err, resp) => {
+			if (err) {
+				return next(err)
+			}
+			db.query(db.getViewsCount, [], (err, respon) => {
+			    if (err) {
+			      return next(err)
+			    }
+			    db.query(db.countPublications, [], (err, respo) => {
+				    if (err) {
+				      return next(err)
+				    }
+				    var jarr = respo.rows;
+				    journalcount = jarr[0].count;
+				    res.render('home', { title: 'Home', sliderimages: arr, firstslider: firstel, newscontents: eventcontents, jc: journalcount, vc: viewscount});
+			  	})  	
+			    var vcarr = respon.rows;
+			    viewscount = vcarr[0].count;			    
+		  	})
+		})	  			
   	})	
 })
 
