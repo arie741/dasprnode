@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('head'); -%>
+    <link href="/css/quill.snow.css" rel="stylesheet">
+  </head>
+  <body id="page-top">
+    <!--/ Nav Star /-->
+    <%- include('en-header'); -%>
+    <!--/ Nav End /-->
+    
+    <!--/ Intro Skew Star /-->
+    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div id="home" class="intro route bg-image" style="background-image: url(/public/uploads/<%= firstslider.filename %>)">
+            <div class="overlay-itro"></div>
+            <div class="intro-content display-table">
+              <div class="table-cell">
+                <div class="container">
+                  <!--<p class="display-6 color-d">Hello, world!</p>-->
+                  <h1 class="intro-title mb-4"><img src="/img/logo/DASPR.png" alt="" width="230px"></h1>
+                  <p class="intro-subtitle"><span class="text-slider-items">The Scholar Activists</span><strong class="text-slider"></strong></p>
+                  <!-- <p class="pt-3"><a class="btn btn-primary btn js-scroll px-4" href="#about" role="button">Learn More</a></p> -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <% sliderimages.forEach(function(sliderimage){%>
+        <div class="carousel-item">
+          <div class="intro route bg-image" style="background-image: url(/public/uploads/<%= sliderimage.filename %>)"></div>
+        </div>
+        <%});%>
+      </div>
+      <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+    <!-- End -->
+    <!-- Description -->
+    <section id="desc">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <p class="home-desc">
+              <b><i>The Division for Applied Social Psychology Research</i></b> (DASPR) is a group of scholar-activists driven to help to tackle social problems, especially for intergroup conflicts, humanitarian issues, and violent extremism. Social psychology perspectives and method are used as a tool: to understand how people think, influence and relate to one another in a societal context and everyday discourses; and to modify, guide, as well as intervene people’ minds and behaviors, especially into more humanize.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End -->
+    <!--/ Intro Skew End /-->
+    <!--
+    <section id="about" class="about-mf sect-pt4 route">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="box-shadow-full">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="row">
+                    <div class="col-sm-6 col-md-5">
+                      <div class="about-img">
+                        <img src="/img/testimonial-2.jpg" class="img-fluid rounded b-shadow-a" alt="">
+                      </div>
+                    </div>
+                    <div class="col-sm-6 col-md-7">
+                      <div class="about-info">
+                        <p><span class="title-s">Name: </span> <span>Morgan Freeman</span></p>
+                        <p><span class="title-s">Profile: </span> <span>full stack developer</span></p>
+                        <p><span class="title-s">Email: </span> <span>contact@example.com</span></p>
+                        <p><span class="title-s">Phone: </span> <span>(617) 557-0089</span></p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="skill-mf">
+                    <p class="title-s">Skill</p>
+                    <span>HTML</span> <span class="pull-right">85%</span>
+                    <div class="progress">
+                      <div class="progress-bar" role="progressbar" style="width: 85%;" aria-valuenow="85" aria-valuemin="0"
+                      aria-valuemax="100"></div>
+                    </div>
+                    <span>CSS3</span> <span class="pull-right">75%</span>
+                    <div class="progress">
+                      <div class="progress-bar" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0"
+                      aria-valuemax="100"></div>
+                    </div>
+                    <span>PHP</span> <span class="pull-right">50%</span>
+                    <div class="progress">
+                      <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0"
+                      aria-valuemax="100"></div>
+                    </div>
+                    <span>JAVASCRIPT</span> <span class="pull-right">90%</span>
+                    <div class="progress">
+                      <div class="progress-bar" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0"
+                      aria-valuemax="100"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="about-me pt-4 pt-md-0">
+                    <div class="title-box-2">
+                      <h5 class="title-left">
+                      About me
+                      </h5>
+                    </div>
+                    <p class="lead">
+                      Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Curabitur arcu erat, accumsan id
+                      imperdiet et, porttitor
+                      at sem. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Nulla
+                      porttitor accumsan tincidunt.
+                    </p>
+                    <p class="lead">
+                      Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Vivamus suscipit tortor eget felis
+                      porttitor volutpat. Vestibulum
+                      ac diam sit amet quam vehicula elementum sed sit amet dui. porttitor at sem.
+                    </p>
+                    <p class="lead">
+                      Nulla porttitor accumsan tincidunt. Quisque velit nisi, pretium ut lacinia in, elementum id enim.
+                      Nulla porttitor accumsan
+                      tincidunt. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    -->
+    <!--/ Section News and Events /-->
+    <section id="blog" class="blog-mf sect-pt4 route">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="title-box text-center">
+              <h3 class="title-a">
+              News and Events
+              </h3>
+              <p class="subtitle-a">
+                Division for Applied Social Psychology Research
+              </p>
+              <div class="line-mf"></div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <% newscontents.forEach(function(newscontent){%>
+          <div class="col-md-4 news-items">
+            <div class="card card-blog">
+              <div class="card-img">
+                <a href="/news-and-events/<%= newscontent.uuid %>"><img src="public/uploads/<%= newscontent.img %>" alt="" class="img-fluid"></a>
+              </div>
+              <div class="card-body">
+                <div class="card-category-box">
+                  <div class="card-category">
+                    <h6 class="category"><%= newscontent.etype %></h6>
+                  </div>
+                </div>
+                <h3 class="card-title"><a href="/news-and-events/<%= newscontent.uuid %>"><%= newscontent.title %></a></h3>
+                <div class="ql-snow"><p class="card-description"><%- newscontent.contents -%></p></div>
+              </div>
+              <div class="card-footer">
+                <div class="post-author">
+                  <a href="/news-and-events/<%= newscontent.uuid %>">
+                    <span class="author"><%= newscontent.author %></span>
+                  </a>
+                </div>
+                <div class="post-date">
+                  <span class="ion-ios-clock-outline"></span> <%= newscontent.edate %>
+                </div>
+              </div>
+            </div>
+          </div>
+          <%});%>
+        </div>
+      </div>
+    </section>
+    <!--portfolio-->
+    <!--<section id="work" class="portfolio-mf sect-pt4 route">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="title-box text-center">
+              <h3 class="title-a">
+              Portfolio
+              </h3>
+              <p class="subtitle-a">
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+              </p>
+              <div class="line-mf"></div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="work-box">
+              <a href="img/work-1.jpg" data-lightbox="gallery-mf">
+                <div class="work-img">
+                  <img src="/img/work-1.jpg" alt="" class="img-fluid">
+                </div>
+                <div class="work-content">
+                  <div class="row">
+                    <div class="col-sm-8">
+                      <h2 class="w-title">Lorem impsum dolor</h2>
+                      <div class="w-more">
+                        <span class="w-ctegory">Web Design</span> / <span class="w-date">18 Sep. 2018</span>
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="w-like">
+                        <span class="ion-ios-plus-outline"></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="work-box">
+              <a href="img/work-2.jpg" data-lightbox="gallery-mf">
+                <div class="work-img">
+                  <img src="/img/work-2.jpg" alt="" class="img-fluid">
+                </div>
+                <div class="work-content">
+                  <div class="row">
+                    <div class="col-sm-8">
+                      <h2 class="w-title">Loreda Cuno Nere</h2>
+                      <div class="w-more">
+                        <span class="w-ctegory">Web Design</span> / <span class="w-date">18 Sep. 2018</span>
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="w-like">
+                        <span class="ion-ios-plus-outline"></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="work-box">
+              <a href="img/work-3.jpg" data-lightbox="gallery-mf">
+                <div class="work-img">
+                  <img src="/img/work-3.jpg" alt="" class="img-fluid">
+                </div>
+                <div class="work-content">
+                  <div class="row">
+                    <div class="col-sm-8">
+                      <h2 class="w-title">Mavrito Lana Dere</h2>
+                      <div class="w-more">
+                        <span class="w-ctegory">Web Design</span> / <span class="w-date">18 Sep. 2018</span>
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="w-like">
+                        <span class="ion-ios-plus-outline"></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="work-box">
+              <a href="img/work-4.jpg" data-lightbox="gallery-mf">
+                <div class="work-img">
+                  <img src="/img/work-4.jpg" alt="" class="img-fluid">
+                </div>
+                <div class="work-content">
+                  <div class="row">
+                    <div class="col-sm-8">
+                      <h2 class="w-title">Bindo Laro Cado</h2>
+                      <div class="w-more">
+                        <span class="w-ctegory">Web Design</span> / <span class="w-date">18 Sep. 2018</span>
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="w-like">
+                        <span class="ion-ios-plus-outline"></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="work-box">
+              <a href="img/work-5.jpg" data-lightbox="gallery-mf">
+                <div class="work-img">
+                  <img src="/img/work-5.jpg" alt="" class="img-fluid">
+                </div>
+                <div class="work-content">
+                  <div class="row">
+                    <div class="col-sm-8">
+                      <h2 class="w-title">Studio Lena Mado</h2>
+                      <div class="w-more">
+                        <span class="w-ctegory">Web Design</span> / <span class="w-date">18 Sep. 2018</span>
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="w-like">
+                        <span class="ion-ios-plus-outline"></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="work-box">
+              <a href="img/work-6.jpg" data-lightbox="gallery-mf">
+                <div class="work-img">
+                  <img src="/img/work-6.jpg" alt="" class="img-fluid">
+                </div>
+                <div class="work-content">
+                  <div class="row">
+                    <div class="col-sm-8">
+                      <h2 class="w-title">Studio Big Bang</h2>
+                      <div class="w-more">
+                        <span class="w-ctegory">Web Design</span> / <span class="w-date">18 Sep. 2017</span>
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="w-like">
+                        <span class="ion-ios-plus-outline"></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </section>-->
+    <!--<section id="service" class="services-mf route">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="title-box text-center">
+              <h3 class="title-a">
+              Services
+              </h3>
+              <p class="subtitle-a">
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+              </p>
+              <div class="line-mf"></div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="service-box">
+              <div class="service-ico">
+                <span class="ico-circle"><i class="ion-monitor"></i></span>
+              </div>
+              <div class="service-content">
+                <h2 class="s-title">Web Design</h2>
+                <p class="s-description text-center">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni adipisci eaque autem fugiat! Quia,
+                  provident vitae! Magni
+                  tempora perferendis eum non provident.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="service-box">
+              <div class="service-ico">
+                <span class="ico-circle"><i class="ion-code-working"></i></span>
+              </div>
+              <div class="service-content">
+                <h2 class="s-title">Web Development</h2>
+                <p class="s-description text-center">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni adipisci eaque autem fugiat! Quia,
+                  provident vitae! Magni
+                  tempora perferendis eum non provident.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="service-box">
+              <div class="service-ico">
+                <span class="ico-circle"><i class="ion-camera"></i></span>
+              </div>
+              <div class="service-content">
+                <h2 class="s-title">Photography</h2>
+                <p class="s-description text-center">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni adipisci eaque autem fugiat! Quia,
+                  provident vitae! Magni
+                  tempora perferendis eum non provident.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="service-box">
+              <div class="service-ico">
+                <span class="ico-circle"><i class="ion-android-phone-portrait"></i></span>
+              </div>
+              <div class="service-content">
+                <h2 class="s-title">Responsive Design</h2>
+                <p class="s-description text-center">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni adipisci eaque autem fugiat! Quia,
+                  provident vitae! Magni
+                  tempora perferendis eum non provident.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="service-box">
+              <div class="service-ico">
+                <span class="ico-circle"><i class="ion-paintbrush"></i></span>
+              </div>
+              <div class="service-content">
+                <h2 class="s-title">Graphic Design</h2>
+                <p class="s-description text-center">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni adipisci eaque autem fugiat! Quia,
+                  provident vitae! Magni
+                  tempora perferendis eum non provident.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="service-box">
+              <div class="service-ico">
+                <span class="ico-circle"><i class="ion-stats-bars"></i></span>
+              </div>
+              <div class="service-content">
+                <h2 class="s-title">Marketing Services</h2>
+                <p class="s-description text-center">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni adipisci eaque autem fugiat! Quia,
+                  provident vitae! Magni
+                  tempora perferendis eum non provident.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>-->
+    <!--/ Section News and Events End /-->
+    <div class="section-counter paralax-mf bg-image" style="background-image: url(/img/counters-bg.jpg)">
+      <div class="overlay-mf"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-3 col-lg-3">
+            <div class="counter-box">
+              <div class="counter-ico">
+                <span class="ico-circle"><i class="ion-ios-book"></i></span>
+              </div>
+              <div class="counter-num">
+                <p class="counter"><%= jc %></p>
+                <span class="counter-text">Jumlah Publikasi</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-3 col-lg-3">
+            <div class="counter-box pt-3 pt-md-0">
+              <div class="counter-ico">
+                <span class="ico-circle"><i class="ion-ios-copy"></i></span>
+              </div>
+              <div class="counter-num">
+                <p class="counter">11</p>
+                <span class="counter-text">Kolaborasi Riset </span>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-3 col-lg-3">
+            <div class="counter-box pt-4 pt-md-0">
+              <div class="counter-ico">
+                <span class="ico-circle"><i class="ion-android-apps"></i></span>
+              </div>
+              <div class="counter-num">
+                <p class="counter">18</p>
+                <span class="counter-text">Program</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-3 col-lg-3">
+            <div class="counter-box pt-3 pt-md-0">
+              <div class="counter-ico">
+                <span class="ico-circle"><i class="ion-ios-people"></i></span>
+              </div>
+              <div class="counter-num">
+                <p class="counter"><%= vc %></p>
+                <span class="counter-text">Viewers</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--/ Section Testimonials Star /-->
+    <div class="testimonials paralax-mf bg-image">
+      <div class="overlay-mf"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div id="testimonial-mf" class="owl-carousel owl-theme">
+              <div class="testimonial-box">
+                <div class="author-test">
+                  <img src="/img/testimoni/AKBPKurniaWijaya.jpg" alt="" class="rounded-circle b-shadow-a">
+                  <span class="author">AKBP KURNIA WIJAYA, S.H., M.H.</span>
+                  <span class="author-title">Kasubdit Indentifikasi Dit Idensos Densus 88 AT POLRI</span>
+                </div>
+                <br>
+                <div class="content-test">
+                  <p class="description lead">It was very beneficial for us especially for terrorism convicts or their families. As a result of DASPR activity, terrorism convicts and their families received more attention. Hopefully, DASPR activity with convicts, ex-convicts, and their family can continue so they don’t go back to the radical group</p>
+                  <span class="comit"><i class="fa fa-quote-right"></i></span>
+                </div>
+              </div>
+              <div class="testimonial-box">
+                <div class="author-test">
+                  <img src="/img/testimoni/ProfDrJamhari.jpg" alt="" class="rounded-circle b-shadow-a">
+                  <span class="author">PROF. DR. JAMHARI MAKRUF, M.A.</span>
+                  <span class="author-title">Dewan Direktur PPIM UIN Syarif Hidayatullah Jakarta</span>
+                </div>
+                <br>
+                <div class="content-test">
+                  <p class="description lead">
+                    DASPR had organized important deradicalization program in Indonesia. DASPR must spread the program result to the community. Congratulation for the launch of the website so that the program can benefit the community.
+                  </p>
+                  <span class="comit"><i class="fa fa-quote-right"></i></span>
+                </div>
+              </div>
+              <div class="testimonial-box">
+                <div class="author-test">
+                  <img src="/img/testimoni/SitiNapsiahA.jpeg" alt="" class="rounded-circle b-shadow-a">
+                  <span class="author">DR. SITI NAPSIYAH ARIEFUZZAMAN, S.AG.MSW.</span>
+                  <span class="author-title">Dosen FIDKOM UIN Syarif Hidayatullah Jakarta</span>
+                </div>
+                <br>
+                <div class="content-test">
+                  <p class="description lead">
+                    I’m grateful, lucky, and honored to become part of one of DASPR UI activities, which is visiting the family of terrorism convicts as part of research and social empowerment. In my opinion, the presence of DASPR in a community afflicted with increasingly complex psychosocial problems must be appreciated. Especially since DASPR has the courage to sincerely provide assistance to the ummahat, a name for the wives of terrorism convict, who are a group or a community that has been socially stigmatized. The presence of DASPR brings positive impact in increasing the quality of their relationship between the families and their community. Hopefully, DASPR will continue to exist in the community with other humanitarian/social programs.
+                  </p>
+                  <span class="comit"><i class="fa fa-quote-right"></i></span>
+                </div>
+              </div>
+              <div class="testimonial-box">
+                <div class="author-test">
+                  <img src="/img/testimoni/BahrulWijaksanaSFCG.jpg" alt="" class="rounded-circle b-shadow-a">
+                  <span class="author">BAHRUL WIJAKSANA</span>
+                  <span class="author-title">Country Representative/Senior Manager Search for Common Ground (SFCG)</span>
+                </div>
+                <br>
+                <div class="content-test">
+                  <p class="description lead">
+                    Some time ago, the Search for Common Ground organization that I lead had a chance to collaborate with DASPR DAYA MAKARA to organize activities related to curriculum development, training of trainers and Conflict Management Training-Life Management Training (CMT-LMT) if several prisons. I found that the DASPR DAYA MAKARA staff are professional in their field and deserve to be the center of excellence in the development of applied psychology in Indonesia and even Asia. I really enjoy working with them because they are efficient and best results oriented. DASPR-DAYA MAKARA has a big opportunity to be the leading institution in Asia and even the world, especially in the field of rehabilitation of radicalized individuals.
+                  </p>
+                  <span class="comit"><i class="fa fa-quote-right"></i></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--/ Section Contact-Footer Star /-->
+    <%- include('en-footer'); -%>
+    <script>
+      $('.news-items *').removeAttr('contenteditable');
+    </script>
+    <!--/ Section Contact-footer End /-->
+  </body>
+</html>

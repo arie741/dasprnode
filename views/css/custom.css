@@ -67,7 +67,7 @@ section.footer-paralax .socials {
 	float:right;
 }
 
-.about-visi li, .about-misi li, #about-fungsitujuan li {
+.about-visi li, .about-misi li, .about-fungsi li, .about-tujuan li {
 	text-align:justify;
 	margin-bottom:10px;
 }
@@ -77,14 +77,15 @@ section.footer-paralax .socials {
 }
 
 #about-visimisi {
+  /*background-image: url(../img/aboutus2.jpg);*/
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center center;
 	border:1px solid rgba(0,0,0,.125);
 	background-color:rgba(0,0,0,.03);
 	padding:20px 0 40px 0;
 	margin-bottom:30px;
-	background-repeat: no-repeat;
-	background-attachment: fixed;
-	background-size: cover;
-	background-position: center center;
 }
 
 #about-visimisi::after {
@@ -99,8 +100,44 @@ section.footer-paralax .socials {
     margin-bottom: -59px;
 }
 
+.about-visi li, .about-misi li{
+  font-weight: 650;
+  color: #1e1e1e;
+  z-index:1;
+}
+
 .about-fungsi *{
 	float:right;
+}
+
+.about-tujuan {
+  background-image: url(../img/aboutus2.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center center;
+}
+
+.about-fungsi {
+  background-image: url(../img/aboutus3.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center center;
+}
+
+.about-penelitian{
+  background-image: url(../img/aboutus4.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center center;
+}
+
+.about-fungsitujuan-pane {
+  background-color:#fff;
+  margin:10px 10px 10px 10px;
+  border-radius: 4px;
 }
 
 .program-item h3 {
@@ -227,10 +264,26 @@ section#timkami .socials ul {
 	margin-bottom:30px;
 }
 
+.header-lang {
+  position:fixed;
+  top:2px;
+  right:73px;
+}
+
+.header-lang a {
+  text-transform: uppercase;
+  font-weight: 600;
+  color:#EDB458;
+}
+
+.header-lang a img{
+  margin-right:3px;
+}
+
 /* library */
 #sejarah {
 	margin-bottom:30px;
-	background-image:url(../img/overlay-bg.jpg);
+	background-image:url(../img/aboutus1.jpg);
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 	background-size: cover;

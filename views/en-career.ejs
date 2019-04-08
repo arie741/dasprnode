@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('head'); -%>
+  </head>
+  <body id="page-top">
+    <!--/ Nav Star /-->
+    <%- include('en-header'); -%>
+    <!--/ Nav End /-->
+    <!--/ Intro Skew Star /-->
+    <div class="intro intro-single route bg-image" style="background-image: url(/img/slide/adults-analysis-brainstorming-1661004.jpg)">
+      <div class="overlay-mf"></div>
+      <div class="intro-content display-table">
+        <div class="table-cell">
+          <div class="container">
+            <h2 class="intro-title mb-4">Career</h2>
+            <ol class="breadcrumb d-flex justify-content-center">
+              <li class="breadcrumb-item">
+                <a href="/en/">Home</a>
+              </li>
+              <li class="breadcrumb-item active">Career</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--/ Intro Skew End /-->
+    <div class="container">
+      
+      <div class="row">
+        <div class="col-12">
+          <img width="100%" src="/img/career.png" alt="">
+        </div>
+      </div>
+
+    </div>
+    <br>
+    <br>
+    <!--/ Section Contact-Footer Star /-->
+    <%- include('en-footer'); -%>
+    <!--/ Section Contact-footer End /-->
+    <script>
+      $("#header-home").removeClass("active");
+      $("#header-career").addClass("active");
+    </script>
+  </body>
+</html>

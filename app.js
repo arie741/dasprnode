@@ -103,7 +103,7 @@ function deleteFile (fname){
 
 //Routes
 
-//Clients Routes
+//Clients Routes (Bahasa)
 app.get('/', function(req, res, next){	
 	var eventcontents = []; 
 	var journalcount = 0;
@@ -227,6 +227,92 @@ app.post('/tk-search-request', function(req,res,next){
 
 app.get('/career', function(req,res,next){
 	res.render('career', {title: 'Career'})
+})
+
+//Client Routes (English)
+
+app.get('/en/', function(req, res, next){	
+	var eventcontents = []; 
+	var journalcount = 0;
+	var viewscount = 0;
+	db.query(db.findEvents, [], (err, resp) => {
+		if (err) {
+			return next(err)
+		}
+		eventcontents = resp.rows;
+	})		
+	db.query(db.findSliderImages, [], (err, resp) => {
+		if (err) {
+		    return next(err)
+		}
+		var arr = resp.rows;
+		var firstel = arr[0];
+		arr.shift();
+		db.query(db.addViewsCount, [], (err, resp) => {
+			if (err) {
+				return next(err)
+			}
+			db.query(db.getViewsCount, [], (err, respon) => {
+			    if (err) {
+			      return next(err)
+			    }
+			    db.query(db.countPublications, [], (err, respo) => {
+				    if (err) {
+				      return next(err)
+				    }
+				    var jarr = respo.rows;
+				    journalcount = jarr[0].count;
+				    res.render('en-home', { title: 'Home', sliderimages: arr, firstslider: firstel, newscontents: eventcontents, jc: journalcount, vc: viewscount});
+			  	})  	
+			    var vcarr = respon.rows;
+			    viewscount = vcarr[0].count;			    
+		  	})
+		})	  			
+  	})	
+})
+
+app.get('/en/aboutus', function(req, res){
+	res.render('en-about', { title: 'About Us'});
+})
+
+app.get('/en/collabp', function(req, res){
+	res.render('en-collabp', { title: 'Collaboration & Partner'});
+})
+
+app.get('/en/publications', function(req, res){
+	res.redirect('/en/publications/1');
+})
+
+app.get('/en/publications/:page', function(req,res,next){
+	var pagLength = 0;
+	db.query(db.countPublications, [], (err, resp) => {
+	    if (err) {
+	      return next(err)
+	    }
+	    var arr = resp.rows;
+	    pagLength = Math.ceil(arr[0].count / 10);	
+  	})
+	db.query(db.getPublications, [(req.params.page * 10), ((req.params.page - 1) * 10)], (err, resp) => {
+    if (err) {
+      	return next(err)
+    }
+    	res.render('en-publications', { title: 'Publications', publications: resp.rows, pages: pagLength, currentpage: req.params.page });
+	})	
+})
+
+app.post('/en/publication-search-request', function(req, res, next){
+	var pagLength = 0;
+
+	db.query(db.searchPublication, [req.body.pSearch], (err, resp) => {
+	    if (err) {
+	      return next(err)
+	    }
+	    res.render('en-publications', { title: 'Publications', publications: resp.rows, pages: pagLength, currentpage: 1 });
+  	})
+})
+
+app.get('/en/career', function(req,res,next){
+	res.render('en-career', {title: 'Career'})
 })
 
 //Clients ends
