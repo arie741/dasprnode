@@ -311,6 +311,24 @@ app.post('/en/publication-search-request', function(req, res, next){
   	})
 })
 
+app.get('/en/news-and-events/:uuid', function(req, res, next){
+	db.query(db.findEvent, [req.params.uuid], (err, resp) => {
+		if (err) {
+			return next(err)
+		}
+		var arr = resp.rows[0];
+		db.query(db.findEvents, [], (err, eresp) => {
+			if (err) {
+				return next(err)
+			}
+			var lcontent = arr.contents;
+			var links = lcontent.split(",");
+			res.render('en-news-and-events', { img:arr.img, etype: arr.etype ,title : arr.title, contents: arr.encontents, etitle: arr.entitle, author:arr.author, edate:arr.edate, elinks: links[Math.floor(Math.random() * 3)] ,recents: eresp.rows});			
+		})				
+	})	
+	
+})
+
 app.get('/en/career', function(req,res,next){
 	res.render('en-career', {title: 'Career'})
 })

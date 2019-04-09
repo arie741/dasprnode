@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('head'); -%>
+    <!-- Include Quill stylesheet -->
+    <link href="/css/quill.snow.css" rel="stylesheet">
+  </head>
+  <body id="page-top">
+    <!--/ Nav Star /-->
+    <%- include('header'); -%>
+    <!--/ Nav End /-->
+    <!--/ Intro Skew Star /-->
+    <div class="intro intro-single route bg-image" style="background-image: url(/img/slide/adults-analysis-brainstorming-1661004.jpg)">
+      <div class="overlay-mf"></div>
+      <div class="intro-content display-table">
+        <div class="table-cell">
+          <div class="container">
+            <h2 class="intro-title mb-4">News And Events</h2>
+            <ol class="breadcrumb d-flex justify-content-center">
+              <li class="breadcrumb-item">
+                <a href="/">Home</a>
+              </li>
+              <li class="breadcrumb-item active">News And Events</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--/ Intro Skew End /-->
+    <!--/ Section Blog-Single Star /-->
+    <section class="blog-wrapper sect-pt4" id="blog">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8">
+            <div class="post-box">
+              <div class="post-thumb">
+                <img src="/public/uploads/<%= img %>" class="img-fluid" alt="">
+              </div>
+              <div class="post-meta">
+                <h1 class="article-title"><%= etitle %></h1>
+                <ul>
+                  <li>
+                    <span class="ion-ios-person"></span>
+                    <a href="#"><%= author %></a>
+                  </li>
+                  <li>
+                    <span class="ion-ios-clock-outline"></span>
+                    <a href="#"><%= edate %></a>
+                  </li>
+                </ul>
+              </div>              
+              <div class="article-content">
+                <% if (etype == "questionaire") { %>
+                <a class="btn btn-info" href="<%= elinks %>">Click here to fill the questionaire</a>
+                <% } else { %>
+                <div class="ql-snow">
+                  <%- contents -%>
+                </div>
+                <% } %>                
+              </div>
+            </div>                        
+          </div>
+          <div class="col-md-4">
+            <div class="widget-sidebar sidebar-search">
+              <h5 class="sidebar-title">Search</h5>
+              <div class="sidebar-content">
+                <form>
+                  <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search for..." aria-label="Search for...">
+                    <span class="input-group-btn">
+                      <button class="btn btn-secondary btn-search" type="button">
+                      <span class="ion-android-search"></span>
+                      </button>
+                    </span>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <div class="widget-sidebar">
+              <h5 class="sidebar-title">Recent Post</h5>
+              <div class="sidebar-content">
+                <ul class="list-sidebar">
+                  <% recents.forEach(function(recent){%>
+                  <li>
+                    <a href="/public/uploads/<%= recent.uuid %>"><%= recent.title %></a>
+                  </li>
+                  <%});%>
+                </ul>
+              </div>
+            </div> 
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--/ Section Blog-Single End /-->
+    
+    <!--/ Section Contact-Footer Star /-->
+    <%- include('footer'); -%>
+    <!--/ Section Contact-footer End /-->
+  </body>
+</html>
