@@ -73,7 +73,31 @@
               <div id="editor">
                 <p>Hello World!</p>
               </div>
-            </div>            
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <h3>English Version</h3>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-2 col-sm-12">
+              Title
+            </div>
+            <div class="col-lg-10 col-sm-12">
+              : <input type="text" placeholder="Title" name="eneTitle" required>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12" id="ne-entextarea">
+              <!-- Create the toolbar container -->
+              <div id="toolbar">
+              </div>
+              <!-- Create the editor container -->
+              <div id="editor">
+                <p>Hello World!</p>
+              </div>
+            </div>
           </div>
           <div class="row"  id="ne-questionaire">
             <div class="col-lg-2 col-sm-12">
@@ -81,16 +105,17 @@
             </div>
             <div class="col-lg-10 col-sm-12" id="ne-questionaire-inputs">
               : <input type="text" placeholder="Link 1" name="eQues1">
-              <br>  
-              : <input type="text" placeholder="Link 2" name="eQues2">    
-              <br>  
-              : <input type="text" placeholder="Link 3" name="eQues3">         
-            </div>    
+              <br>
+              : <input type="text" placeholder="Link 2" name="eQues2">
+              <br>
+              : <input type="text" placeholder="Link 3" name="eQues3">
+            </div>
           </div>
-        </div>        
+        </div>
         <%= typeof ermes != 'undefined' ? ermes : '' %>
         <input type="submit" class="btn btn-prime" value="Submit" id="ne-input-submit">
         <input type="hidden" id="input-editor" value="" name="eContent">
+        <input type="hidden" id="eninput-editor" value="" name="eneContent">
       </form>
     </div>
     

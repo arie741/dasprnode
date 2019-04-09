@@ -531,12 +531,13 @@ app.post('/add-events-request', function(req, res, next){
 				} else {
 					var uuid = require('uuid/v1');
 					var bodyContent = req.body.eContent;
+					var enBodyContent = req.body.eneContent;
 
 					if(req.body.eType == "questionaire"){
 						bodyContent = req.body.eQues1 + "," + req.body.eQues2 + "," + req.body.eQues3;
 					} 
 
-					db.query(db.addEvent, [`${req.file.filename}`, req.body.eTitle, req.body.eAuthor, now.toLocaleDateString(), bodyContent, req.body.eType, uuid()], (err, resp) => {
+					db.query(db.addEvent, [`${req.file.filename}`, req.body.eTitle, req.body.eAuthor, now.toLocaleDateString(), bodyContent, req.body.eType, req.body.eneTitle, enBodyContent, uuid()], (err, resp) => {
 				    	if (err) {
 				    	  	return next(err)
 				    	}				    

@@ -14,32 +14,41 @@ var toolbarOptions = [
 ['clean']                                         // remove formatting button
 ];
 
-var editor = new Quill('#editor', {
+var editor = new Quill('#ne-textarea #editor', {
 modules: { toolbar: toolbarOptions },
 theme: 'snow'
 });
 
-function contentChange(econtent){
+var editor = new Quill('#ne-entextarea #editor', {
+modules: { toolbar: toolbarOptions },
+theme: 'snow'
+});
+
+function contentChange(econtent, enecontent){
     $('#input-editor').val(econtent);
+    $('#eninput-editor').val(enecontent);
 };
 
-$('#ne-input-submit').attr('onclick', 'contentChange($("#editor").html())');
+$('#ne-input-submit').attr('onclick', 'contentChange($("#ne-textarea #editor").html(), $("#ne-entextarea #editor").html())');
 $('#ne-questionaire').attr('style', 'display:none');
 
 function changeType(opval){
     switch (opval) {
         case "events":
         $('#ne-textarea').attr('style', 'display:block');
-        $('#ne-input-submit').attr('onclick', 'contentChange($("#editor").html())');
+        $('#ne-entextarea').attr('style', 'display:block');
+        $('#ne-input-submit').attr('onclick', 'contentChange($("#ne-textarea #editor").html(), $("#ne-entextarea #editor").html())');
         $('#ne-questionaire').attr('style', 'display:none');
         break;
         case "news":
         $('#ne-textarea').attr('style', 'display:block');
-        $('#ne-input-submit').attr('onclick', 'contentChange($("#editor").html())');
+        $('#ne-entextarea').attr('style', 'display:block');
+        $('#ne-input-submit').attr('onclick', 'contentChange($("#ne-textarea #editor").html(), $("#ne-entextarea #editor").html())');
         $('#ne-questionaire').attr('style', 'display:none');
         break;
         case "questionaire":
         $('#ne-textarea').attr('style', 'display:none');
+        $('#ne-entextarea').attr('style', 'display:none');
         $('#ne-input-submit').attr('onclick', 'contentChange(equestionaire)');
         $('#ne-questionaire').attr('style', 'display:flex');
     }
