@@ -60,6 +60,30 @@
               </div>
             </div>
           </div>
+          <div class="row">
+            <div class="col-12">
+              <h3>English Version</h3>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-2 col-sm-12">
+              Title
+            </div>
+            <div class="col-lg-10 col-sm-12">
+              : <input type="text" placeholder="Title" name="eneTitle" value="<%= econtent.entitle %>" required>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12" id="ne-entextarea">
+              <!-- Create the toolbar container -->
+              <div id="toolbar">
+              </div>
+              <!-- Create the editor container -->
+              <div id="editor">
+                <%- econtent.encontents -%>
+              </div>
+            </div>
+          </div>
           <% if (econtent.etype == "questionaire") { %>
             <div class="row"  id="ne-questionaire">
             <div class="col-lg-2 col-sm-12">
@@ -92,9 +116,10 @@
         
         <%= typeof ermes != 'undefined' ? ermes : '' %>
         <br>
-        <input onclick="contentChange()" type="submit" class="btn btn-prime" value="Submit">
+        <input id="ne-input-submit" onclick="contentChange()" type="submit" class="btn btn-prime" value="Submit">
         <input type="hidden" id="input-editor" value="" name="eContent">
-        <input type="hidden" id="input-editor" value="<%= econtent.img %>" name="eOldImg">
+        <input type="hidden" id="eninput-editor" value="" name="eneContent">
+        <input type="hidden" value="<%= econtent.img %>" name="eOldImg">
       </form>
       <br>
       <br>

@@ -582,13 +582,18 @@ app.post('/edit-events-request/:uuid', function(req, res, next){
 		}).single('eImage');
 
 		EditEventImage(req, res, (err) => {
+			var bodyContent = req.body.eContent;
+			var enBodyContent = req.body.eneContent;
+			if(req.body.eType == "questionaire"){
+				bodyContent = req.body.eQues1 + "," + req.body.eQues2 + "," + req.body.eQues3;
+			}
 			if(err){
 				res.render('add-events', { ermes: err})
 			} else {
 				var now = new Date();	
 				if(req.file == undefined){
-					var uuid = require('uuid/v1');									
-					db.query(db.editEvent, [req.body.eOldImg, req.body.eTitle, req.body.eAuthor,  now.toLocaleDateString(), req.body.eContent, req.body.eType, req.params.uuid], (err, resp) => {
+					var uuid = require('uuid/v1');					 									
+					db.query(db.editEvent, [req.body.eOldImg, req.body.eTitle, req.body.eAuthor,  now.toLocaleDateString(), bodyContent, req.body.eType, req.body.eneTitle, enBodyContent, req.params.uuid], (err, resp) => {
 					    if (err) {
 					      	return next(err)
 					    }
@@ -597,7 +602,7 @@ app.post('/edit-events-request/:uuid', function(req, res, next){
 				} else {
 					var uuid = require('uuid/v1');
 					deleteFile("views/public/uploads/" + req.body.eOldImg);
-					db.query(db.editEvent, [`${req.file.filename}`, req.body.eTitle, req.body.eAuthor, now.toLocaleDateString(), req.body.eContent, req.body.eType, req.params.uuid], (err, resp) => {
+					db.query(db.editEvent, [`${req.file.filename}`, req.body.eTitle, req.body.eAuthor, now.toLocaleDateString(), bodyContent, req.body.eType, req.body.eneTitle, enBodyContent, req.params.uuid], (err, resp) => {
 				    	if (err) {
 				    	  	return next(err)
 				    	}				    
