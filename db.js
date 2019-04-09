@@ -25,7 +25,7 @@ const findEvent = 'select * from newscontents where uuid=$1'
 const editEvent = "update newscontents set img = $1, title = $2, author = $3, edate = $4, contents = $5, etype = $6, entitle = $7, encontents = $8 where uuid = $9"
 const deleteEvent = 'delete from newscontents where uuid = $1'
 const searchEvent = "SELECT * FROM newscontents WHERE lower(title) LIKE lower('%' || $1 || '%')"
-const addTim = 'insert into timkami (foto, nama, jabatan, keterangan, overview, riset, publikasi, supervisi, facebook, instagram, twitter, youtube, urutan, uuid) values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14)'
+const addTim = 'insert into timkami (foto, nama, jabatan, keterangan, overview, riset, publikasi, supervisi, enjabatan, enketerangan, enoverview, enriset, enpublikasi, ensupervisi, facebook, instagram, twitter, youtube, urutan, uuid) values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20)'
 const findTimKami = 'select * from timkami order by urutan ASC'
 const findTim = 'select * from timkami where uuid=$1'
 const editTimKami = 'update timkami set foto = $1, nama = $2, jabatan = $3, keterangan = $4, overview = $5, riset = $6, publikasi = $7, supervisi = $8, facebook = $9, instagram = $10, twitter = $11, youtube = $12, urutan = $13 where uuid = $14'

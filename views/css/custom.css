@@ -239,7 +239,8 @@ section#timkami .socials ul {
 	margin-bottom:30px !important;
 }
 
-#keterangan-editor, #overview-editor, #riset-editor, #publikasi-editor, #supervisi-editor {
+#keterangan-editor, #overview-editor, #riset-editor, #publikasi-editor, #supervisi-editor, 
+#enketerangan-editor, #enoverview-editor, #enriset-editor, #enpublikasi-editor, #ensupervisi-editor {
 	height:150px !important;
 }
 

@@ -698,7 +698,7 @@ app.post('/add-tim-request', function(req, res, next){
 					res.render('add-tim-kami', { ermes: 'Must include an image!'})
 				} else {
 					var uuid = require('uuid/v1');
-					db.query(db.addTim, [`${req.file.filename}`, req.body.tNama, req.body.tJabatan, req.body.tKeterangan, req.body.tOverview, req.body.tRiset, req.body.tPublikasi, req.body.tSupervisi, req.body.tFacebook, req.body.tInstagram, req.body.tTwitter, req.body.tYoutube, req.body.tUrutan, uuid()], (err, resp) => {
+					db.query(db.addTim, [`${req.file.filename}`, req.body.tNama, req.body.tJabatan, req.body.tKeterangan, req.body.tOverview, req.body.tRiset, req.body.tPublikasi, req.body.tSupervisi, req.body.entJabatan, req.body.entKeterangan, req.body.entOverview, req.body.entRiset, req.body.entPublikasi, req.body.entSupervisi, req.body.tFacebook, req.body.tInstagram, req.body.tTwitter, req.body.tYoutube, req.body.tUrutan, uuid()], (err, resp) => {
 					    if (err) {
 					      return next(err)
 					    }
