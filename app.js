@@ -329,6 +329,29 @@ app.get('/en/news-and-events/:uuid', function(req, res, next){
 	
 })
 
+app.get('/en/tim-kami', function(req,res,next){
+	db.query(db.findTimKami, [], (err, resp) => {
+	    if (err) {
+	      return next(err)
+	    }
+	    var arr = resp.rows;
+	    arrjab= [];
+	    arr.forEach(function(aj){
+	    	arrjab.push(aj.enjabatan);
+	    });
+	   	res.render('en-tim-kami', {title: 'Our Team', timkami: arr, timjabatan: arrjab});
+  	})		
+})
+
+app.post('/en/tk-search-request', function(req,res,next){
+	db.query(db.searchTimKami, [req.body.pSearch], (err, resp) => {
+		if (err) {
+		  return next(err)
+		}
+		res.render('en-tim-kami', { title: 'Our Team', timkami: resp.rows});
+  	})
+})
+
 app.get('/en/career', function(req,res,next){
 	res.render('en-career', {title: 'Career'})
 })
