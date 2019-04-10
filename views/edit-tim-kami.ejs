@@ -30,83 +30,183 @@
               </div>
             </div>
             <div class="row">
-              <div class="col-lg-2 col-sm-12">
-                Jabatan
-              </div>
-              <div class="col-lg-10 col-sm-12">
-                : <input type="text" placeholder="Jabatan" name="tJabatan" value="<%= tim.jabatan %>" required>
+              <div class="col-12">
+                <nav>
+                  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                    <a class="nav-item nav-link active" id="nav-bahasa-tab" data-toggle="tab" href="#nav-bahasa" role="tab" aria-controls="nav-bahasa" aria-selected="true">Bahasa</a>
+                    <a class="nav-item nav-link" id="nav-english-tab" data-toggle="tab" href="#nav-english" role="tab" aria-controls="nav-english" aria-selected="false">English</a>
+                  </div>
+                </nav>
+                <br>
+                <div class="tab-content" id="nav-tabContent">
+                  <div class="tab-pane fade show active" id="nav-bahasa" role="tabpanel" aria-labelledby="nav-bahasa-tab">
+                    <div class="row">
+                      <div class="col-lg-2 col-sm-12">
+                        Jabatan
+                      </div>
+                      <div class="col-lg-10 col-sm-12">
+                        : <input type="text" placeholder="Jabatan" name="tJabatan" value="<%= tim.jabatan %>" required>
+                      </div>
+                    </div>
+                    <br>
+                    <div class="row tk-textarea">
+                      <div class="col-lg-2 col-sm-12">
+                        Keterangan
+                      </div>
+                      <div class="col-lg-10 col-sm-12" id="tk-keterangan">
+                        <!-- Create the toolbar container -->
+                        <div id="toolbar">
+                        </div>
+                        <!-- Create the editor container -->
+                        <div id="keterangan-editor">
+                          <%- tim.keterangan -%>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row tk-textarea">
+                      <div class="col-lg-2 col-sm-12">
+                        Overview
+                      </div>
+                      <div class="col-lg-10 col-sm-12" id="tk-overview">
+                        <!-- Create the toolbar container -->
+                        <div id="toolbar">
+                        </div>
+                        <!-- Create the editor container -->
+                        <div id="overview-editor">
+                          <%- tim.overview -%>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row tk-textarea">
+                      <div class="col-lg-2 col-sm-12">
+                        Riset
+                      </div>
+                      <div class="col-lg-10 col-sm-12" id="tk-riset">
+                        <!-- Create the toolbar container -->
+                        <div id="toolbar">
+                        </div>
+                        <!-- Create the editor container -->
+                        <div id="riset-editor">
+                          <%- tim.riset -%>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row tk-textarea">
+                      <div class="col-lg-2 col-sm-12">
+                        Publikasi
+                      </div>
+                      <div class="col-lg-10 col-sm-12" id="tk-publikasi">
+                        <!-- Create the toolbar container -->
+                        <div id="toolbar">
+                        </div>
+                        <!-- Create the editor container -->
+                        <div id="publikasi-editor">
+                          <%- tim.publikasi -%>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row tk-textarea">
+                      <div class="col-lg-2 col-sm-12">
+                        Supervisi
+                      </div>
+                      <div class="col-lg-10 col-sm-12" id="tk-supervisi">
+                        <!-- Create the toolbar container -->
+                        <div id="toolbar">
+                        </div>
+                        <!-- Create the editor container -->
+                        <div id="supervisi-editor">
+                          <%- tim.supervisi -%>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="tab-pane fade" id="nav-english" role="tabpanel" aria-labelledby="nav-english-tab">
+                    
+                    <div class="row">
+                      <div class="col-lg-2 col-sm-12">
+                        Jabatan
+                      </div>
+                      <div class="col-lg-10 col-sm-12">
+                        : <input type="text" placeholder="Jabatan" name="entJabatan" value="<%= tim.enjabatan %>" required>
+                      </div>
+                    </div>
+                    <br>
+                    <div class="row tk-textarea">
+                      <div class="col-lg-2 col-sm-12">
+                        Keterangan
+                      </div>
+                      <div class="col-lg-10 col-sm-12" id="entk-keterangan">
+                        <!-- Create the toolbar container -->
+                        <div id="toolbar">
+                        </div>
+                        <!-- Create the editor container -->
+                        <div id="enketerangan-editor">
+                          <%- tim.enketerangan -%>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row tk-textarea">
+                      <div class="col-lg-2 col-sm-12">
+                        Overview
+                      </div>
+                      <div class="col-lg-10 col-sm-12" id="entk-overview">
+                        <!-- Create the toolbar container -->
+                        <div id="toolbar">
+                        </div>
+                        <!-- Create the editor container -->
+                        <div id="enoverview-editor">
+                          <%- tim.enoverview -%>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row tk-textarea">
+                      <div class="col-lg-2 col-sm-12">
+                        Riset
+                      </div>
+                      <div class="col-lg-10 col-sm-12" id="entk-riset">
+                        <!-- Create the toolbar container -->
+                        <div id="toolbar">
+                        </div>
+                        <!-- Create the editor container -->
+                        <div id="enriset-editor">
+                          <%- tim.enriset -%>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row tk-textarea">
+                      <div class="col-lg-2 col-sm-12">
+                        Publikasi
+                      </div>
+                      <div class="col-lg-10 col-sm-12" id="entk-publikasi">
+                        <!-- Create the toolbar container -->
+                        <div id="toolbar">
+                        </div>
+                        <!-- Create the editor container -->
+                        <div id="enpublikasi-editor">
+                          <%- tim.enpublikasi -%>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row tk-textarea">
+                      <div class="col-lg-2 col-sm-12">
+                        Supervisi
+                      </div>
+                      <div class="col-lg-10 col-sm-12" id="entk-supervisi">
+                        <!-- Create the toolbar container -->
+                        <div id="toolbar">
+                        </div>
+                        <!-- Create the editor container -->
+                        <div id="ensupervisi-editor">
+                          <%- tim.ensupervisi -%>
+                        </div>
+                      </div>
+                    </div>
+                    
+                  </div>
+                </div>
               </div>
             </div>
-            <div class="row tk-textarea">
-              <div class="col-lg-2 col-sm-12">
-                Keterangan
-              </div>
-              <div class="col-lg-10 col-sm-12" id="tk-keterangan">
-                <!-- Create the toolbar container -->
-                <div id="toolbar">
-                </div>
-                <!-- Create the editor container -->
-                <div id="keterangan-editor">
-                  <%- tim.keterangan -%>
-                </div>
-              </div>
-            </div>
-            <div class="row tk-textarea">
-              <div class="col-lg-2 col-sm-12">
-                Overview
-              </div>
-              <div class="col-lg-10 col-sm-12" id="tk-overview">
-                <!-- Create the toolbar container -->
-                <div id="toolbar">
-                </div>
-                <!-- Create the editor container -->
-                <div id="overview-editor">
-                  <%- tim.overview -%>
-                </div>
-              </div>
-            </div>
-            <div class="row tk-textarea">
-              <div class="col-lg-2 col-sm-12">
-                Riset
-              </div>
-              <div class="col-lg-10 col-sm-12" id="tk-riset">
-                <!-- Create the toolbar container -->
-                <div id="toolbar">
-                </div>
-                <!-- Create the editor container -->
-                <div id="riset-editor">
-                  <%- tim.riset -%>
-                </div>
-              </div>
-            </div>
-            <div class="row tk-textarea">
-              <div class="col-lg-2 col-sm-12">
-                Publikasi
-              </div>
-              <div class="col-lg-10 col-sm-12" id="tk-publikasi">
-                <!-- Create the toolbar container -->
-                <div id="toolbar">
-                </div>
-                <!-- Create the editor container -->
-                <div id="publikasi-editor">
-                  <%- tim.publikasi -%>
-                </div>
-              </div>
-            </div>
-            <div class="row tk-textarea">
-              <div class="col-lg-2 col-sm-12">
-                Supervisi
-              </div>
-              <div class="col-lg-10 col-sm-12" id="tk-supervisi">
-                <!-- Create the toolbar container -->
-                <div id="toolbar">
-                </div>
-                <!-- Create the editor container -->
-                <div id="supervisi-editor">
-                  <%- tim.supervisi -%>
-                </div>
-              </div>
-            </div>
+            
             <div class="row">
               <div class="col-lg-2 col-sm-12">
                 Facebook

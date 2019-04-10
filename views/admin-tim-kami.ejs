@@ -18,37 +18,87 @@
               <a class="btn btn-prime" href="/admin-add-tim">Tambahkan Tim</a>
               <br>
               <br>
+              
               <section id="timkami" class="admin-timkami">
                 <div class="row">
-                  <% timkami.forEach(function(tim){%>
-                  <div class="col-lg-4">
-                    <div class="card" style="width: 18rem;">
-                      <a href="#" data-toggle="modal" data-target="#timModal<%= tim.urutan %>">
-                        <img src="/public/uploads/<%= tim.foto %>" class="card-img-top" alt="">
-                      </a>
-                      <div class="card-body">
-                        <h5 class="card-title text-center"><a href="#"  data-toggle="modal" data-target="#timModal<%= tim.urutan %>"><%= tim.nama %></a></h5>
-                        <p class="card-text text-center"><a href="#"  data-toggle="modal" data-target="#timModal<%= tim.urutan %>"><%= tim.jabatan %></a></p>
-                        <div class="socials">
-                          <ul>
-                            <li><a href="<%= tim.facebook %>"><span class="ico-circle center"><i class="ion-social-facebook"></i></span></a></li>
-                            <li><a href="<%= tim.instagram %>"><span class="ico-circle center"><i class="ion-social-instagram"></i></span></a></li>
-                            <li><a href="<%= tim.twitter %>"><span class="ico-circle center"><i class="ion-social-twitter"></i></span></a></li>
-                            <li><a href="<%= tim.youtube %>"><span class="ico-circle center"><i class="ion-social-youtube"></i></span></a></li>
-                          </ul>
+                  <div class="col-12">
+                    <nav>
+                      <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                        <a class="nav-item nav-link active" id="nav-bahasa-tab" data-toggle="tab" href="#nav-bahasa" role="tab" aria-controls="nav-bahasa" aria-selected="true">Bahasa</a>
+                        <a class="nav-item nav-link" id="nav-english-tab" data-toggle="tab" href="#nav-english" role="tab" aria-controls="nav-english" aria-selected="false">English</a>
+                      </div>
+                    </nav>
+                    <div class="tab-content" id="nav-tabContent">
+                      <div class="tab-pane fade show active" id="nav-bahasa" role="tabpanel" aria-labelledby="nav-bahasa-tab">
+                        <!--TAB BAHASA-->
+                        <div class="row">
+                          <% timkami.forEach(function(tim){%>
+                          <div class="col-lg-4">
+                            <div class="card" style="width: 18rem;">
+                              <a href="#" data-toggle="modal" data-target="#timModal<%= tim.urutan %>">
+                                <img src="/public/uploads/<%= tim.foto %>" class="card-img-top" alt="">
+                              </a>
+                              <div class="card-body">
+                                <h5 class="card-title text-center"><a href="#"  data-toggle="modal" data-target="#timModal<%= tim.urutan %>"><%= tim.nama %></a></h5>
+                                <p class="card-text text-center"><a href="#"  data-toggle="modal" data-target="#timModal<%= tim.urutan %>"><%= tim.jabatan %></a></p>
+                                <div class="socials">
+                                  <ul>
+                                    <li><a href="<%= tim.facebook %>"><span class="ico-circle center"><i class="ion-social-facebook"></i></span></a></li>
+                                    <li><a href="<%= tim.instagram %>"><span class="ico-circle center"><i class="ion-social-instagram"></i></span></a></li>
+                                    <li><a href="<%= tim.twitter %>"><span class="ico-circle center"><i class="ion-social-twitter"></i></span></a></li>
+                                    <li><a href="<%= tim.youtube %>"><span class="ico-circle center"><i class="ion-social-youtube"></i></span></a></li>
+                                  </ul>
+                                </div>
+                                <a href="#" data-toggle="modal" data-target="#timModal<%= tim.urutan %>" class="btn btn-prime center">Detail</a>
+                              </div>
+                            </div>
+                            <br>
+                            <div class="edit-btn">
+                              <a href="/edit-tim/<%= tim.uuid %>" class="btn btn-prime">Edit</a>
+                              <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delcon<%= tim.uuid %>">Delete</button>
+                            </div>
+                            <br>
+                          </div>
+                          
+                          <%});%>
                         </div>
-                        <a href="#" data-toggle="modal" data-target="#timModal<%= tim.urutan %>" class="btn btn-prime center">Detail</a>
+                      </div>
+                      <div class="tab-pane fade" id="nav-english" role="tabpanel" aria-labelledby="nav-english-tab">
+                      <!--TAB English-->
+                        <div class="row">
+                          <% timkami.forEach(function(tim){%>
+                          <div class="col-lg-4">
+                            <div class="card" style="width: 18rem;">
+                              <a href="#" data-toggle="modal" data-target="#entimModal<%= tim.urutan %>">
+                                <img src="/public/uploads/<%= tim.foto %>" class="card-img-top" alt="">
+                              </a>
+                              <div class="card-body">
+                                <h5 class="card-title text-center"><a href="#"  data-toggle="modal" data-target="#entimModal<%= tim.urutan %>"><%= tim.nama %></a></h5>
+                                <p class="card-text text-center"><a href="#"  data-toggle="modal" data-target="#entimModal<%= tim.urutan %>"><%= tim.enjabatan %></a></p>
+                                <div class="socials">
+                                  <ul>
+                                    <li><a href="<%= tim.facebook %>"><span class="ico-circle center"><i class="ion-social-facebook"></i></span></a></li>
+                                    <li><a href="<%= tim.instagram %>"><span class="ico-circle center"><i class="ion-social-instagram"></i></span></a></li>
+                                    <li><a href="<%= tim.twitter %>"><span class="ico-circle center"><i class="ion-social-twitter"></i></span></a></li>
+                                    <li><a href="<%= tim.youtube %>"><span class="ico-circle center"><i class="ion-social-youtube"></i></span></a></li>
+                                  </ul>
+                                </div>
+                                <a href="#" data-toggle="modal" data-target="#entimModal<%= tim.urutan %>" class="btn btn-prime center">Detail</a>
+                              </div>
+                            </div>
+                            <br>
+                            <div class="edit-btn">
+                              <a href="/edit-tim/<%= tim.uuid %>" class="btn btn-prime">Edit</a>
+                              <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delcon<%= tim.uuid %>">Delete</button>
+                            </div>
+                            <br>
+                          </div>
+                          
+                          <%});%>
+                        </div>
                       </div>
                     </div>
-                    <br>
-                    <div class="edit-btn">
-                      <a href="/edit-tim/<%= tim.uuid %>" class="btn btn-prime">Edit</a>
-                      <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delcon<%= tim.uuid %>">Delete</button>
-                    </div>
-                    <br>
                   </div>
-                  
-                  <%});%>
                 </div>
               </section>
               <br>
@@ -59,6 +109,7 @@
         </div>
       </div>
     </div>
+    <!--MODAL BAHASA-->
     <% timkami.forEach(function(tim){%>
     <!--Modal-->
     <div class="modal fade bd-example-modal-lg" id="timModal<%= tim.urutan %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -200,6 +251,149 @@
     </div>
     <!--Modal Ends-->
     <%});%>
+    <!--MODAL ENGLISH-->
+    <% timkami.forEach(function(tim){%>
+    <!--Modal-->
+    <div class="modal fade bd-example-modal-lg" id="entimModal<%= tim.urutan %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-12">
+                <div class="row">
+                  <div class="col-sm-6 col-md-5 col-lg-5">
+                    <div class="about-img">
+                      <img src="/public/uploads/<%= tim.foto %>" class="img-fluid rounded b-shadow-a" alt="">
+                    </div>
+                  </div>
+                  <div class="col-sm-6 col-md-7 col-lg-7 tim-item">
+                    <div class="about-info">
+                      <h4><b><%= tim.nama %></b></h4>
+                      <p><%= tim.enjabatan %></p>
+                      <p>
+                        <div class="ql-snow">
+                          <div class="ql-editor">
+                            <%- tim.enketerangan -%>
+                          </div>
+                        </div>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 tim-item">
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                  <li class="nav-item">
+                    <a class="nav-link active" id="overview-tab" data-toggle="tab" href="#enoverview<%= tim.urutan %>" role="tab" aria-controls="home" aria-selected="true">Overview</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" id="riset-tab" data-toggle="tab" href="#enriset<%= tim.urutan %>" role="tab" aria-controls="profile" aria-selected="false">Research</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" id="publikasi-tab" data-toggle="tab" href="#enpublikasi<%= tim.urutan %>" role="tab" aria-controls="contact" aria-selected="false">Publication</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" id="supervisi-tab" data-toggle="tab" href="#ensupervisi<%= tim.urutan %>" role="tab" aria-controls="contact" aria-selected="false">Supervision</a>
+                  </li>
+                </ul>
+                <div class="tab-content" id="myTabContent">
+                  <div class="tab-pane fade show active" id="enoverview<%= tim.urutan %>" role="tabpanel" aria-labelledby="overview-tab">
+                    <div class="about-me pt-4 pt-md-0">
+                      <div class="title-box-2">
+                        <h5 class="title-left">
+                        Overview
+                        </h5>
+                      </div>
+                      <div class="ql-snow">
+                        <div class="ql-editor">
+                          <%- tim.enoverview -%>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="tab-pane fade" id="enriset<%= tim.urutan %>" role="tabpanel" aria-labelledby="riset-tab">
+                    <div class="tab-pane fade show active" id="enoverview<%= tim.urutan %>" role="tabpanel" aria-labelledby="overview-tab">
+                      <div class="about-me pt-4 pt-md-0">
+                        <div class="title-box-2">
+                          <h5 class="title-left">
+                          Research
+                          </h5>
+                        </div>
+                        <div class="ql-snow">
+                          <div class="ql-editor">
+                            <%- tim.enriset -%>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="tab-pane fade" id="enpublikasi<%= tim.urutan %>" role="tabpanel" aria-labelledby="publikasi-tab">
+                    <div class="tab-pane fade show active" id="enoverview<%= tim.urutan %>" role="tabpanel" aria-labelledby="overview-tab">
+                      <div class="about-me pt-4 pt-md-0">
+                        <div class="title-box-2">
+                          <h5 class="title-left">
+                          Publication
+                          </h5>
+                        </div>
+                        <div class="ql-snow">
+                          <div class="ql-editor">
+                            <%- tim.enpublikasi -%>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="tab-pane fade" id="ensupervisi<%= tim.urutan %>" role="tabpanel" aria-labelledby="supervisi-tab">
+                    <div class="tab-pane fade show active" id="enoverview<%= tim.urutan %>" role="tabpanel" aria-labelledby="overview-tab">
+                      <div class="about-me pt-4 pt-md-0">
+                        <div class="title-box-2">
+                          <h5 class="title-left">
+                          Supervision
+                          </h5>
+                        </div>
+                        <div class="ql-snow">
+                          <div class="ql-editor">
+                            <%- tim.ensupervisi -%>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+    <!-- Delete Confirmation Modal -->
+    <div class="modal fade" id="delcon<%= tim.uuid %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <b>Yakin ingin menghapus profile ini?</b>
+          </div>
+          <div class="modal-footer">
+            <a href="/delete-tim/<%= tim.uuid %>" type="button" class="btn btn-danger">Ya</a>
+            <button type="button" class="btn btn-prime" data-dismiss="modal">Tidak</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--Modal Ends-->
+    <%});%>
+    <!---->
     
     <!--/ Section Contact-Footer Star /-->
     <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
