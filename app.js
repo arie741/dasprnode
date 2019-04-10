@@ -768,7 +768,7 @@ app.post('/edit-tim-request/:uuid', function(req,res,next){
 				res.render('edit-tim-kami', { ermes: err})
 			} else {
 				if(req.file == undefined){								
-					db.query(db.editTimKami, [req.body.tOldImg, req.body.tNama, req.body.tJabatan, req.body.tKeterangan, req.body.tOverview, req.body.tRiset, req.body.tPublikasi, req.body.tSupervisi, req.body.tFacebook, req.body.tInstagram, req.body.tTwitter, req.body.tYoutube, req.body.tUrutan, req.params.uuid], (err, resp) => {
+					db.query(db.editTimKami, [req.body.tOldImg, req.body.tNama, req.body.tJabatan, req.body.tKeterangan, req.body.tOverview, req.body.tRiset, req.body.tPublikasi, req.body.tSupervisi, req.body.entJabatan, req.body.entKeterangan, req.body.entOverview, req.body.entRiset, req.body.entPublikasi, req.body.entSupervisi, req.body.tFacebook, req.body.tInstagram, req.body.tTwitter, req.body.tYoutube, req.body.tUrutan, req.params.uuid], (err, resp) => {
 					    if (err) {
 					      	return next(err)
 					    }
@@ -776,7 +776,7 @@ app.post('/edit-tim-request/:uuid', function(req,res,next){
 		  			})
 				} else {
 					//deleteFile("views/public/uploads/" + req.body.tOldImg);
-					db.query(db.editTimKami, [`${req.file.filename}`, req.body.tNama, req.body.tJabatan, req.body.tKeterangan, req.body.tOverview, req.body.tRiset, req.body.tPublikasi, req.body.tSupervisi, req.body.tFacebook, req.body.tInstagram, req.body.tTwitter, req.body.tYoutube, req.body.tUrutan, req.params.uuid], (err, resp) => {
+					db.query(db.editTimKami, [`${req.file.filename}`, req.body.tNama, req.body.tJabatan, req.body.tKeterangan, req.body.tOverview, req.body.tRiset, req.body.tPublikasi, req.body.tSupervisi, req.body.entJabatan, req.body.entKeterangan, req.body.entOverview, req.body.entRiset, req.body.entPublikasi, req.body.entSupervisi, req.body.tFacebook, req.body.tInstagram, req.body.tTwitter, req.body.tYoutube, req.body.tUrutan, req.params.uuid], (err, resp) => {
 				    	if (err) {
 				    	  	return next(err)
 				    	}				    

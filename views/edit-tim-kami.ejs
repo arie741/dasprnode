@@ -251,11 +251,19 @@
           </div>
           <%= typeof ermes != 'undefined' ? ermes : '' %>
           <input type="submit" class="btn btn-prime" value="Submit" id="tk-input-submit">
+          <!--Bahasa Textarea-->
           <input type="hidden" id="input-keterangan" value="" name="tKeterangan">
           <input type="hidden" id="input-overview" value="" name="tOverview">
           <input type="hidden" id="input-riset" value="" name="tRiset">
           <input type="hidden" id="input-publikasi" value="" name="tPublikasi">
           <input type="hidden" id="input-supervisi" value="" name="tSupervisi">
+          <!--English Textarea-->
+          <input type="hidden" id="eninput-keterangan" value="" name="entKeterangan">
+          <input type="hidden" id="eninput-overview" value="" name="entOverview">
+          <input type="hidden" id="eninput-riset" value="" name="entRiset">
+          <input type="hidden" id="eninput-publikasi" value="" name="entPublikasi">
+          <input type="hidden" id="eninput-supervisi" value="" name="entSupervisi">
+          <!---->
           <input type="hidden" id="oldImg" value="<%= tim.foto %>" name="tOldImg">
         </form>
       </div>

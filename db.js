@@ -28,7 +28,7 @@ const searchEvent = "SELECT * FROM newscontents WHERE lower(title) LIKE lower('%
 const addTim = 'insert into timkami (foto, nama, jabatan, keterangan, overview, riset, publikasi, supervisi, enjabatan, enketerangan, enoverview, enriset, enpublikasi, ensupervisi, facebook, instagram, twitter, youtube, urutan, uuid) values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20)'
 const findTimKami = 'select * from timkami order by urutan ASC'
 const findTim = 'select * from timkami where uuid=$1'
-const editTimKami = 'update timkami set foto = $1, nama = $2, jabatan = $3, keterangan = $4, overview = $5, riset = $6, publikasi = $7, supervisi = $8, facebook = $9, instagram = $10, twitter = $11, youtube = $12, urutan = $13 where uuid = $14'
+const editTimKami = 'update timkami set foto = $1, nama = $2, jabatan = $3, keterangan = $4, overview = $5, riset = $6, publikasi = $7, supervisi = $8, enjabatan = $9, enketerangan = $10, enoverview = $11, enriset = $12, enpublikasi = $13, ensupervisi = $14, facebook = $15, instagram = $16, twitter = $17, youtube = $18, urutan = $19 where uuid = $20'
 const deleteTim = 'delete from timkami where uuid = $1'
 const searchTimKami = "select * from timkami where lower(nama) like lower('%' || $1 || '%')"
 const getViewsCount = 'select * from viewscount'
