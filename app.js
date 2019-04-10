@@ -10,9 +10,9 @@ var pg = require('pg')
   , pgSession = require('connect-pg-simple')(session);
 
 var pgPool = new pg.Pool({
-  user: 'daspr',
+  user: 'webbetac_daspr',
   host: 'localhost',
-  database: 'daspr',
+  database: 'webbetac_dasprdb',
   password: 'daspr2000',
   port: 5432
 });  
