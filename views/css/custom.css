@@ -281,6 +281,19 @@ section#timkami .socials ul {
   margin-right:3px;
 }
 
+#page-top {
+  background-image: url('/img/work-2.jpg');
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+#wc-admin .card-body, #mng-pub  .card-body, #mng-home-slider  .card-body, #mng-news-events  .card-body, #mng-tim-kami  .card-body{
+ background-color:#EDB458;
+}
+
 /* library */
 #sejarah {
 	margin-bottom:30px;

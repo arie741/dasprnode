@@ -5,22 +5,60 @@
   </head>
   <body id="page-top">
     <div class="container">
-      <div class="row">
-        <div class="col-lg-3"></div>
-        <div class="col-sm-12 col-lg-6">
+      <div class="row" id="wc-admin">
+        <div class="col-sm-12 col-lg-12">
           <div class="card align-middle">
             <div class="card-body">
               
-              <h3>Welcome Admin!</h3>
-              <ul class="home-admin-list">
-                <li><a class="btn btn-primary" href="/admin-publication">Publication</a></li>
-                <li><a class="btn btn-primary" href="/add-slider">Manage Home Slider</a></li>
-                <li><a class="btn btn-primary" href="/admin-news-and-events">Manage News and Events</a></li>
-                <li><a class="btn btn-primary" href="/admin-tim-kami">Manage Tim Kami</a></li>
-              </ul>
-              <a class="btn btn-prime" href="/logout">Logout</a>
+              <h3 class="text-center">Welcome Admin!</h3>
+              
             </div>
           </div>
+        </div>
+      </div>
+      <br>
+      <div class="row" id="mng-pub">
+        <div class="col-lg-3">
+          <a href="/admin-publication">
+            <div class="card align-middle">
+              <div class="card-body">
+                <h3 class="text-center">Manage Publication</h3>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-lg-3" id="mng-home-slider">
+          <a href="/add-slider">
+            <div class="card align-middle">
+              <div class="card-body">
+                <h3 class="text-center">Manage Home Slider</h3>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-lg-3" id="mng-news-events">
+          <a href="/admin-news-and-events">
+            <div class="card align-middle">
+              <div class="card-body">
+                <h3 class="text-center">Manage News and Events</h3>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-lg-3" id="mng-tim-kami">
+          <a href="/admin-tim-kami">
+            <div class="card align-middle">
+              <div class="card-body">
+                <h3 class="text-center">Manage Tim Kami</h3>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-lg-12">
+          <a class="btn btn-prime" href="/logout">Logout</a>
         </div>
       </div>
     </div>
