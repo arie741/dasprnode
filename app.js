@@ -4,15 +4,16 @@ const bodyParser = require('body-parser');
 const expressValidator = require('express-validator');
 const fs= require('fs');
 const db = require('./db');
+const enc = require('./encrypt');
 
 var pg = require('pg')
   , session = require('express-session')
   , pgSession = require('connect-pg-simple')(session);
 
 var pgPool = new pg.Pool({
-  user: 'daspr',
+  user: 'webbetac_daspr',
   host: 'localhost',
-  database: 'daspr',
+  database: 'webbetac_dasprdb',
   password: 'daspr2000',
   port: 5432
 });  
@@ -834,7 +835,7 @@ app.post('/login-request', function(req, res, next){
 	    if (err) {
 	      return next(err)
 	    }
-    	req.check('pwd', 'Wrong password!').equals(resp.rows[0].pwd);
+    	req.check('pwd', 'Wrong password!').equals(enc.decrypt(resp.rows[0].pwd));
 		var errors = req.validationErrors();
 		if(errors){
 			req.session.errors=errors;
@@ -846,5 +847,4 @@ app.post('/login-request', function(req, res, next){
   	})
 	
 })
-
 //Admin Routes Ends
