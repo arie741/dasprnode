@@ -294,6 +294,11 @@ section#timkami .socials ul {
  background-color:#EDB458;
 }
 
+#timkami .card img {
+  height:190px;
+  object-fit:cover;
+}
+
 /* library */
 #sejarah {
 	margin-bottom:30px;
