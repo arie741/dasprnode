@@ -281,8 +281,17 @@ section#timkami .socials ul {
   margin-right:3px;
 }
 
-#page-top {
+.admin-home-body {
   background-image: url('/img/work-2.jpg');
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.admin-login{
+  background-image: url('/img/home.jpg');
   background-repeat: no-repeat;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -297,6 +306,24 @@ section#timkami .socials ul {
 #timkami .card img {
   height:190px;
   object-fit:cover;
+}
+
+@media only screen and (max-width: 768px) {
+  .login-logo {
+    margin-top:30px;
+  }
+  .login-key {
+    margin-top:10px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .login-logo {
+    margin-top:80px;
+  }
+  .login-key {
+    margin-top:33px;
+  }
 }
 
 /* library */

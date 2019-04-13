@@ -3,13 +3,17 @@
   <head>
     <%- include('head'); -%>
   </head>
-  <body id="page-top">
+  <body id="page-top" class="admin-login">
     <div class="container">
+      <div class="row login-logo">
+        <img src="/img/logo/DASPR.png" alt="" height="150px" class="center">
+      </div>
       <div class="row">
-        <div class="col-lg-3"></div>
-        <div class="col-sm-12 col-lg-6">
-          <div class="card align-middle">
-            <div class="card-body">
+        <div class="col-sm-12 col-lg-3">          
+        </div>
+        <div class="col-sm-12 col-lg-6 login-key">
+          <div class="card">
+            <div class="card-body center">
               
               <form action="/login-request" name="login-request" method="POST">
                 Enter Admin Key:
