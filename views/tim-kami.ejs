@@ -38,33 +38,36 @@
       </div>
       <br>
       <div class="row">
-        <div class="col-lg-2">
+        <div class="col-lg-2">          
           <ul class="list-group">
             <% uniq = [...new Set(timjabatan)];
-               uniq.forEach(function(tj){
-               var tjid = tj.replace(/\s/g, '');%>
-              <a class="js-scroll" href="#<%= tjid %>">
-                <li class="list-group-item">
-                  <%= tj %>            
-                </li>
-              </a>              
-            <%});%>            
-          </ul>          
+            uniq.forEach(function(tj){
+            var tjid = tj.replace(/\s/g, '');%>
+            <a class="js-scroll" href="#<%= tjid %>">
+              <li class="list-group-item">
+                <%= tj %>
+              </li>
+            </a>
+            <%});%>
+          </ul>
         </div>
         <div class="col-lg-10">
           <section id="timkami">
             <div class="row">
               <% timkami.forEach(function(tim){
-                var tj = tim.jabatan;
-                var tjid = tj.replace(/\s/g, '');%>%>
+              var tj = tim.jabatan;
+              var tjid = tj.replace(/\s/g, '');%>%>
               <div class="col-lg-4">
                 <div id="<%= tjid %>" class="card" style="width: 18rem;">
                   <a href="#" data-toggle="modal" data-target="#timModal<%= tim.urutan %>">
                     <img src="/public/uploads/<%= tim.foto %>" class="card-img-top" alt="">
                   </a>
                   <div class="card-body">
-                    <h5 class="card-title text-center"><a href="#"  data-toggle="modal" data-target="#timModal<%= tim.urutan %>"><%= tim.nama %></a></h5>
-                    <p class="card-text text-center"><a href="#"  data-toggle="modal" data-target="#timModal<%= tim.urutan %>"><%= tim.jabatan %></a></p>
+                    <div class="namerow">
+                      <h5 class="card-title text-center"><a href="#"  data-toggle="modal" data-target="#timModal<%= tim.urutan %>"><%= tim.nama %></a></h5>
+                      <p class="card-text text-center"><a href="#"  data-toggle="modal" data-target="#timModal<%= tim.urutan %>"><%= tim.jabatan %></a></p>
+                    </div>
+                    
                     <div class="socials">
                       <ul>
                         <li><a href="<%= tim.facebook %>"><span class="ico-circle center"><i class="ion-social-facebook"></i></span></a></li>
@@ -212,8 +215,8 @@
     <%- include('footer'); -%>
     <!--/ Section Contact-footer End /-->
     <script>
-      $("#header-home").removeClass("active");
-      $("#header-timkami").addClass("active");
+    $("#header-home").removeClass("active");
+    $("#header-timkami").addClass("active");
     </script>
   </body>
 </html>

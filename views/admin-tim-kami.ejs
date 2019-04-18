@@ -39,8 +39,11 @@
                                 <img src="/public/uploads/<%= tim.foto %>" class="card-img-top" alt="">
                               </a>
                               <div class="card-body">
-                                <h5 class="card-title text-center"><a href="#"  data-toggle="modal" data-target="#timModal<%= tim.urutan %>"><%= tim.nama %></a></h5>
-                                <p class="card-text text-center"><a href="#"  data-toggle="modal" data-target="#timModal<%= tim.urutan %>"><%= tim.jabatan %></a></p>
+                                <div class="namerow">
+                                  <h5 class="card-title text-center"><a href="#"  data-toggle="modal" data-target="#timModal<%= tim.urutan %>"><%= tim.nama %></a></h5>
+                                  <p class="card-text text-center"><a href="#"  data-toggle="modal" data-target="#timModal<%= tim.urutan %>"><%= tim.jabatan %></a></p>
+                                </div>
+                                
                                 <div class="socials">
                                   <ul>
                                     <li><a href="<%= tim.facebook %>"><span class="ico-circle center"><i class="ion-social-facebook"></i></span></a></li>
@@ -64,7 +67,7 @@
                         </div>
                       </div>
                       <div class="tab-pane fade" id="nav-english" role="tabpanel" aria-labelledby="nav-english-tab">
-                      <!--TAB English-->
+                        <!--TAB English-->
                         <div class="row">
                           <% timkami.forEach(function(tim){%>
                           <div class="col-lg-4">
@@ -73,8 +76,11 @@
                                 <img src="/public/uploads/<%= tim.foto %>" class="card-img-top" alt="">
                               </a>
                               <div class="card-body">
-                                <h5 class="card-title text-center"><a href="#"  data-toggle="modal" data-target="#entimModal<%= tim.urutan %>"><%= tim.nama %></a></h5>
-                                <p class="card-text text-center"><a href="#"  data-toggle="modal" data-target="#entimModal<%= tim.urutan %>"><%= tim.enjabatan %></a></p>
+                                <div class="namerow">
+                                  <h5 class="card-title text-center"><a href="#"  data-toggle="modal" data-target="#entimModal<%= tim.urutan %>"><%= tim.nama %></a></h5>
+                                  <p class="card-text text-center"><a href="#"  data-toggle="modal" data-target="#entimModal<%= tim.urutan %>"><%= tim.enjabatan %></a></p>
+                                </div>
+                                
                                 <div class="socials">
                                   <ul>
                                     <li><a href="<%= tim.facebook %>"><span class="ico-circle center"><i class="ion-social-facebook"></i></span></a></li>

@@ -222,7 +222,12 @@ app.post('/tk-search-request', function(req,res,next){
 		if (err) {
 		  return next(err)
 		}
-		res.render('tim-kami', { title: 'Tim Kami', timkami: resp.rows});
+		var arr = resp.rows;
+	    arrjab= [];
+	    arr.forEach(function(aj){
+	    	arrjab.push(aj.jabatan);
+	    });
+		res.render('tim-kami', { title: 'Tim Kami', timkami: resp.rows, timjabatan: arrjab});
   	})
 })
 
@@ -349,7 +354,12 @@ app.post('/en/tk-search-request', function(req,res,next){
 		if (err) {
 		  return next(err)
 		}
-		res.render('en-tim-kami', { title: 'Our Team', timkami: resp.rows});
+		var arr = resp.rows;
+	    arrjab= [];
+	    arr.forEach(function(aj){
+	    	arrjab.push(aj.jabatan);
+	    });
+		res.render('en-tim-kami', { title: 'Our Team', timkami: resp.rows, timjabatan: arrjab});
   	})
 })
 
