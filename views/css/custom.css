@@ -177,6 +177,11 @@ section.footer-paralax .socials {
   box-shadow: 5px 10px 11px;
 }
 
+.collab-item ul > li {
+  list-style-type: circle;
+  margin-left:20px;
+}
+
 #our-partners {
 	margin-bottom:30px;
 }
