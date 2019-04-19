@@ -106,6 +106,10 @@ section.footer-paralax .socials {
   z-index:1;
 }
 
+.about-visi li, .fungsi-pane li {
+  text-align:right;
+}
+
 .about-fungsi *{
 	float:right;
 }
