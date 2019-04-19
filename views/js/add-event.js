@@ -1,6 +1,8 @@
 var toolbarOptions = [
 ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
 ['blockquote', 'code-block'],
+['link'],
+['video'],
 [{ 'header': 1 }, { 'header': 2 }],               // custom button values
 [{ 'list': 'ordered'}, { 'list': 'bullet' }],
 [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
