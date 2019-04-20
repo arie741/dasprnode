@@ -64,11 +64,11 @@
             <div class="widget-sidebar sidebar-search">
               <h5 class="sidebar-title">Search</h5>
               <div class="sidebar-content">
-                <form>
+                <form action="/ne-search-request" method="post">
                   <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search for..." aria-label="Search for...">
+                    <input name="pSearch" type="text" class="form-control" placeholder="Search for..." aria-label="Search for...">
                     <span class="input-group-btn">
-                      <button class="btn btn-secondary btn-search" type="button">
+                      <button type="submit" value="Search" class="btn btn-secondary btn-search">
                       <span class="ion-android-search"></span>
                       </button>
                     </span>
@@ -82,7 +82,7 @@
                 <ul class="list-sidebar">
                   <% recents.forEach(function(recent){%>
                   <li>
-                    <a href="/public/uploads/<%= recent.uuid %>"><%= recent.title %></a>
+                    <a href="/news-and-events/<%= recent.uuid %>"><%= recent.title %></a>
                   </li>
                   <%});%>
                 </ul>

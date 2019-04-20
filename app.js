@@ -185,6 +185,18 @@ app.post('/publication-search-request', function(req, res, next){
   	})
 })
 
+app.get('/list-news-and-events', function(req, res, next){
+	db.query(db.findEvents, [], (err, resp) => {
+		if (err) {
+			return next(err)
+		}
+		var arr = resp.rows[0];
+		var lcontent = arr.contents;
+		var links = lcontent.split(",");
+		res.render('list-news-and-events', {title: "List News And Events", newscontents: resp.rows ,recents: resp.rows});	
+	})
+})
+
 app.get('/news-and-events/:uuid', function(req, res, next){
 	db.query(db.findEvent, [req.params.uuid], (err, resp) => {
 		if (err) {
@@ -201,6 +213,30 @@ app.get('/news-and-events/:uuid', function(req, res, next){
 		})				
 	})	
 	
+})
+
+app.post('/ne-search-request', function(req, res, next){
+	db.query(db.searchEvent, [req.body.pSearch], (err, resp) => {
+		if (err) {
+		  return next(err)
+		}
+		db.query(db.findEvents, [], (err, eresp) => {
+			if (err) {
+				return next(err)
+			}
+			var arr = resp.rows[0];
+			var lcontent = "";
+			var links = "";
+			if (arr){
+				lcontent = arr.contents;
+				links = lcontent.split(",");
+				res.render('list-news-and-events', {title: "List News And Events", newscontents: resp.rows, recents: eresp.rows});	
+			} else {
+				res.render('list-news-and-events', {title: "List News And Events", newscontents: resp.rows, recents: eresp.rows});	
+			}
+			
+		})
+  	})
 })
 
 app.get('/tim-kami', function(req,res,next){
@@ -317,6 +353,18 @@ app.post('/en/publication-search-request', function(req, res, next){
   	})
 })
 
+app.get('/en/list-news-and-events', function(req, res, next){
+	db.query(db.findEvents, [], (err, resp) => {
+		if (err) {
+			return next(err)
+		}
+		var arr = resp.rows[0];
+		var lcontent = arr.contents;
+		var links = lcontent.split(",");
+		res.render('en-list-news-and-events', {title: "List News And Events", newscontents: resp.rows ,recents: resp.rows});	
+	})
+})
+
 app.get('/en/news-and-events/:uuid', function(req, res, next){
 	db.query(db.findEvent, [req.params.uuid], (err, resp) => {
 		if (err) {
@@ -333,6 +381,30 @@ app.get('/en/news-and-events/:uuid', function(req, res, next){
 		})				
 	})	
 	
+})
+
+app.post('/en/ne-search-request', function(req, res, next){
+	db.query(db.searchEvent, [req.body.pSearch], (err, resp) => {
+		if (err) {
+		  return next(err)
+		}
+		db.query(db.findEvents, [], (err, eresp) => {
+			if (err) {
+				return next(err)
+			}
+			var arr = resp.rows[0];
+			var lcontent = "";
+			var links = "";
+			if (arr){
+				lcontent = arr.contents;
+				links = lcontent.split(",");
+				res.render('en-list-news-and-events', {title: "List News And Events", newscontents: resp.rows, recents: eresp.rows});	
+			} else {
+				res.render('en-list-news-and-events', {title: "List News And Events", newscontents: resp.rows, recents: eresp.rows});	
+			}
+			
+		})
+  	})
 })
 
 app.get('/en/tim-kami', function(req,res,next){

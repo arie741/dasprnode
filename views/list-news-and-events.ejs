@@ -32,43 +32,50 @@
       <div class="container">
         <div class="row">
           <div class="col-md-8">
-            <div class="post-box">
-              <div class="post-thumb">
-                <img src="/public/uploads/<%= img %>" class="img-fluid" alt="">
+            <div class="row">
+              <% newscontents.forEach(function(newscontent){%>
+              <div class="col-md-4 news-items">
+                <div class="card card-blog">
+                  <div class="card-img">
+                    <a href="/news-and-events/<%= newscontent.uuid %>"><img src="/public/uploads/<%= newscontent.img %>" alt="" class="img-fluid"></a>
+                  </div>
+                  <div class="card-body">
+                    <div class="card-category-box">
+                      <div class="card-category">
+                        <h6 class="category"><%= newscontent.etype %></h6>
+                      </div>
+                    </div>
+                    <h3 class="card-title"><a href="/news-and-events/<%= newscontent.uuid %>"><%= newscontent.title %></a></h3>
+                    <% if (newscontent.etype == "questionaire") { %>
+                    <a class="btn btn-info" href="/news-and-events/<%= newscontent.uuid %>">Ikut Questionaire</a>
+                    <% } else { %>
+                    <div class="ql-snow"><p class="card-description"><%- newscontent.contents -%></p></div>
+                    <% } %>
+                  </div>
+                  <div class="card-footer">
+                    <div class="post-author">
+                      <a href="/news-and-events/<%= newscontent.uuid %>">
+                        <span class="author"><%= newscontent.author %></span>
+                      </a>
+                    </div>
+                    <div class="post-date">
+                      <span class="ion-ios-clock-outline"></span> <%= newscontent.edate %>
+                    </div>
+                  </div>
+                </div>                
               </div>
-              <div class="post-meta">
-                <h1 class="article-title"><%= etitle %></h1>
-                <ul>
-                  <li>
-                    <span class="ion-ios-person"></span>
-                    <a href="#"><%= author %></a>
-                  </li>
-                  <li>
-                    <span class="ion-ios-clock-outline"></span>
-                    <a href="#"><%= edate %></a>
-                  </li>
-                </ul>
-              </div>              
-              <div class="article-content">
-                <% if (etype == "questionaire") { %>
-                <a class="btn btn-info" href="<%= elinks %>">Click here to fill the questionaire</a>
-                <% } else { %>
-                <div class="ql-snow">
-                  <%- contents -%>
-                </div>
-                <% } %>                
-              </div>
-            </div>                        
+              <%});%>
+            </div>
           </div>
           <div class="col-md-4">
             <div class="widget-sidebar sidebar-search">
               <h5 class="sidebar-title">Search</h5>
               <div class="sidebar-content">
-                <form>
+                <form action="/ne-search-request" method="post">
                   <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search for..." aria-label="Search for...">
+                    <input name="pSearch" type="text" class="form-control" placeholder="Search for..." aria-label="Search for...">
                     <span class="input-group-btn">
-                      <button class="btn btn-secondary btn-search" type="button">
+                      <button type="submit" value="Search" class="btn btn-secondary btn-search">
                       <span class="ion-android-search"></span>
                       </button>
                     </span>
@@ -82,12 +89,12 @@
                 <ul class="list-sidebar">
                   <% recents.forEach(function(recent){%>
                   <li>
-                    <a href="/en/news-and-events/<%= recent.uuid %>"><%= recent.title %></a>
+                    <a href="/news-and-events/<%= recent.uuid %>"><%= recent.title %></a>
                   </li>
                   <%});%>
                 </ul>
               </div>
-            </div> 
+            </div>
           </div>
         </div>
       </div>
