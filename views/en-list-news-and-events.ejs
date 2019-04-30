@@ -37,7 +37,7 @@
               <div class="col-md-4 news-items">
                 <div class="card card-blog">
                   <div class="card-img">
-                    <a href="/news-and-events/<%= newscontent.uuid %>"><img src="/public/uploads/<%= newscontent.img %>" alt="" class="img-fluid"></a>
+                    <a href="/en/news-and-events/<%= newscontent.uuid %>"><img src="/public/uploads/<%= newscontent.img %>" alt="" class="img-fluid"></a>
                   </div>
                   <div class="card-body">
                     <div class="card-category-box">
@@ -45,16 +45,16 @@
                         <h6 class="category"><%= newscontent.etype %></h6>
                       </div>
                     </div>
-                    <h3 class="card-title"><a href="/news-and-events/<%= newscontent.uuid %>"><%= newscontent.title %></a></h3>
+                    <h3 class="card-title"><a href="/en/news-and-events/<%= newscontent.uuid %>"><%= newscontent.title %></a></h3>
                     <% if (newscontent.etype == "questionaire") { %>
-                    <a class="btn btn-info" href="/news-and-events/<%= newscontent.uuid %>">Take the Questionaire</a>
+                    <a class="btn btn-info" href="/en/news-and-events/<%= newscontent.uuid %>">Take the Questionaire</a>
                     <% } else { %>
                     <div class="ql-snow"><p class="card-description"><%- newscontent.contents -%></p></div>
                     <% } %>
                   </div>
                   <div class="card-footer">
                     <div class="post-author">
-                      <a href="/news-and-events/<%= newscontent.uuid %>">
+                      <a href="/en/news-and-events/<%= newscontent.uuid %>">
                         <span class="author"><%= newscontent.author %></span>
                       </a>
                     </div>
@@ -89,7 +89,7 @@
                 <ul class="list-sidebar">
                   <% recents.forEach(function(recent){%>
                   <li>
-                    <a href="/news-and-events/<%= recent.uuid %>"><%= recent.title %></a>
+                    <a href="/en/news-and-events/<%= recent.uuid %>"><%= recent.title %></a>
                   </li>
                   <%});%>
                 </ul>
