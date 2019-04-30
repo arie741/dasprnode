@@ -346,6 +346,10 @@ section#timkami .socials ul {
   border-left:6px solid rgba(0,0,0,.1);
 }
 
+#sejarah .content > p {
+  text-align:justify;
+}
+
 @media only screen and (max-width: 768px) {
   .login-logo {
     margin-top:30px;
