@@ -429,7 +429,7 @@ app.post('/en/tk-search-request', function(req,res,next){
 		var arr = resp.rows;
 	    arrjab= [];
 	    arr.forEach(function(aj){
-	    	arrjab.push(aj.jabatan);
+	    	arrjab.push(aj.enjabatan);
 	    });
 		res.render('en-tim-kami', { title: 'Our Team', timkami: resp.rows, timjabatan: arrjab});
   	})
