@@ -11,9 +11,9 @@ var pg = require('pg')
   , pgSession = require('connect-pg-simple')(session);
 
 var pgPool = new pg.Pool({
-  user: 'daspr',
+  user: 'webbetac_daspr',
   host: 'localhost',
-  database: 'daspr',
+  database: 'webbetac_dasprdb',
   password: 'daspr2000',
   port: 5432
 });  
@@ -146,11 +146,11 @@ app.get('/', function(req, res, next){
 })
 
 app.get('/aboutus', function(req, res){
-	res.render('about', { title: 'About Us'});
+	res.render('about', { title: 'Tentang Kami'});
 })
 
 app.get('/collabp', function(req, res){
-	res.render('collabp', { title: 'Collaboration & Partner'});
+	res.render('collabp', { title: 'Kolaborasi dan Mitra'});
 })
 
 app.get('/publications', function(req, res){
@@ -170,7 +170,7 @@ app.get('/publications/:page', function(req,res,next){
     if (err) {
       	return next(err)
     }
-    	res.render('publications', { title: 'Publications', publications: resp.rows, pages: pagLength, currentpage: req.params.page });
+    	res.render('publications', { title: 'Publikasi', publications: resp.rows, pages: pagLength, currentpage: req.params.page });
 	})	
 })
 
@@ -181,7 +181,7 @@ app.post('/publication-search-request', function(req, res, next){
 	    if (err) {
 	      return next(err)
 	    }
-	    res.render('publications', { title: 'Publications', publications: resp.rows, pages: pagLength, currentpage: 1 });
+	    res.render('publications', { title: 'Publikasi', publications: resp.rows, pages: pagLength, currentpage: 1 });
   	})
 })
 
@@ -193,7 +193,7 @@ app.get('/list-news-and-events', function(req, res, next){
 		var arr = resp.rows[0];
 		var lcontent = arr.contents;
 		var links = lcontent.split(",");
-		res.render('list-news-and-events', {title: "List News And Events", newscontents: resp.rows ,recents: resp.rows});	
+		res.render('list-news-and-events', {title: "News And Events", newscontents: resp.rows ,recents: resp.rows});	
 	})
 })
 
@@ -230,9 +230,9 @@ app.post('/ne-search-request', function(req, res, next){
 			if (arr){
 				lcontent = arr.contents;
 				links = lcontent.split(",");
-				res.render('list-news-and-events', {title: "List News And Events", newscontents: resp.rows, recents: eresp.rows});	
+				res.render('list-news-and-events', {title: "News And Events", newscontents: resp.rows, recents: eresp.rows});	
 			} else {
-				res.render('list-news-and-events', {title: "List News And Events", newscontents: resp.rows, recents: eresp.rows});	
+				res.render('list-news-and-events', {title: "News And Events", newscontents: resp.rows, recents: eresp.rows});	
 			}
 			
 		})
@@ -268,7 +268,7 @@ app.post('/tk-search-request', function(req,res,next){
 })
 
 app.get('/career', function(req,res,next){
-	res.render('career', {title: 'Career'})
+	res.render('career', {title: 'Karir'})
 })
 
 //Client Routes (English)

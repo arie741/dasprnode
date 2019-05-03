@@ -1,9 +1,9 @@
 const Pool = require('pg').Pool
 
 const pool = new Pool({
-  user: 'daspr',
+  user: 'webbetac_daspr',
   host: 'localhost',
-  database: 'daspr',
+  database: 'webbetac_dasprdb',
   password: 'daspr2000',
   port: 5432
 });
