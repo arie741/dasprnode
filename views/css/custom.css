@@ -359,6 +359,23 @@ section#timkami .socials ul {
   width: 100%;
 }
 
+.card-blog {
+  margin-bottom:1rem;
+}
+
+.edit-delete-btn {
+  margin-bottom:40px;
+}
+
+.see-older-post{
+  margin-bottom: 40px;
+  margin-left: 0px;
+}
+
+.see-older-post h3 {
+  color:#818387;
+}
+
 @media only screen and (max-width: 768px) {
   .login-logo {
     margin-top:30px;

@@ -113,7 +113,8 @@ app.get('/', function(req, res, next){
 		if (err) {
 			return next(err)
 		}
-		eventcontents = resp.rows;
+		var eventarr = resp.rows;
+		eventcontents = eventarr.slice(0, 6);
 	})		
 	db.query(db.findSliderImages, [], (err, resp) => {
 		if (err) {
@@ -191,9 +192,15 @@ app.get('/list-news-and-events', function(req, res, next){
 			return next(err)
 		}
 		var arr = resp.rows[0];
-		var lcontent = arr.contents;
-		var links = lcontent.split(",");
-		res.render('list-news-and-events', {title: "News And Events", newscontents: resp.rows ,recents: resp.rows});	
+		if (arr){
+			var lcontent = arr.contents;
+			var links = lcontent.split(",");
+			res.render('list-news-and-events', {title: "News And Events", newscontents: resp.rows ,recents: resp.rows});	
+		} else {
+			var lcontent = [];
+			res.render('list-news-and-events', {title: "News And Events", newscontents: resp.rows ,recents: resp.rows});	
+		}
+				
 	})
 })
 
@@ -281,7 +288,8 @@ app.get('/en/', function(req, res, next){
 		if (err) {
 			return next(err)
 		}
-		eventcontents = resp.rows;
+		var eventarr = resp.rows;
+		eventcontents = eventarr.slice(0, 6);
 	})		
 	db.query(db.findSliderImages, [], (err, resp) => {
 		if (err) {
@@ -359,9 +367,15 @@ app.get('/en/list-news-and-events', function(req, res, next){
 			return next(err)
 		}
 		var arr = resp.rows[0];
-		var lcontent = arr.contents;
-		var links = lcontent.split(",");
-		res.render('en-list-news-and-events', {title: "List News And Events", newscontents: resp.rows ,recents: resp.rows});	
+		if (arr){
+			var lcontent = arr.contents;
+			var links = lcontent.split(",");
+			res.render('list-news-and-events', {title: "News And Events", newscontents: resp.rows ,recents: resp.rows});	
+		} else {
+			var lcontent = [];
+			res.render('list-news-and-events', {title: "News And Events", newscontents: resp.rows ,recents: resp.rows});	
+		}
+			
 	})
 })
 
