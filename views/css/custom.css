@@ -1,3 +1,9 @@
+/* Animation */
+@keyframes intromovement {
+  from {bottom:500px;}
+  to {bottom:155px;}
+}
+
 /*Utility*/
 .center {
 	display:block;
@@ -112,6 +118,10 @@ section.footer-paralax .socials {
 
 .about-fungsi *{
 	float:right;
+}
+
+#about-program {
+    padding-top: 70px;
 }
 
 .about-tujuan {
@@ -374,6 +384,31 @@ section#timkami .socials ul {
 
 .see-older-post h3 {
   color:#818387;
+}
+
+.program-carousel .carousel-caption{
+    bottom: 155px;
+    animation-name: intromovement;
+    animation-duration:1s;
+    background-color:rgb(202, 204, 206, 0.7);
+    padding:20px;
+    border-radius:10px;
+}
+
+.program-carousel .carousel-caption > h2, .program-carousel .carousel-caption > p {
+    color:#000;    
+}
+
+.program-carousel {
+    margin-bottom:30px
+}
+
+.program-carousel p{
+    text-align: justify;
+}
+
+.program-carousel .carousel-item {
+    height:650px
 }
 
 @media only screen and (max-width: 768px) {
