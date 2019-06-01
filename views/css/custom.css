@@ -214,9 +214,22 @@ section.footer-paralax .socials {
 }
 
 .publication-item {
-	background-color:rgba(0,0,0,.03);
+	background-color:rgba(0,0,0,03);
 	margin-bottom:20px;
-	box-shadow: 1px 1px 1px #333;
+    background-image: url("/img/publication-item.jpg");
+    background-repeat: repeat;
+    border:1px solid #333;
+    font-weight: 700;
+    font-family:'Roboto';
+}
+
+.pub-panel {
+    background-color:rgba(237, 180, 88,0.9);
+    color:#000;
+}
+
+.pub-panel a {
+    color:#000
 }
 
 .inputs-group input{

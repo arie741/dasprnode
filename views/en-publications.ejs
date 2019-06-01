@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <%- include('head'); -%>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   </head>
   <body id="page-top">
     <!--/ Nav Star /-->
@@ -39,27 +40,33 @@
         </ul>
       </nav>
       <% publications.forEach(function(publication){%>
-      <div class="row publication-item">
-        <div class="col-12"><h3><a href="<%= publication.link %>"><%= publication.title %></a></h3></div>
-        <div class="col-lg-1 col-sm-12">
-          <ul>
-            <li>Year     </li>
-            <li>Author   </li>
-            <li>Category </li>
-            <li>Publisher</li>
-            <li>Country  </li>
-            <li>Source   </li>
-          </ul>
-        </div>
-        <div class="col-lg-11 col-sm-12">
-          <ul>
-            <li>: <%= publication.year %></li>
-            <li>: <%= publication.author %></li>
-            <li>: <%= publication.category %></li>
-            <li>: <%= publication.publisher %></li>
-            <li>: <%= publication.country %></li>
-            <li>: <a href="<%= publication.link %>">Link</a></li>
-          </ul>
+      <div class="row publication-item" data-aos="fade-right">
+        <div class="pub-panel col-12">
+            <div class="row">
+                <div class="col-12"><h3><a href="<%= publication.link %>"><%= publication.title %></a></h3></div>
+            </div>
+            <div class="row">
+                <div class="col-lg-1">
+                  <ul>
+                    <li>Year     </li>
+                    <li>Author   </li>
+                    <li>Category </li>
+                    <li>Publisher</li>
+                    <li>Country  </li>
+                    <li>Source   </li>
+                  </ul>
+                </div>
+                <div class="col-lg-11">
+                  <ul>
+                    <li>: <%= publication.year %></li>
+                    <li>: <%= publication.author %></li>
+                    <li>: <%= publication.category %></li>
+                    <li>: <%= publication.publisher %></li>
+                    <li>: <%= publication.country %></li>
+                    <li>: <a href="<%= publication.link %>">Link</a></li>
+                  </ul>
+                </div>
+            </div>
         </div>
       </div>
       
@@ -81,6 +88,10 @@
     <script>
       $("#header-home").removeClass("active");
       $("#header-publikasi").addClass("active");
+    </script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init({delay: 100, duration: 400});
     </script>
   </body>
 </html>
