@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "aos": "^2.3.4",
     "connect": "^3.6.6",
     "connect-pg-simple": "^5.0.0",
     "connect-session-knex": "^1.4.0",
