@@ -256,6 +256,16 @@ section.footer-paralax .socials {
 	max-height:165px;
 	overflow:hidden !important;
 	text-align:justify;
+    text-decoration:none;
+    font-weight: normal;
+}
+
+.news-items .ql-editor span {
+    background-color:#fff !important;
+}
+
+.news-items .ql-editor strong {
+    font-weight: normal;
 }
 
 .news-items .card-img img {
@@ -263,6 +273,15 @@ section.footer-paralax .socials {
     margin-left: auto;
     margin-right: auto;
     display: block;
+}
+
+.news-items .card-body {
+    height:263px;
+}
+
+.news-items .card-body .card-title{
+    padding: 0 15px 0 15px;
+    text-align: center;
 }
 
 section#timkami .socials ul > li {
@@ -466,6 +485,14 @@ section#timkami .socials ul {
     height:1830px !important;
   }
     
+  .program-carousel .carousel-item:nth-child(5) .carousel-caption {
+    height:855px !important;
+  }
+    
+  .program-carousel .carousel-item:nth-child(6) .carousel-caption {
+    height:620px !important;
+  }
+    
   .program-carousel .carousel-item:nth-child(1) .en-caption {
     height:920px !important;
   }
@@ -480,6 +507,14 @@ section#timkami .socials ul {
     
   .program-carousel .carousel-item:nth-child(4) .en-caption {
     height:1876px !important;
+  }
+    
+  .program-carousel .carousel-item:nth-child(5) .en-caption {
+    height:855px !important;
+  }
+    
+  .program-carousel .carousel-item:nth-child(6) .en-caption {
+    height:620px !important;
   }
 
 }
