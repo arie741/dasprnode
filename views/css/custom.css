@@ -277,12 +277,13 @@ section.footer-paralax .socials {
 }
 
 .news-items .card-body {
-    height:263px;
+    height:295px;
 }
 
 .news-items .card-body .card-title{
     padding: 0 15px 0 15px;
     text-align: center;
+    min-height:73px;
 }
 
 section#timkami .socials ul > li {
