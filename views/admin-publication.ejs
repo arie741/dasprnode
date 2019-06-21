@@ -30,32 +30,43 @@
               
               <% publications.forEach(function(publication){%>
 
-                <div class="row publication-item">                
-                <div class="col-12"><h3><a href="<%= publication.link %>"><%= publication.title %></a></h3></div>
-                <div class="col-lg-2 col-sm-12">
-                  <ul>
-                    <li>Year     </li>
-                    <li>Author   </li>
-                    <li>Category </li>
-                    <li>Publisher</li>
-                    <li>Country  </li>
-                    <li>Source   </li>
-                  </ul>
-                </div>
-                  <div class="col-lg-10 col-sm-12">
-                    <ul>
-                      <li>: <%= publication.year %></li>
-                      <li>: <%= publication.author %></li>
-                      <li>: <%= publication.category %></li>
-                      <li>: <%= publication.publisher %></li>
-                      <li>: <%= publication.country %></li>
-                      <li>: <a href="<%= publication.link %>">Link</a></li>
-                      <li>
-                        <a class="btn btn-primary" href="/pub-edit/<%= publication.uuid %>">Edit</a> 
-                        <a class="btn btn-warning" href="/pub-delete-request/<%= publication.uuid %>">Delete</a>
-                      </li>
-                    </ul>
-                  </div>
+                <div class="row publication-item">          
+                    <div class="pub-panel col-12">
+                       <div class="row">
+                            <div class="col-12"><h3><a href="<%= publication.link %>"><%= publication.title %></a></h3></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-1">Year</div>
+                            <div class="col-11">: <%= publication.year %></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-1">Author</div>
+                            <div class="col-11">: <%= publication.author %></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-1">Category</div>
+                            <div class="col-11">: <%= publication.category %></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-1">Publisher</div>
+                            <div class="col-11">: <%= publication.publisher %></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-1">Country</div>
+                            <div class="col-11">: <%= publication.country %></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-1">Source</div>
+                            <div class="col-11">: <a href="<%= publication.link %>">Link</a></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <a class="btn btn-primary" href="/pub-edit/<%= publication.uuid %>">Edit</a> 
+                                <a class="btn btn-warning" href="/pub-delete-request/<%= publication.uuid %>">Delete</a>
+                            </div>
+                        </div>
+                    </div>      
+                
                 </div>
                 
               <%});%>

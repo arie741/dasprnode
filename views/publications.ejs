@@ -46,26 +46,28 @@
                 <div class="col-12"><h3><a href="<%= publication.link %>"><%= publication.title %></a></h3></div>
             </div>
             <div class="row">
-                <div class="col-1">
-                  <ul>
-                    <li>Year     </li>
-                    <li>Author   </li>
-                    <li>Category </li>
-                    <li>Publisher</li>
-                    <li>Country  </li>
-                    <li>Source   </li>
-                  </ul>
-                </div>
-                <div class="col-11">
-                  <ul>
-                    <li>: <%= publication.year %></li>
-                    <li>: <%= publication.author %></li>
-                    <li>: <%= publication.category %></li>
-                    <li>: <%= publication.publisher %></li>
-                    <li>: <%= publication.country %></li>
-                    <li>: <a href="<%= publication.link %>">Link</a></li>
-                  </ul>
-                </div>
+                <div class="col-1">Year</div>
+                <div class="col-11">: <%= publication.year %></div>
+            </div>
+            <div class="row">
+                <div class="col-1">Author</div>
+                <div class="col-11">: <%= publication.author %></div>
+            </div>
+            <div class="row">
+                <div class="col-1">Category</div>
+                <div class="col-11">: <%= publication.category %></div>
+            </div>
+            <div class="row">
+                <div class="col-1">Publisher</div>
+                <div class="col-11">: <%= publication.publisher %></div>
+            </div>
+            <div class="row">
+                <div class="col-1">Country</div>
+                <div class="col-11">: <%= publication.country %></div>
+            </div>
+            <div class="row">
+                <div class="col-1">Source</div>
+                <div class="col-11">: <a href="<%= publication.link %>">Link</a></div>
             </div>
         </div>
       </div>
