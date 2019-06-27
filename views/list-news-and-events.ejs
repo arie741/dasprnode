@@ -45,12 +45,14 @@
                         <h6 class="category"><%= newscontent.etype %></h6>
                       </div>
                     </div>
-                    <h3 class="card-title"><a href="/news-and-events/<%= newscontent.uuid %>"><%= newscontent.title %></a></h3>
-                    <% if (newscontent.etype == "questionaire") { %>
-                    <a class="btn btn-info" href="/news-and-events/<%= newscontent.uuid %>">Ikut Questionaire</a>
-                    <% } else { %>
-                    <div class="ql-snow"><p class="card-description"><%- newscontent.contents -%></p></div>
-                    <% } %>
+                    <div class="dthumb">
+                        <h3 class="card-title"><a href="/news-and-events/<%= newscontent.uuid %>"><%= newscontent.title %></a></h3>
+                        <% if (newscontent.etype == "questionaire") { %>
+                        <a class="btn btn-info" href="/news-and-events/<%= newscontent.uuid %>">Ikut Questionaire</a>
+                        <% } else { %>
+                        <div class="ql-snow"><p class="card-description"><%- newscontent.contents -%></p></div>
+                        <% } %>
+                    </div>
                   </div>
                   <div class="card-footer">
                     <div class="post-author">

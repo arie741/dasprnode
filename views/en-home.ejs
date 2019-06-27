@@ -167,12 +167,14 @@
                     <h6 class="category"><%= newscontent.etype %></h6>
                   </div>
                 </div>
-                <h3 class="card-title"><a href="/en/news-and-events/<%= newscontent.uuid %>"><%= newscontent.entitle %></a></h3>
-                <% if (newscontent.etype == "questionaire") { %>
-                    <a class="btn btn-info" href="/en/news-and-events/<%= newscontent.uuid %>">Fill the Questionaire</a>
-                <% } else { %>
-                    <div class="ql-snow"><p class="card-description"><%- newscontent.encontents -%></p></div>
-                <% } %> 
+                <div class="dthumb">
+                    <h3 class="card-title"><a href="/en/news-and-events/<%= newscontent.uuid %>"><%= newscontent.entitle %></a></h3>
+                    <% if (newscontent.etype == "questionaire") { %>
+                        <a class="btn btn-info" href="/en/news-and-events/<%= newscontent.uuid %>">Fill the Questionaire</a>
+                    <% } else { %>
+                        <div class="ql-snow"><p class="card-description"><%- newscontent.encontents -%></p></div>
+                    <% } %> 
+                </div>
               </div>
               <div class="card-footer">
                 <div class="post-author">

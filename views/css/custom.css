@@ -216,14 +216,14 @@ section.footer-paralax .socials {
 .publication-item {
 	background-color:rgba(0,0,0,03);
 	margin-bottom:20px;
-    background-image: url("/img/publication-item.jpg");
+    /*background-image: url("/img/publication-item.jpg");*/
     background-repeat: repeat;
     font-weight: 500;
     font-family:'Roboto';
 }
 
 .pub-panel {
-    background-color:rgba(237, 180, 88,0.9);
+    background-color:#F8FFE5;
     color:#000;
     padding:15px;
 }
@@ -274,10 +274,17 @@ section.footer-paralax .socials {
     margin-left: auto;
     margin-right: auto;
     display: block;
+    width: 100%;
+    object-fit: cover;
 }
 
 .news-items .card-body {
     height:295px;
+}
+
+.news-items .dthumb {
+    max-height:253px;
+    overflow:hidden;
 }
 
 .news-items .card-body .card-title{
