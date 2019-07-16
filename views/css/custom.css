@@ -219,13 +219,13 @@ section.footer-paralax .socials {
     /*background-image: url("/img/publication-item.jpg");*/
     background-repeat: repeat;
     font-weight: 500;
-    font-family:'Roboto';
+    font-family: 'Literata', serif;
 }
 
 .pub-panel {
-    background-color:#F8FFE5;
+    background-color:rgb(255, 215, 150);
     color:#000;
-    padding:15px;
+    padding:15px 30px 15px 30px;
 }
 
 .pub-panel a {
@@ -431,7 +431,7 @@ section#timkami .socials ul {
     bottom: 155px;
     animation-name: intromovement;
     animation-duration:1s;
-    background-color:rgb(202, 204, 206, 0.7);
+    background-color:rgb(202, 204, 206, 0.95);
     padding:20px;
     border-radius:10px;
 }
