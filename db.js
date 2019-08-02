@@ -22,7 +22,7 @@ const deleteSliderImage = "delete from sliderimages where filename=$1"
 const addEvent = 'insert into newscontents (img, title, author, edate, contents, etype, entitle, encontents, uuid, dbdate) values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)'
 const findEvents = 'select * from newscontents order by edate DESC'
 const findEvent = 'select * from newscontents where uuid=$1'
-const editEvent = "update newscontents set img = $1, title = $2, author = $3, edate = $4, contents = $5, etype = $6, entitle = $7, encontents = $8 where uuid = $9"
+const editEvent = "update newscontents set img = $1, title = $2, author = $3, contents = $4, etype = $5, entitle = $6, encontents = $7 where uuid = $8"
 const deleteEvent = 'delete from newscontents where uuid = $1'
 const searchEvent = "SELECT * FROM newscontents WHERE lower(title) LIKE lower('%' || $1 || '%')"
 const addTim = 'insert into timkami (foto, nama, jabatan, keterangan, overview, riset, publikasi, supervisi, enjabatan, enketerangan, enoverview, enriset, enpublikasi, ensupervisi, facebook, instagram, twitter, youtube, urutan, uuid) values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20)'
