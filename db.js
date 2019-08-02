@@ -19,8 +19,8 @@ const deletePublication = 'delete from publication where uuid = $1'
 const addImage = 'insert into sliderimages (filename, forder, uuid) values ($1, $2, $3)'
 const findSliderImages = 'select * from sliderimages order by forder ASC'
 const deleteSliderImage = "delete from sliderimages where filename=$1"
-const addEvent = 'insert into newscontents (img, title, author, edate, contents, etype, entitle, encontents, uuid) values ($1, $2, $3, $4, $5, $6, $7, $8, $9)'
-const findEvents = 'select * from newscontents order by edate ASC'
+const addEvent = 'insert into newscontents (img, title, author, edate, contents, etype, entitle, encontents, uuid, dbdate) values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)'
+const findEvents = 'select * from newscontents order by edate DESC'
 const findEvent = 'select * from newscontents where uuid=$1'
 const editEvent = "update newscontents set img = $1, title = $2, author = $3, edate = $4, contents = $5, etype = $6, entitle = $7, encontents = $8 where uuid = $9"
 const deleteEvent = 'delete from newscontents where uuid = $1'

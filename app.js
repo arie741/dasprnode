@@ -663,7 +663,13 @@ app.post('/add-events-request', function(req, res, next){
 			if(err){
 				res.render('add-events', { ermes: err})
 			} else {
-				var now = new Date();	
+				var now = new Date();
+				var today = new Date();
+				var dd = String(today.getDate()).padStart(2, '0');
+				var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+				var yyyy = today.getFullYear();
+				today = yyyy + '-' + mm + '-' + dd;
+
 				if(req.file == undefined){
 					res.render('add-events', { ermes: "Must add an image!"})
 				} else {
@@ -675,7 +681,7 @@ app.post('/add-events-request', function(req, res, next){
 						bodyContent = req.body.eQues1 + "," + req.body.eQues2 + "," + req.body.eQues3;
 					} 
 
-					db.query(db.addEvent, [`${req.file.filename}`, req.body.eTitle, req.body.eAuthor, now.toLocaleDateString(), bodyContent, req.body.eType, req.body.eneTitle, enBodyContent, uuid()], (err, resp) => {
+					db.query(db.addEvent, [`${req.file.filename}`, req.body.eTitle, req.body.eAuthor, now.toLocaleDateString(), bodyContent, req.body.eType, req.body.eneTitle, enBodyContent, uuid(), today], (err, resp) => {
 				    	if (err) {
 				    	  	return next(err)
 				    	}				    
