@@ -11,7 +11,7 @@
   "dependencies": {
     "aos": "^2.3.4",
     "connect": "^3.6.6",
-    "connect-pg-simple": "^5.0.0",
+    "connect-pg-simple": "^6.0.1",
     "connect-session-knex": "^1.4.0",
     "crypto": "^1.0.1",
     "ejs": "^2.6.1",
