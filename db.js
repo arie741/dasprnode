@@ -20,7 +20,7 @@ const addImage = 'insert into sliderimages (filename, forder, uuid) values ($1, 
 const findSliderImages = 'select * from sliderimages order by forder ASC'
 const deleteSliderImage = "delete from sliderimages where filename=$1"
 const addEvent = 'insert into newscontents (img, title, author, edate, contents, etype, entitle, encontents, uuid, dbdate) values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)'
-const findEvents = 'select * from newscontents order by edate DESC'
+const findEvents = 'select * from newscontents order by dbdate DESC'
 const findEvent = 'select * from newscontents where uuid=$1'
 const editEvent = "update newscontents set img = $1, title = $2, author = $3, contents = $4, etype = $5, entitle = $6, encontents = $7 where uuid = $8"
 const deleteEvent = 'delete from newscontents where uuid = $1'
