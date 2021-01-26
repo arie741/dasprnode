@@ -10,7 +10,7 @@ const pool = new Pool({
 
 const getPwd = 'SELECT * FROM admin';
 const countPublications = 'select count(*) from publication'
-const getPublications = 'SELECT * FROM publication order by year DESC limit $1 offset $2';
+const getPublications = 'SELECT * FROM publication order by year DESC, title ASC limit $1 offset $2';
 const addPublication = "insert into publication (title, year, author, category, publisher, link, country, uuid) values ($1, $2, $3, $4, $5, $6, $7, $8)"
 const editPublication = "update publication set title = $1, year = $2, author = $3, category = $4, publisher = $5, link = $6, country = $7 where uuid = $8"
 const searchPublication = "SELECT * FROM publication WHERE lower(title) LIKE lower('%' || $1 || '%')"

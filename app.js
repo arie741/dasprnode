@@ -167,7 +167,7 @@ app.get('/publications/:page', function(req,res,next){
 	    var arr = resp.rows;
 	    pagLength = Math.ceil(arr[0].count / 10);	
   	})
-	db.query(db.getPublications, [(req.params.page * 10), ((req.params.page - 1) * 10)], (err, resp) => {
+	db.query(db.getPublications, [10, ((req.params.page - 1) * 10)], (err, resp) => {
     if (err) {
       	return next(err)
     }

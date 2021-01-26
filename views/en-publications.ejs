@@ -32,10 +32,23 @@
         <input class="btn btn-prime" type="submit" value="Search">
         <a class="btn btn-prime"  href="/en/publications/1">Clear</a>
       </form>
+      <br>
       <nav aria-label="Page navigation example">
         <ul class="pagination">
+          <% if(parseInt(currentpage) == 1){%>
+            <li class="page-item"><a class="page-link" disabled="disabled" href="#">Prev</a></li>
+          <%} else {%>
+            <li class="page-item"><a class="page-link" href="/publications/<%= parseInt(currentpage) - 1 %>">Prev</a></li>
+          <%};%>
+
           <% for (i = 1; i <= pages; i++){%>
           <li class="page-item pag-<%= i %>"><a class="page-link" href="/publications/<%= i %>"><%= i %></a></li>
+          <%};%>
+
+          <% if(parseInt(currentpage) == pages){%>
+            <li class="page-item"><a class="page-link" disabled="disabled" href="#">Next</a></li>
+          <%} else {%>
+            <li class="page-item"><a class="page-link" href="/publications/<%= parseInt(currentpage) + 1 %>">Next</a></li>
           <%};%>
         </ul>
       </nav>
@@ -75,8 +88,20 @@
       <%});%>
       <nav aria-label="Page navigation example">
         <ul class="pagination">
+          <% if(parseInt(currentpage) == 1){%>
+            <li class="page-item"><a class="page-link" disabled="disabled" href="#">Prev</a></li>
+          <%} else {%>
+            <li class="page-item"><a class="page-link" href="/publications/<%= parseInt(currentpage) - 1 %>">Prev</a></li>
+          <%};%>
+
           <% for (i = 1; i <= pages; i++){%>
           <li class="page-item pag-<%= i %>"><a class="page-link" href="/publications/<%= i %>"><%= i %></a></li>
+          <%};%>
+
+          <% if(parseInt(currentpage) == pages){%>
+            <li class="page-item"><a class="page-link" disabled="disabled" href="#">Next</a></li>
+          <%} else {%>
+            <li class="page-item"><a class="page-link" href="/publications/<%= parseInt(currentpage) + 1 %>">Next</a></li>
           <%};%>
         </ul>
       </nav>
