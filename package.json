@@ -16,7 +16,7 @@
     "crypto": "^1.0.1",
     "ejs": "^2.6.1",
     "etcd3": "^0.2.11",
-    "express": "^4.16.4",
+    "express": "^4.17.3",
     "express-session": "^1.15.6",
     "express-session-etcd3": "^1.2.4",
     "express-validator": "^5.3.1",
